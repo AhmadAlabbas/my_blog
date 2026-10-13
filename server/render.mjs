@@ -64,7 +64,8 @@ export function renderer(config,arabic){
     if(!preview&&status!==404)for(const language of equivalent)$('head').append(`<link rel="alternate" hreflang="${language}" href="${escape(config.publicURL+pageURL(slug,language))}">`);
     if(!preview&&equivalent.includes('en'))$('head').append(`<link rel="alternate" hreflang="x-default" href="${escape(config.publicURL+pageURL(slug,'en'))}">`);
     const opposite=lang==='ar'?'en':'ar';const switchSlug=post?.type==='book'?'book-summaries':equivalent.includes(opposite)?slug:'articles';
-    $('.language-switch').attr({href:pageURL(switchSlug,opposite),lang:opposite,hreflang:opposite}).text(opposite==='ar'?'العربية':'English');
+    $('.site-footer .footer-language').remove();
+    $('.site-header .language-switch').attr({href:pageURL(switchSlug,opposite),lang:opposite,hreflang:opposite}).text(opposite==='ar'?'العربية':'English');
     $('.site-header .brand span').first().text(name.split(' ')[0]);$('.site-header .brand span').last().text(name.split(' ').slice(1).join(' '));$('.footer-top .brand').text(name);
     const configured=Object.entries(socialHosts).some(([key,hosts])=>validSocial(data.settings['social_'+key],hosts));
     $('.site-socials').each((_,el)=>{const box=$(el);box.empty();for(const [key,hosts] of Object.entries(socialHosts)){const url=data.settings['social_'+key]||'';const icon=fs.readFileSync(path.join(config.dist,'assets/social',key+'.svg'),'utf8');box.append(validSocial(url,hosts)?`<a href="${escape(url)}" aria-label="${key}" target="_blank" rel="noopener noreferrer">${icon}</a>`:`<span class="social-unconfigured" role="img" aria-label="${key}">${icon}</span>`);}});

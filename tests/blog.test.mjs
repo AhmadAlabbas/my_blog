@@ -33,7 +33,7 @@ test('public Node pages preserve the English/Arabic content, shelf separation an
   assert.equal((await db.all("SELECT COUNT(*) AS n FROM aa_posts WHERE type='article'"))[0].n,11);
   assert.equal((await db.all("SELECT COUNT(*) AS n FROM aa_posts WHERE type='book'"))[0].n,29);
   for(const route of ['/','/ar/','/about.html','/ar/about.html','/gallery.html','/ar/gallery.html','/contact.html','/ar/contact.html','/book-summaries.html','/ar/book-summaries.html']){
-    const r=await request(route,null,guest);assert.equal(r.status,200,route);assert(r.text.includes('<base href="/">'));assert.equal((r.text.match(/<h1[ >]/g)||[]).length,1,route);assert.equal((r.text.match(/class="language-switch"/g)||[]).length,2,route);
+    const r=await request(route,null,guest);assert.equal(r.status,200,route);assert(r.text.includes('<base href="/">'));assert.equal((r.text.match(/<h1[ >]/g)||[]).length,1,route);assert.equal((r.text.match(/class="language-switch"/g)||[]).length,1,route);
     assert(r.text.includes('hreflang="en"'));assert(r.text.includes('hreflang="ar"'));assert(r.text.includes('rel="canonical"'));assert(!r.text.includes('config.js'));assert(!r.text.includes('api/contact.php'));
     if(route.startsWith('/ar/'))assert(r.text.includes('<html lang="ar" dir="rtl">'));
   }
