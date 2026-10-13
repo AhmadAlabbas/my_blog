@@ -2,6 +2,10 @@
 
 Bilingual English/Arabic personal blog with a PHP dashboard for Hostinger.
 
+For automatic deployment from GitHub, follow [HOSTINGER-GITHUB.md](HOSTINGER-GITHUB.md).
+Pushes to `main` build and test the site; deployment starts after the one-time
+SSH connection settings are configured in GitHub.
+
 Start with [CODEX-START.md](CODEX-START.md) and [source/README.md](source/README.md).
 Edit the authoring files in `source/`; generated output is excluded from Git.
 

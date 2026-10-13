@@ -13,3 +13,4 @@ blog-config.php
 *.sqlite3
 *.db
 *.zip
+artifacts/
