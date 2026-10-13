@@ -1,0 +1,25 @@
+{
+  "videos": [
+    {
+      "id": "spUNpyF58BY",
+      "title": "The hidden ingredients of a signal",
+      "description": "A visual introduction to the Fourier transform.",
+      "creator": "3Blue1Brown",
+      "image": "waves"
+    },
+    {
+      "id": "aircAruvnKk",
+      "title": "Inside a neural network",
+      "description": "An approachable first look at the mathematics of learning.",
+      "creator": "3Blue1Brown",
+      "image": "digital-tools"
+    },
+    {
+      "id": "WUvTyaaNkzM",
+      "title": "The intuition behind calculus",
+      "description": "Change, accumulation, and a picture that makes them connect.",
+      "creator": "3Blue1Brown",
+      "image": "curiosity"
+    }
+  ]
+}

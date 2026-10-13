@@ -1,0 +1,42 @@
+{
+  "artwork": {
+    "style": "Contrasting original collage, gouache painting, 3D sculpture, and geometric print art",
+    "mode": "built-in image generation",
+    "palette": [
+      "butter yellow",
+      "fern green",
+      "lilac",
+      "apricot",
+      "fuchsia"
+    ]
+  },
+  "london": {
+    "source": "11 photographs supplied by Ahmad",
+    "changes": "Resize and WebP encode only; original proportions and colors retained. Guest badge QR code removed using built-in image editing."
+  },
+  "kfupm": [
+    {
+      "asset": "kfupm-personal.jpg",
+      "source": "Photograph supplied by Ahmad",
+      "changes": "None. Decorative frame applied with CSS; displayed at or below original resolution."
+    }
+  ],
+  "brand_icons": {
+    "source": "https://github.com/twbs/icons",
+    "license": "MIT",
+    "assets": [
+      "youtube",
+      "linkedin",
+      "twitter-x",
+      "instagram"
+    ]
+  },
+  "family": [
+    {
+      "asset": "laqman.png",
+      "subject": "Laqman, Ahmad’s father",
+      "source": "Portrait supplied by Ahmad",
+      "changes": "None. Decorative frame applied with CSS; no AI face reconstruction."
+    }
+  ]
+}

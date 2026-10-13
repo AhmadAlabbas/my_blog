@@ -1,0 +1,23 @@
+{
+  "name": "Ahmad Alabbas",
+  "language": "en",
+  "contactEmail": "",
+  "socialLinks": [
+    {
+      "label": "YouTube",
+      "url": ""
+    },
+    {
+      "label": "LinkedIn",
+      "url": ""
+    },
+    {
+      "label": "X",
+      "url": ""
+    },
+    {
+      "label": "Instagram",
+      "url": ""
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+ErrorDocument 404 /404.html
+Redirect 301 /a-world-worth-understanding.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /from-circuits-to-systems.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /ai-beyond-the-demo.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /software-with-a-clear-purpose.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /building-a-place-for-creativity.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /the-case-for-building-patiently.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /small-markets-serious-software.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /a-reading-list-for-curious-minds.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /reading-with-a-pencil.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /a-city-you-can-walk-through.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /travelling-with-a-notebook.html /why-i-love-electrical-engineering-and-physics.html
+Redirect 301 /why-im-writing-in-public.html /why-i-love-electrical-engineering-and-physics.html

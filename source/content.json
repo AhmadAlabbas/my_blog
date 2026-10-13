@@ -1,0 +1,489 @@
+{
+  "articles": [
+    {
+      "slug": "why-i-love-electrical-engineering-and-physics",
+      "category": "Science",
+      "kicker": "A personal perspective",
+      "title": "Why I love electrical engineering and physics.",
+      "subtitle": "One helps me understand the world. The other gives me a way to build within it.",
+      "image": "engineering-study",
+      "date": "2026-10-09",
+      "draft": false,
+      "intro": "I love electrical engineering and physics because they make the ordinary world feel extraordinary. A light turning on, a signal reaching a phone, or a circuit responding to an input becomes an invitation to ask how it works. The more I learn, the more I notice how much remains to be understood.",
+      "quote": "I want to understand the world deeply enough to build something useful in it.",
+      "sections": [
+        {
+          "title": "The beauty of understanding",
+          "paragraphs": [
+            "Physics gives me a language for questions that begin with curiosity. Why does a system behave this way? What stays constant, and what changes? An equation becomes more meaningful when I can connect it to a picture, a measurement, or something I can observe.",
+            "I enjoy the movement between an idea and its explanation. The answer matters, but so does the moment when separate pieces begin to fit together. That is one of the reasons I keep returning to physics: it rewards the effort to look beneath the surface."
+          ]
+        },
+        {
+          "title": "Turning ideas into something that works",
+          "paragraphs": [
+            "Electrical engineering brings that curiosity into the practical world. A circuit is a place where an abstract model meets real components. Signals, energy, and information become things we can shape, measure, and use.",
+            "What attracts me is the balance between imagination and discipline. A design can be elegant on paper and still need adjustment when it meets reality. Understanding the difference is part of the work, and part of what makes the subject so satisfying."
+          ]
+        },
+        {
+          "title": "Why I study them together",
+          "paragraphs": [
+            "As an electrical engineering and physics student at KFUPM, I do not see the two subjects as separate interests. Physics asks what is possible and why. Engineering asks how to make an idea reliable, useful, and worth building. Each gives the other a different kind of depth.",
+            "I want the habit of asking fundamental questions alongside the ability to make practical decisions. Sometimes that means moving slowly, drawing the system again, or checking an assumption I took for granted. The process is part of the appeal."
+          ]
+        },
+        {
+          "title": "A curiosity I want to keep",
+          "paragraphs": [
+            "Reading gives me another way to stay curious. A good book can open a new perspective; a good scientific question can do the same. Both remind me that learning is larger than finishing a course or finding a quick answer.",
+            "I am still a student, and there is a great deal I do not know. That does not make these subjects less exciting. It gives me more reasons to continue. This blog is a place to share that curiosity: the ideas I study, the questions I keep, and the things I hope to build."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "for-my-dad-laqman",
+      "category": "Personal",
+      "kicker": "With love",
+      "title": "For my dad, Laqman.",
+      "subtitle": "A little space for a love that means more than I can put into words.",
+      "image": "laqman",
+      "date": "2026-10-09",
+      "draft": false,
+      "intro": "This blog holds many of the things I love: books, drawing, electrical engineering, and physics. But it would not feel like my own space without a place for my dad, Laqman. Dad, I love you. I want those words to be here, plainly and sincerely.",
+      "quote": "Dad, I love you. I want those words to have a place here.",
+      "sections": [
+        {
+          "title": "More than a name on a page",
+          "paragraphs": [
+            "A photograph can show a face. A name can introduce a person. Neither can quite explain what my dad means to me. That is why I wanted to write this note: to give a little room to a feeling that matters deeply to me.",
+            "I do not need a special occasion to say that I love him. Sometimes the simplest words are the ones most worth saying. This is one of those times."
+          ]
+        },
+        {
+          "title": "Love deserves to be said",
+          "paragraphs": [
+            "I spend a lot of time thinking about ideas and how to express them clearly. Writing about love is different. There is no formula that makes the words complete, and no perfect sentence that can hold everything I feel.",
+            "Still, I want to try. I want my dad to know that he matters to me, that I am proud to call him my dad, and that my love for him belongs among the things I choose to share."
+          ]
+        },
+        {
+          "title": "The person I hope to become",
+          "paragraphs": [
+            "I have things I want to learn, projects I want to build, and a future I am still discovering. Alongside those ambitions is a quieter wish: to be a son who shows his love through attention, care, and the way he treats the people closest to him.",
+            "A public note is only one small expression of that wish. I want the feeling behind these words to carry into ordinary days too: making time, listening, and remembering to say what matters."
+          ]
+        },
+        {
+          "title": "For you, Dad",
+          "paragraphs": [
+            "Laqman, this page is for you. Not because a website can measure love, but because I wanted a corner of mine to say something personal and true.",
+            "I love you, Dad. As I keep learning, drawing, reading, and building, I want these words to stay here: a simple reminder of someone who means so much to me."
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "what-a-circuit-teaches-about-thinking",
+      "title": "What a circuit teaches about thinking.",
+      "subtitle": "Small systems, clear assumptions, and the value of a useful model.",
+      "category": "Science",
+      "image": "circuit-thinking",
+      "date": "2026-10-09",
+      "kicker": "A curious notebook",
+      "intro": "A circuit can look intimidating before it becomes understandable. Lines cross a page, symbols stand in for physical objects, and a few equations seem to hold the whole thing together. The first useful step is often a simple question: what is this system supposed to do? That question turns a collection of parts into a problem with a purpose.",
+      "quote": "A useful model makes a difficult question small enough to work on.",
+      "sections": [
+        {
+          "title": "Begin with the boundary",
+          "paragraphs": [
+            "Before calculating anything, decide what belongs inside the system. Is the source ideal? Are the connecting wires treated as having negligible resistance? Which voltage is measured relative to which reference? These decisions can look like minor housekeeping, but they determine what an answer actually means.",
+            "For an ideal resistor, Ohm’s law relates voltage, current, and resistance. It is a compact relationship, but it is useful within a model. Real components have limits, tolerances, and temperature effects. A calculation becomes stronger when its assumptions are written beside it rather than hidden beneath it."
+          ]
+        },
+        {
+          "title": "Predict before measuring",
+          "paragraphs": [
+            "Consider a simple series circuit containing a source and two resistors. Before reaching for numbers, predict what should happen if one resistance increases. The current should decrease for the same ideal source voltage. That qualitative expectation gives the calculation something to answer to.",
+            "If a measured result disagrees, the disagreement is information. Perhaps the component value is different from its label, the connection is loose, or the measuring instrument changes the system. The point is to explain the difference, rather than treat the equation or the measurement as automatically correct."
+          ]
+        },
+        {
+          "title": "Let the diagram do some thinking",
+          "paragraphs": [
+            "A good schematic is a way of making relationships visible. It separates the structure of the circuit from the shape of the physical wires. A careful diagram can reveal that two apparently distant points are the same electrical node, or that a complicated drawing contains a much simpler arrangement.",
+            "That habit travels beyond electronics. A software flow, a product journey, or a study plan often becomes clearer when its parts and connections are drawn. The drawing does not solve every problem. It exposes which problem needs solving first."
+          ]
+        },
+        {
+          "title": "Keep the explanation close",
+          "paragraphs": [
+            "A finished answer should include more than a number. It should say what was assumed, what was predicted, what was observed, and where the model may stop being useful. That makes the work easier to check and easier to improve.",
+            "This is part of what makes electrical engineering appealing: precise reasoning stays connected to something physical. A small circuit becomes a lesson in disciplined curiosity, with room for both clear equations and honest uncertainty."
+          ]
+        }
+      ],
+      "draft": false,
+      "sources": [
+        {
+          "label": "MIT OpenCourseWare · Circuits and Electronics",
+          "url": "https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/"
+        }
+      ]
+    },
+    {
+      "slug": "seeing-the-world-as-waves",
+      "title": "Seeing the world as waves.",
+      "subtitle": "Sound, signals, and a different way to notice what is happening around us.",
+      "category": "Science",
+      "image": "waves-study",
+      "date": "2026-10-09",
+      "kicker": "A curious notebook",
+      "intro": "A sound is something we hear. A signal is something we measure. A wave gives us a way to connect those experiences to a changing pattern. Once the pattern becomes visible, a familiar world begins to look different: a note, a vibration, and an electrical trace become related questions.",
+      "quote": "A complicated signal can become clearer when we ask which simpler patterns make it.",
+      "sections": [
+        {
+          "title": "A pattern that travels",
+          "paragraphs": [
+            "A wave is a disturbance that propagates. In a mechanical wave, the medium’s local motion and the movement of the disturbance are different things. Watching a ripple move across water can help separate those ideas: the visible pattern travels even though the water does not simply move across the pond with it.",
+            "Sound offers another entry point. Pressure changes travel through a medium, and the ear responds to those changes. Frequency describes how often a pattern repeats, while amplitude describes the size of a variation. These are different properties, and keeping them separate makes the description more useful."
+          ]
+        },
+        {
+          "title": "One signal, many ingredients",
+          "paragraphs": [
+            "A pure tone gives a relatively simple pattern. A musical instrument produces something richer. The Fourier perspective asks how a signal can be described through sinusoidal components of different frequencies. It gives us a vocabulary for the ingredients inside a complicated trace.",
+            "This does not mean every real-world signal repeats forever. The mathematical details depend on whether the signal is periodic, sampled, finite, or continuous. But the central question remains approachable: what changes when we look at this signal in terms of frequency rather than time?"
+          ]
+        },
+        {
+          "title": "Pictures before procedures",
+          "paragraphs": [
+            "An animation can make this change of viewpoint easier to understand. A moving curve gives the time view; a collection of frequency components gives another description of the same signal. Neither picture replaces the other. Each makes certain questions easier to ask.",
+            "The visual explanation below is a good starting point for that intuition. Watch for the role of rotation and averaging, then return to the equations. The animation is most useful when it leaves a question you can work through yourself."
+          ]
+        },
+        {
+          "title": "A new way of paying attention",
+          "paragraphs": [
+            "A quiet room still contains patterns: distant traffic, a fan, a voice, a vibration through a table. Looking for those patterns can make signal processing feel less abstract. The subject begins with things we can notice before it reaches things we can calculate.",
+            "That is the appeal of waves as a way of thinking. They connect everyday experiences with a language that can describe them carefully, and they remind us that a useful explanation can change what we notice next."
+          ]
+        }
+      ],
+      "draft": false,
+      "video": "spUNpyF58BY",
+      "sources": [
+        {
+          "label": "3Blue1Brown · Fourier transforms",
+          "url": "https://www.3blue1brown.com/lessons/fourier-transforms/"
+        }
+      ]
+    },
+    {
+      "slug": "why-units-matter",
+      "title": "The quiet power of checking units.",
+      "subtitle": "A small habit that can catch a large mistake.",
+      "category": "Science",
+      "image": "measuring-world",
+      "date": "2026-10-09",
+      "kicker": "A curious notebook",
+      "intro": "A page of algebra can look convincing while describing something impossible. One of the quickest ways to question it is to check the units. The habit is modest, almost unglamorous, but it keeps an answer attached to the physical quantity it claims to represent.",
+      "quote": "A number becomes an answer only when we know what it measures.",
+      "sections": [
+        {
+          "title": "Name the quantity",
+          "paragraphs": [
+            "Distance, time, current, and energy are different kinds of quantities. A number by itself does not tell us which one we have found. Writing the unit beside a result forces that question into the open and makes the calculation more legible to someone else.",
+            "The same care belongs at the beginning. Write down the input units before substitution. A value in milliamperes and a value in amperes may describe the same kind of quantity, but using them without conversion can change a numerical answer by a thousand."
+          ]
+        },
+        {
+          "title": "Make both sides agree",
+          "paragraphs": [
+            "If an equation claims to calculate speed, its dimensions should reduce to length divided by time. If the units instead describe length multiplied by time, something needs attention. A missing division or an incorrect rearrangement may be easier to spot through units than through another pass at the algebra.",
+            "Consistency cannot prove that a formula is correct. A wrong dimensionless factor can pass a unit check. So can a relationship that uses the right dimensions but the wrong physics. The check is a filter, not a substitute for understanding."
+          ]
+        },
+        {
+          "title": "Try an extreme case",
+          "paragraphs": [
+            "Unit checking becomes stronger when paired with a simple limiting case. What should happen when an input approaches zero? Does a result become unreasonably large when a resistance increases? Does a predicted time remain positive? These questions ask whether the mathematics still tells a sensible physical story.",
+            "A rough estimate is useful too. An order-of-magnitude expectation makes it harder for a misplaced decimal point to hide behind many digits. Precision is valuable after the result is plausible; it cannot rescue an implausible model."
+          ]
+        },
+        {
+          "title": "Use the habit outside physics",
+          "paragraphs": [
+            "The idea applies to planning and building as well. Revenue is not profit, a monthly number is not an annual number, and users are not the same thing as visits. Naming what a number measures prevents unlike things from being compared as if they were interchangeable.",
+            "The practical routine is simple: label the inputs, track the units, check a limiting case, and explain the result in a sentence. It takes little space, but it can save a great deal of confusion."
+          ]
+        }
+      ],
+      "draft": false
+    },
+    {
+      "slug": "understanding-before-formulas",
+      "title": "Understanding before formulas.",
+      "subtitle": "Why a sketch and a good question belong beside the equation.",
+      "category": "Science",
+      "image": "understanding-print",
+      "date": "2026-10-09",
+      "kicker": "A curious notebook",
+      "intro": "A formula can compress a great deal of understanding into a small space. That is its strength, but it can also make the understanding easy to skip. Learning becomes more satisfying when an equation is the end of an explanation we can follow, rather than the beginning of a procedure we can only repeat.",
+      "quote": "The equation is more useful when its symbols refer to something we can picture.",
+      "sections": [
+        {
+          "title": "Ask what is changing",
+          "paragraphs": [
+            "Before choosing a formula, describe the situation in ordinary language. What changes with time? What stays approximately constant? What influences what? A rough sketch can reveal these relationships without requiring polished drawing or advanced notation.",
+            "For motion, a position graph and a velocity graph answer different questions. For a circuit, a voltage across a component and a current through it are different descriptions. Naming those differences makes it easier to choose the right mathematical tool."
+          ]
+        },
+        {
+          "title": "Build an intuition, then test it",
+          "paragraphs": [
+            "An intuitive explanation is a starting point, not a guarantee. It can help predict a direction of change or identify a relevant variable. The mathematics then tests that expectation more carefully and shows where an appealing picture may be incomplete.",
+            "Calculus is a good example of the conversation between pictures and symbols. A slope can describe local change, while accumulation brings small contributions together. Visual explanations can make those ideas approachable before formal rules make them precise."
+          ]
+        },
+        {
+          "title": "Explain it without hiding",
+          "paragraphs": [
+            "Try explaining an equation to someone who has not seen it. Say what each quantity means, which assumptions are being made, and why the relationship is plausible. If the explanation breaks down, that is a useful place to return to the subject.",
+            "It also helps to create a small example and an edge case. A simple example makes the procedure concrete. An edge case asks whether the formula still behaves as expected when one quantity becomes unusually small or large."
+          ]
+        },
+        {
+          "title": "Give the ideas time",
+          "paragraphs": [
+            "Understanding often arrives in stages. A topic that feels procedural on the first pass may become intuitive after a second explanation, a different diagram, or a problem that requires choosing the model independently. That change is part of learning, rather than evidence that the first effort was wasted.",
+            "The goal is to keep pictures, words, and equations connected. Each can expose something the others hide. Together they make a subject feel more coherent and give the next difficult question somewhere to begin."
+          ]
+        }
+      ],
+      "draft": false,
+      "video": "WUvTyaaNkzM"
+    },
+    {
+      "slug": "ai-and-the-habit-of-questioning",
+      "title": "AI and the habit of questioning.",
+      "subtitle": "Useful tools still need a thoughtful person on the other side.",
+      "category": "Technology",
+      "image": "tools-study",
+      "date": "2026-10-09",
+      "kicker": "A curious notebook",
+      "intro": "A tool that produces an answer quickly can be helpful. It can also make it easier to move past a question before understanding it. The useful challenge is to keep the speed while preserving the habits that make learning reliable: checking, comparing, and explaining.",
+      "quote": "A helpful answer should make the next question clearer.",
+      "sections": [
+        {
+          "title": "Give the task a shape",
+          "paragraphs": [
+            "A vague request often produces a vague result. A more useful request names the goal, the audience, the available information, and the form an answer should take. Asking for three alternative explanations can be more productive than asking for the final truth in one paragraph.",
+            "This is partly a lesson in thinking clearly. Before handing a problem to a tool, we have to decide what the problem is. That decision is valuable even when the tool is never used. A precise question gives both the person and the system a better place to start."
+          ]
+        },
+        {
+          "title": "Keep a way to check",
+          "paragraphs": [
+            "For a technical claim, return to a trusted primary source, a worked calculation, or a test that can be repeated. A plausible explanation is not the same thing as a verified one. The ability to produce smooth language does not remove the need for evidence.",
+            "In code, that might mean trying a small input, inspecting an error case, and checking what happens when an assumption fails. In study, it might mean solving a problem independently and comparing methods. The tool can support the work without becoming the only judge of it."
+          ]
+        },
+        {
+          "title": "Learn the mechanism",
+          "paragraphs": [
+            "The phrase artificial intelligence can hide many different mechanisms. A simple neural-network introduction makes one family of models more concrete: inputs are transformed through weighted connections and nonlinear operations, and training adjusts parameters. That picture is useful without pretending it describes every current system.",
+            "The video below offers a visual starting point. It is an invitation to learn the mathematics behind a familiar term. Understanding even one mechanism carefully is often more valuable than collecting a long list of fashionable vocabulary."
+          ]
+        },
+        {
+          "title": "Stay responsible for the result",
+          "paragraphs": [
+            "A useful tool can suggest a direction, reduce repetitive work, or offer a different explanation. Choosing what to keep remains a human decision. The person using an answer needs to know its limits and be able to explain why it deserves confidence.",
+            "That leaves room for curiosity and caution together. Explore the tool, ask better questions, and keep a method for checking what comes back. The result is a stronger learning process, with help available and judgment still engaged."
+          ]
+        }
+      ],
+      "draft": false,
+      "video": "aircAruvnKk",
+      "sources": [
+        {
+          "label": "3Blue1Brown · Neural networks",
+          "url": "https://www.3blue1brown.com/lessons/neural-networks/"
+        }
+      ]
+    },
+    {
+      "slug": "a-good-interface-respects-attention",
+      "title": "A good interface respects attention.",
+      "subtitle": "Clear choices, quiet details, and the craft of making software feel simple.",
+      "category": "Technology",
+      "image": "interface-mosaic",
+      "date": "2026-10-09",
+      "kicker": "A curious notebook",
+      "intro": "An interface is a conversation made of labels, controls, and feedback. Every unclear button asks the visitor to do extra interpretation. Every useful detail gives some of that attention back. Good design begins by deciding what a person has come to do.",
+      "quote": "Clarity is a way of respecting someone else’s time.",
+      "sections": [
+        {
+          "title": "Choose a main task",
+          "paragraphs": [
+            "A page can contain many things while still having one clear purpose. An article page should make reading comfortable. A contact page should make sending a message straightforward. A dashboard should help its owner understand what needs attention and where to act.",
+            "When every element demands emphasis, emphasis loses its meaning. A visual hierarchy gives the main task room, then makes supporting choices available without turning them into competing headlines. Simplicity comes from making those decisions, rather than merely removing decoration."
+          ]
+        },
+        {
+          "title": "Use words that help",
+          "paragraphs": [
+            "A label should describe what happens next. Save draft and Publish describe different actions, and that difference matters. A good confirmation says what was saved and whether it is visible to others. An error explains what needs changing instead of simply announcing failure.",
+            "The same principle belongs in navigation. A visitor should not need to learn a private naming system to find articles, books, or contact information. Familiar words create a useful foundation; personality can come through the writing and visual details around them."
+          ]
+        },
+        {
+          "title": "Design for different ways of using it",
+          "paragraphs": [
+            "People use different screens, keyboards, pointing devices, and motion preferences. A control that works only on hover leaves some visitors without the same information. A visible focus indicator and a readable label make the path through a page easier to follow.",
+            "Responsive design is more than shrinking a desktop layout. Long headings need room, tap targets need space, and multi-column arrangements sometimes need a different order. The task should remain clear when the available space changes."
+          ]
+        },
+        {
+          "title": "Let polish serve the purpose",
+          "paragraphs": [
+            "A rounded panel, a careful type scale, or a gentle transition can make a page feel considered. Those details work best when they help separate content, reveal an action, or keep the page comfortable to use. Animation should have a reason to exist and a quiet way to stop.",
+            "The final question is practical: can someone understand what is here and do what they came to do? A polished interface answers that question through many small decisions that fit together."
+          ]
+        }
+      ],
+      "draft": false
+    },
+    {
+      "slug": "build-something-small-and-useful",
+      "title": "Build something small and useful.",
+      "subtitle": "The first version should answer a real question.",
+      "category": "Business",
+      "image": "building",
+      "date": "2026-10-09",
+      "kicker": "A curious notebook",
+      "intro": "An idea often becomes more exciting as its feature list grows. It becomes more useful when its purpose becomes clearer. A small first version can create a better conversation with the people it is meant to help, because it makes the central promise visible.",
+      "quote": "A small useful thing is a better question than a large vague promise.",
+      "sections": [
+        {
+          "title": "Start with a moment",
+          "paragraphs": [
+            "Describe the situation in which someone needs help. What are they trying to finish? What is awkward about the current process? What result would make their day easier? A concrete moment gives the product a sharper purpose than a broad ambition to improve everything.",
+            "A tool for keeping reading notes, for example, might begin with one need: remember an idea and find it again. It does not immediately need a social network, a marketplace, or an elaborate recommendation system. The smallest useful version should make the core action work well."
+          ]
+        },
+        {
+          "title": "Keep the promise testable",
+          "paragraphs": [
+            "A first version can test whether the problem is real, whether the proposed workflow is understandable, and whether someone comes back after trying it. Those are different questions. Counting a first visit alone cannot answer all of them.",
+            "The test should be honest about what it measures. A conversation can reveal confusion, a prototype can reveal usability problems, and repeated use can suggest continuing value. None is a guarantee of a successful business, but each can reduce a specific uncertainty."
+          ]
+        },
+        {
+          "title": "Spend effort where it changes the result",
+          "paragraphs": [
+            "Polish is valuable when it makes a useful thing reliable and clear. It is less valuable when it hides an unresolved purpose behind attractive screens. Early effort should make the main task work, explain its limits, and make failures understandable.",
+            "That does not require a careless first version. A small scope can make quality easier to achieve. Fewer features leave more time for the words, interactions, and details that the first users actually encounter."
+          ]
+        },
+        {
+          "title": "Let evidence change the plan",
+          "paragraphs": [
+            "Building includes the willingness to discover that an assumption was wrong. A feature may be unnecessary, an expected audience may use the tool differently, or a simple workflow may be more valuable than the original plan. That information is part of progress.",
+            "A useful next step is often to improve one thing that someone genuinely needs. The product grows around evidence instead of around an ever-expanding list of possibilities. Small beginnings leave room for better judgment."
+          ]
+        }
+      ],
+      "draft": false
+    },
+    {
+      "slug": "reading-beyond-the-summary",
+      "title": "Reading beyond the summary.",
+      "subtitle": "What an outline can preserve—and what it leaves for the book itself.",
+      "category": "Notes",
+      "image": "reading-world",
+      "date": "2026-10-09",
+      "kicker": "A curious notebook",
+      "intro": "A summary is a useful doorway into a book. It can help us remember a plot, compare themes, or decide what to read next. It also leaves things outside the doorway: rhythm, atmosphere, the slow change of a character, and the experience of discovering something in the author’s chosen order.",
+      "quote": "A summary can keep the outline. Reading gives the outline a life.",
+      "sections": [
+        {
+          "title": "Keep the layers separate",
+          "paragraphs": [
+            "The plot tells us what happens. The themes suggest what the story might be asking. A personal response describes what a reader brings to it. Keeping those layers separate makes a reading note clearer and leaves room for someone else to respond differently.",
+            "The distinction matters for fiction especially. A concise account of an event can be accurate without capturing its emotional weight. A thematic interpretation can be interesting without being the only reading available. A useful summary is confident about the facts and open about the interpretation."
+          ]
+        },
+        {
+          "title": "Leave room for discovery",
+          "paragraphs": [
+            "Knowing an ending changes the experience of reading toward it. Some readers want that information; others do not. Separating ending spoilers from the main summary gives both groups a choice and keeps a reading note useful before and after the book.",
+            "There is no need to make every summary comprehensive. Sometimes the right purpose is to preserve a central conflict, identify a few questions, and point toward the full work. The note should make its scope clear instead of pretending to contain everything a book offers."
+          ]
+        },
+        {
+          "title": "Carry a question away",
+          "paragraphs": [
+            "A good reading note can end with a question rather than a verdict. What makes a place feel like home? Which choices reveal a character more clearly than their abilities? When does protection become restriction? Questions create a bridge between the story and later reflection.",
+            "That bridge is one reason fiction can remain interesting long after its plot is familiar. Returning to a story with a different question can reveal a detail that mattered less the first time. The book remains the same, while the reader’s attention changes."
+          ]
+        },
+        {
+          "title": "Return to the pages",
+          "paragraphs": [
+            "The summaries on this blog are companions to the books. They use original wording to record an outline and a few ideas, with the ending marked separately. The real covers identify the editions being discussed, and the full stories remain worth reading in their own words.",
+            "A note becomes more valuable when it sends us back to the source with sharper attention. It is a place to keep a thought, then a reason to continue exploring beyond it."
+          ]
+        }
+      ],
+      "draft": false
+    },
+    {
+      "slug": "london-and-the-art-of-noticing",
+      "title": "London and the art of noticing.",
+      "subtitle": "A visual notebook of open skies, winter paths, and quiet moments.",
+      "category": "Travel",
+      "image": "london-green",
+      "date": "2026-10-09",
+      "kicker": "A curious notebook",
+      "intro": "A travel gallery does not have to be a list of landmarks. Sometimes a patch of grass, a bare branch, or the surface of a lake carries more of a place’s atmosphere than a famous silhouette. The London photographs in this collection make room for those smaller details.",
+      "quote": "A place becomes more memorable when we give its ordinary details some attention.",
+      "sections": [
+        {
+          "title": "Look beyond the obvious",
+          "paragraphs": [
+            "A city offers more than one pace. A road organizes movement; a park creates room to pause. In the photograph of the open field, the sky occupies much of the frame while people share a small part of the ground. That balance gives the ordinary scene a feeling of space.",
+            "There is no need to turn every image into a claim about the city as a whole. A photograph is a selected view, made at a particular moment. It can preserve something worthwhile without standing in for every possible experience of London."
+          ]
+        },
+        {
+          "title": "Let the seasons remain visible",
+          "paragraphs": [
+            "The winter path has a different rhythm. Bare branches spread across the frame, while scattered snow and the long line of the path lead the eye into the distance. Its interest comes from the contrast between delicate marks and a clear direction.",
+            "At the lake, the quieter tones make a different kind of picture. The water, sky, and distant trees share a restrained palette. Keeping those differences lets the collection feel like a set of moments, rather than making every photograph look as if it were taken at the same time."
+          ]
+        },
+        {
+          "title": "Edit for coherence",
+          "paragraphs": [
+            "A consistent treatment helps a gallery hold together. Controlled highlights, gentle shadow detail, and natural colors can make moving between photographs more comfortable. The aim is a shared balance, while allowing a sunny field and a winter view to remain recognizably different.",
+            "These images have been edited for the blog’s gallery. Their captions identify the subjects without adding an invented travel diary, precise date, or unverified story about what happened outside the frame. The pictures can carry their own part of the notebook."
+          ]
+        },
+        {
+          "title": "Keep a visual notebook",
+          "paragraphs": [
+            "A visual notebook can be as simple as a photograph and one sentence about what caught your attention. The sentence helps explain the choice; the photograph preserves details that language may miss. Together they offer a reason to look again.",
+            "The gallery collects photographs from my December 2025 London trip. It connects places with the subjects explored elsewhere on the blog: learning, reading, building, and the pleasure of paying attention."
+          ]
+        }
+      ],
+      "draft": false,
+      "inlineImage": "london-winter",
+      "inlineCaption": "A winter path · London collection supplied by Ahmad; edited for this gallery."
+    }
+  ]
+}

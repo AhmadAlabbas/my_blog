@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+source/public/
+source/hostinger/
+private/
+blog-config.php
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite3
+*.db
+*.zip

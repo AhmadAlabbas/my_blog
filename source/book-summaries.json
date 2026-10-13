@@ -1,0 +1,1208 @@
+{
+  "summaries": [
+    {
+      "slug": "harry-potter-philosophers-stone",
+      "title": "Harry Potter and the Philosopher’s Stone",
+      "author": "J. K. Rowling",
+      "subtitle": "Belonging, friendship, and the first step into an unfamiliar world.",
+      "image": "harry-potter-philosophers-stone",
+      "date": "2026-10-09",
+      "group": "Fantasy",
+      "number": 1,
+      "themes": [
+        "Belonging",
+        "Friendship",
+        "Courage"
+      ],
+      "intro": "Harry grows up unwanted in the Dursleys’ home until an invitation to Hogwarts reveals that he is a wizard. School brings friendship with Ron and Hermione, a connection to his parents, and a mystery involving an object hidden inside the castle.",
+      "sections": [
+        {
+          "title": "The ideas beneath the story",
+          "paragraphs": [
+            "The adventure begins as an escape from loneliness but becomes a story about belonging through choices. Harry’s new world is exciting and imperfect: prejudice, rivalry, and danger exist alongside wonder. The friendship at its centre depends on different strengths, rather than one person being able to do everything."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "How does a place become a home? The book suggests that friendship and everyday acts of courage are as important as extraordinary abilities."
+          ]
+        }
+      ],
+      "ending": "Harry, Ron, and Hermione follow clues to the protected Philosopher’s Stone. Harry discovers that Professor Quirrell, who carries Voldemort, is trying to steal it. Harry prevents the theft; the Stone is later destroyed. His mother’s protection matters more than the power Voldemort wants.",
+      "source": "https://www.harrypotter.com/discover/books",
+      "coverWidth": 334,
+      "coverHeight": 500,
+      "isbn": "9781408855652",
+      "coverSource": "https://covers.openlibrary.org/b/isbn/9781408855652-L.jpg?default=false"
+    },
+    {
+      "slug": "harry-potter-chamber-of-secrets",
+      "title": "Harry Potter and the Chamber of Secrets",
+      "author": "J. K. Rowling",
+      "subtitle": "A mystery about prejudice, identity, and the danger of inherited beliefs.",
+      "image": "harry-potter-chamber-of-secrets",
+      "date": "2026-10-09",
+      "group": "Fantasy",
+      "number": 2,
+      "themes": [
+        "Identity",
+        "Prejudice",
+        "Choice"
+      ],
+      "intro": "Harry’s second year at Hogwarts is unsettled by attacks that leave students petrified. Rumours about the Chamber of Secrets turn suspicion toward Harry, especially when others discover he can speak to snakes. A mysterious diary offers a misleading account of the past.",
+      "sections": [
+        {
+          "title": "The ideas beneath the story",
+          "paragraphs": [
+            "The school’s history becomes a weapon when ideas about blood status determine who is considered worthy. Harry also fears that a resemblance to Voldemort means he is destined to become like him. The novel separates a person’s abilities from the decisions that give those abilities meaning."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "Who benefits when people accept an old prejudice without questioning it? This story makes that question part of a school mystery."
+          ]
+        }
+      ],
+      "ending": "The diary contains a young Tom Riddle, who has manipulated Ginny Weasley into opening the Chamber. Harry faces its basilisk, saves Ginny, and destroys the diary with a basilisk fang. He also helps free Dobby from the Malfoys.",
+      "source": "https://www.harrypotter.com/discover/books",
+      "coverWidth": 326,
+      "coverHeight": 500,
+      "isbn": "9781408855669",
+      "coverSource": "https://covers.openlibrary.org/b/isbn/9781408855669-L.jpg?default=false"
+    },
+    {
+      "slug": "harry-potter-prisoner-of-azkaban",
+      "title": "Harry Potter and the Prisoner of Azkaban",
+      "author": "J. K. Rowling",
+      "subtitle": "Fear, misleading stories, and the possibility of finding family.",
+      "image": "harry-potter-prisoner-of-azkaban",
+      "date": "2026-10-09",
+      "group": "Fantasy",
+      "number": 3,
+      "themes": [
+        "Fear",
+        "Perspective",
+        "Family"
+      ],
+      "intro": "Sirius Black escapes Azkaban, and Harry is told that the fugitive threatens his life. Dementors guard Hogwarts, forcing Harry to confront memories of his parents’ deaths. Professor Lupin teaches him a different way to respond to fear.",
+      "sections": [
+        {
+          "title": "The ideas beneath the story",
+          "paragraphs": [
+            "The novel asks how much of a person’s reputation rests on a story that was never properly tested. New information changes Harry’s understanding of his family and the people around him. Its treatment of fear is equally important: strength can grow from memory, practice, and support."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What changes when we hear a second version of an event? This is the series’ clearest early lesson in revising a confident judgment."
+          ]
+        }
+      ],
+      "ending": "Sirius is revealed to be Harry’s godfather, wrongly blamed for the betrayal committed by Peter Pettigrew. Pettigrew escapes. Harry and Hermione use a Time-Turner to save Buckbeak and help Sirius flee, though Harry cannot yet move in with him.",
+      "source": "https://www.harrypotter.com/discover/books",
+      "coverWidth": 326,
+      "coverHeight": 500,
+      "isbn": "9781408855676",
+      "coverSource": "https://images-na.ssl-images-amazon.com/images/P/1408855674.01.LZZZZZZZ.jpg"
+    },
+    {
+      "slug": "harry-potter-goblet-of-fire",
+      "title": "Harry Potter and the Goblet of Fire",
+      "author": "J. K. Rowling",
+      "subtitle": "Competition turns into a confrontation with a danger the world has underestimated.",
+      "image": "harry-potter-goblet-of-fire",
+      "date": "2026-10-09",
+      "group": "Fantasy",
+      "number": 4,
+      "themes": [
+        "Trust",
+        "Competition",
+        "Loss"
+      ],
+      "intro": "Hogwarts hosts the Triwizard Tournament, and Harry is unexpectedly selected as a fourth champion. He faces dangerous tasks while trying to understand who entered his name. The widening world of magical schools and international competition gives the year an uneasy excitement.",
+      "sections": [
+        {
+          "title": "The ideas beneath the story",
+          "paragraphs": [
+            "The tournament rewards skill, but its deeper test is judgment. Harry must decide when to compete, when to help, and whom to trust. The spectacle around the event also shows how easily an audience can miss a threat unfolding in plain sight."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What does doing the right thing mean inside a competition? The ending also changes the series from school adventures into a story shaped by loss."
+          ]
+        }
+      ],
+      "ending": "Harry and Cedric reach the final trophy together. It transports them to a graveyard, where Cedric is killed and Voldemort regains a body. Harry escapes. The supposed Moody is exposed as Barty Crouch Jr., who arranged Harry’s path through the tournament.",
+      "source": "https://www.harrypotter.com/discover/books",
+      "coverWidth": 326,
+      "coverHeight": 500,
+      "isbn": "9781408855683",
+      "coverSource": "https://images-na.ssl-images-amazon.com/images/P/1408855682.01.LZZZZZZZ.jpg"
+    },
+    {
+      "slug": "harry-potter-order-of-the-phoenix",
+      "title": "Harry Potter and the Order of the Phoenix",
+      "author": "J. K. Rowling",
+      "subtitle": "Resistance, grief, and learning to act when authority refuses to listen.",
+      "image": "harry-potter-order-of-the-phoenix",
+      "date": "2026-10-09",
+      "group": "Fantasy",
+      "number": 5,
+      "themes": [
+        "Resistance",
+        "Authority",
+        "Grief"
+      ],
+      "intro": "After Voldemort’s return, the Ministry denies the threat and undermines Harry’s account. Dolores Umbridge takes control at Hogwarts, restricting meaningful defence lessons. Harry and his friends form Dumbledore’s Army to learn what the official classroom will not teach.",
+      "sections": [
+        {
+          "title": "The ideas beneath the story",
+          "paragraphs": [
+            "The book examines institutions that protect their own image instead of the people they serve. Harry’s anger and isolation complicate his relationships, while the students’ shared practice creates a practical form of resistance. Knowledge becomes something they build together."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "When is obedience a virtue, and when does it become avoidance? The novel gives collective learning an unusually strong role in answering that question."
+          ]
+        }
+      ],
+      "ending": "Voldemort uses a false vision to lure Harry to the Department of Mysteries. During the resulting battle, Sirius dies. Voldemort is finally seen by Ministry officials, making denial impossible. Dumbledore explains the prophecy linking Harry and Voldemort.",
+      "source": "https://www.harrypotter.com/discover/books",
+      "coverWidth": 326,
+      "coverHeight": 500,
+      "isbn": "9781408855690",
+      "coverSource": "https://images-na.ssl-images-amazon.com/images/P/1408855690.01.LZZZZZZZ.jpg"
+    },
+    {
+      "slug": "harry-potter-half-blood-prince",
+      "title": "Harry Potter and the Half-Blood Prince",
+      "author": "J. K. Rowling",
+      "subtitle": "The past becomes a map of the conflict still to come.",
+      "image": "harry-potter-half-blood-prince",
+      "date": "2026-10-09",
+      "group": "Fantasy",
+      "number": 6,
+      "themes": [
+        "Memory",
+        "Power",
+        "Responsibility"
+      ],
+      "intro": "Dumbledore guides Harry through memories of Voldemort’s earlier life. Meanwhile, Harry finds a used Potions textbook filled with helpful notes and dangerous spells. Draco’s secret work and the book’s unknown owner turn a familiar school year into a period of growing uncertainty.",
+      "sections": [
+        {
+          "title": "The ideas beneath the story",
+          "paragraphs": [
+            "The story connects the desire for control with the refusal to accept mortality. It also questions the attraction of shortcuts: information can be useful without its source being trustworthy. Harry’s success with the textbook becomes inseparable from his responsibility for what he learns."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "Can we separate a useful discovery from the character of its maker? The book leaves Harry facing a task he can no longer hand to a mentor."
+          ]
+        }
+      ],
+      "ending": "Harry and Dumbledore investigate Horcruxes, objects holding fragments of Voldemort’s soul. A mission to retrieve one leaves Dumbledore weakened. Back at Hogwarts, Snape kills him and is revealed as the Half-Blood Prince. The recovered locket proves to be a substitute.",
+      "source": "https://www.harrypotter.com/discover/books",
+      "coverWidth": 334,
+      "coverHeight": 500,
+      "isbn": "9781408855706",
+      "coverSource": "https://covers.openlibrary.org/b/isbn/9781408855706-L.jpg?default=false"
+    },
+    {
+      "slug": "harry-potter-deathly-hallows",
+      "title": "Harry Potter and the Deathly Hallows",
+      "author": "J. K. Rowling",
+      "subtitle": "The final choice between domination and the courage to accept loss.",
+      "image": "harry-potter-deathly-hallows",
+      "date": "2026-10-09",
+      "group": "Fantasy",
+      "number": 7,
+      "themes": [
+        "Sacrifice",
+        "Loyalty",
+        "Mortality"
+      ],
+      "intro": "Harry, Ron, and Hermione leave school to search for Voldemort’s remaining Horcruxes. Without the routines and protection of Hogwarts, friendship is tested by fear, uncertainty, and exhaustion. The legend of the Deathly Hallows offers another possible route to power.",
+      "sections": [
+        {
+          "title": "The ideas beneath the story",
+          "paragraphs": [
+            "The final novel measures courage through the willingness to continue without certainty. Loyalty must survive disappointment, and heroism depends on many people whose work is less visible than Harry’s. The contrast between Horcruxes and Hallows brings the fear of death to the centre of the story."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What kind of power is worth having? The series ends by giving love, restraint, and the acceptance of mortality more weight than invulnerability."
+          ]
+        }
+      ],
+      "ending": "The Horcruxes are destroyed, and Snape’s memories reveal his hidden loyalty and the truth about Harry’s connection to Voldemort. Harry willingly faces death and survives. At Hogwarts, Voldemort falls when the Elder Wand’s allegiance defeats his assumptions. An epilogue shows the next generation heading to school.",
+      "source": "https://www.harrypotter.com/discover/books",
+      "coverWidth": 345,
+      "coverHeight": 500,
+      "isbn": "9781408855713",
+      "coverSource": "https://covers.openlibrary.org/b/isbn/9781408855713-L.jpg?default=false"
+    },
+    {
+      "slug": "the-sun-is-also-a-star",
+      "title": "The Sun Is Also a Star",
+      "author": "Nicola Yoon",
+      "subtitle": "One day in New York, two lives, and the tension between chance and choice.",
+      "image": "the-sun-is-also-a-star",
+      "date": "2026-10-09",
+      "group": "Contemporary",
+      "number": 8,
+      "themes": [
+        "Chance",
+        "Identity",
+        "Connection"
+      ],
+      "intro": "Natasha, a Jamaican teenager, is trying to prevent her family’s deportation. Daniel, a Korean American teenager, is heading toward a future his parents have planned for him. They meet in New York and spend a day arguing about science, poetry, and whether love can arrive so quickly.",
+      "sections": [
+        {
+          "title": "The ideas beneath the story",
+          "paragraphs": [
+            "Their different ways of seeing the world make the romance a conversation rather than a simple agreement. Brief shifts toward other lives show how strangers can influence one another without realising it. Immigration and family expectations give their limited time together real stakes."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "How much of a life comes from chance, and how much from what we do with it? The novel holds both ideas together without resolving the tension."
+          ]
+        }
+      ],
+      "ending": "The family’s deportation goes ahead, and Natasha and Daniel’s relationship does not withstand the distance. Years later, a chance reunion on a plane opens the possibility of another beginning.",
+      "source": "https://www.nicolayoon.com/the-sun-is-also-a-star-book-detail-page",
+      "coverWidth": 297,
+      "coverHeight": 450,
+      "isbn": "9780553496680",
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780553496680"
+    },
+    {
+      "slug": "everything-everything",
+      "title": "Everything, Everything",
+      "author": "Nicola Yoon",
+      "subtitle": "A sheltered life opens into questions about freedom, trust, and risk.",
+      "image": "everything-everything",
+      "date": "2026-10-09",
+      "group": "Contemporary",
+      "number": 9,
+      "themes": [
+        "Freedom",
+        "Trust",
+        "Risk"
+      ],
+      "intro": "Madeline Whittier has grown up inside her home believing that a severe immune disorder makes the outside world dangerous. Her mother and nurse organise a carefully controlled life. When Olly moves in next door, their messages become a relationship that makes her imagine a different future.",
+      "sections": [
+        {
+          "title": "The ideas beneath the story",
+          "paragraphs": [
+            "The romance opens a larger question about who gets to define safety. The story’s short chapters, messages, and illustrations mirror Maddy’s attempt to assemble a life beyond the limits she has been given."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "When can care become control? This is a fictional story about autonomy and family, rather than medical guidance about immune disorders."
+          ]
+        }
+      ],
+      "ending": "After an unauthorised trip and a medical crisis, Maddy learns that the diagnosis shaping her life was false. Her mother’s grief and fear have sustained the confinement. Maddy begins to reclaim her independence and reconnects with Olly.",
+      "source": "https://www.nicolayoon.com/everything-everything-book-detail-page",
+      "coverWidth": 318,
+      "coverHeight": 450,
+      "isbn": "9780553496642",
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780553496642"
+    },
+    {
+      "slug": "atomic-habits",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "isbn": "9780735211292",
+      "group": "Personal Growth",
+      "source": "https://www.penguinrandomhouse.com/books/543993/atomic-habits-by-james-clear/",
+      "subtitle": "Small actions, repeated often, become a system for change.",
+      "themes": [
+        "Habits",
+        "Environment",
+        "Identity"
+      ],
+      "intro": "James Clear explains how habits form and why small improvements can matter more than occasional bursts of motivation. His argument shifts attention from ambitious goals toward the routines and surroundings that make useful actions easier to repeat.",
+      "sections": [
+        {
+          "title": "Make the next action easier",
+          "paragraphs": [
+            "Clear organizes habit design around making a behavior obvious, attractive, easy, and satisfying. The reverse approach helps weaken unwanted routines. A visible reminder, a prepared workspace, or a smaller first step can reduce the effort needed to begin."
+          ]
+        },
+        {
+          "title": "Think beyond motivation",
+          "paragraphs": [
+            "The book connects repetition with identity: everyday actions provide evidence of the kind of person someone is becoming. Progress may be difficult to notice at first, so judging a routine after only a few attempts can be misleading."
+          ]
+        },
+        {
+          "title": "A practical reading question",
+          "paragraphs": [
+            "Which recurring obstacle could be removed before asking for more discipline? The useful takeaway is to design one repeatable action and its setting, then observe whether the system actually helps. Small does not mean effortless, and consistency still requires adjustment."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "atomic-habits",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/543993/atomic-habits-by-james-clear/",
+      "coverWidth": 298,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780735211292"
+    },
+    {
+      "slug": "educated",
+      "title": "Educated",
+      "author": "Tara Westover",
+      "isbn": "9780399590504",
+      "group": "Memoir",
+      "source": "https://www.penguinrandomhouse.com/books/550168/educated-by-tara-westover/",
+      "subtitle": "Education changes what we know—and how we understand home.",
+      "themes": [
+        "Education",
+        "Family",
+        "Identity"
+      ],
+      "intro": "Tara Westover recounts growing up in an isolated survivalist family in Idaho without a conventional school education. Her eventual path into university opens unfamiliar intellectual possibilities while creating painful conflict with the beliefs and relationships that shaped her childhood.",
+      "sections": [
+        {
+          "title": "Learning a different language for life",
+          "paragraphs": [
+            "Education becomes more than collecting qualifications. New historical and social perspectives allow Westover to reconsider experiences she once understood only through her family’s explanations. Knowledge changes the questions she can ask about herself."
+          ]
+        },
+        {
+          "title": "Belonging has a cost",
+          "paragraphs": [
+            "The memoir examines loyalty, abuse, memory, and the difficulty of becoming independent without erasing affection for home. Academic achievement does not neatly resolve those tensions. Different people can remember the same events in incompatible ways."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What happens when learning changes the boundaries of what we can accept? The book invites reflection on the difference between respecting one’s origins and surrendering the ability to judge them. Its account remains one person’s attempt to make sense of a complicated past."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "educated",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/550168/educated-by-tara-westover/",
+      "coverWidth": 296,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780399590504"
+    },
+    {
+      "slug": "the-midnight-library",
+      "title": "The Midnight Library",
+      "author": "Matt Haig",
+      "isbn": "9780525559474",
+      "group": "Fiction",
+      "source": "https://www.penguinrandomhouse.com/books/575653/the-midnight-library-by-matt-haig/",
+      "subtitle": "A speculative story about regret and the lives we imagine.",
+      "themes": [
+        "Regret",
+        "Possibility",
+        "Connection"
+      ],
+      "intro": "At a moment of profound despair, Nora Seed enters a library between life and death. Each book offers a different version of her life, shaped by a decision she might have made differently. The journeys challenge her belief that one missed opportunity explains everything.",
+      "sections": [
+        {
+          "title": "The limits of an imagined perfect life",
+          "paragraphs": [
+            "Nora explores possibilities involving careers, relationships, and ambitions. A life that looks impressive from outside can carry difficulties she never anticipated. Changing one decision does not remove uncertainty or make every other part of existence fall into place."
+          ]
+        },
+        {
+          "title": "Pay attention to what is already here",
+          "paragraphs": [
+            "The story moves from comparing hypothetical achievements toward noticing connection and possibility in an imperfect present. Its emotional argument is that regret can conceal the value of ordinary relationships and future choices."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "Are we comparing our real lives with complete alternatives, or only with their most attractive fragments? The novel turns that imbalance into a fantastical experiment."
+          ]
+        }
+      ],
+      "ending": "Nora ultimately chooses to return to her original life rather than remain in an alternative. She discovers reasons to continue and approaches her future with greater openness.",
+      "kind": "fiction",
+      "image": "the-midnight-library",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/575653/the-midnight-library-by-matt-haig/",
+      "coverWidth": 298,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780525559474"
+    },
+    {
+      "slug": "project-hail-mary",
+      "title": "Project Hail Mary",
+      "author": "Andy Weir",
+      "isbn": "9780593135204",
+      "group": "Science Fiction",
+      "source": "https://www.penguinrandomhouse.com/books/611060/project-hail-mary-by-andy-weir/",
+      "subtitle": "An interstellar problem solved through experiments and friendship.",
+      "themes": [
+        "Science",
+        "Cooperation",
+        "Sacrifice"
+      ],
+      "intro": "Ryland Grace wakes aboard a spacecraft with missing memories and dead crewmates. As he reconstructs his situation, he realizes that his mission concerns a threat to the Sun and life on Earth. Survival requires both scientific reasoning and unexpected cooperation.",
+      "sections": [
+        {
+          "title": "Turn uncertainty into an experiment",
+          "paragraphs": [
+            "The novel repeatedly breaks an enormous problem into questions that can be measured and tested. Grace’s progress depends on revising explanations when observations disagree with them. Science becomes a practical method for acting without complete certainty."
+          ]
+        },
+        {
+          "title": "Cooperation across difference",
+          "paragraphs": [
+            "An encounter with another intelligent being makes communication and mutual trust central to the mission. Differences in biology and perception become challenges to work through, rather than reasons to abandon collaboration."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "When does responsibility extend beyond one’s own group? Beneath the technical puzzles, the story asks what we owe a partner who has become a friend."
+          ]
+        }
+      ],
+      "ending": "Grace sends the solution back toward Earth but sacrifices his route home to rescue Rocky. He eventually lives on Rocky’s world, where he teaches and learns that Earth’s Sun has recovered.",
+      "kind": "fiction",
+      "image": "project-hail-mary",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/611060/project-hail-mary-by-andy-weir/",
+      "coverWidth": 298,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780593135204"
+    },
+    {
+      "slug": "the-martian",
+      "title": "The Martian",
+      "author": "Andy Weir",
+      "isbn": "9780553418026",
+      "group": "Science Fiction",
+      "source": "https://www.penguinrandomhouse.com/books/234102/the-martian-by-andy-weir/",
+      "subtitle": "Engineering, patience, and teamwork against an unforgiving planet.",
+      "themes": [
+        "Engineering",
+        "Resilience",
+        "Teamwork"
+      ],
+      "intro": "After a mission emergency, astronaut Mark Watney is mistakenly left behind on Mars. With limited resources and no immediate rescue, he must keep himself alive while finding a way to communicate with Earth. The story makes survival a sequence of technical problems.",
+      "sections": [
+        {
+          "title": "Solve the problem in front of you",
+          "paragraphs": [
+            "Watney combines botany, chemistry, repair work, and careful planning. Every solution introduces constraints of its own: energy, supplies, time, and the possibility of equipment failure. Resourcefulness means understanding those tradeoffs rather than assuming determination is enough."
+          ]
+        },
+        {
+          "title": "An individual effort becomes collective",
+          "paragraphs": [
+            "The narrative expands from a solitary astronaut to the people planning his rescue. Expertise, communication, and shared responsibility become as important as his ingenuity. Humor helps Watney endure conditions it cannot change."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "How can an overwhelming challenge become a manageable next step? The book offers a fictional celebration of disciplined problem solving, not a guarantee that every obstacle has an easy fix."
+          ]
+        }
+      ],
+      "ending": "Watney reaches the departure site and launches to rendezvous with the returning Hermes crew. The final rescue succeeds through risky improvisation and coordinated effort.",
+      "kind": "fiction",
+      "image": "the-martian",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/234102/the-martian-by-andy-weir/",
+      "coverWidth": 292,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780553418026"
+    },
+    {
+      "slug": "lessons-in-chemistry",
+      "title": "Lessons in Chemistry",
+      "author": "Bonnie Garmus",
+      "isbn": "9780385547345",
+      "group": "Fiction",
+      "source": "https://www.penguinrandomhouse.com/books/677234/lessons-in-chemistry-by-bonnie-garmus/",
+      "subtitle": "A scientist refuses to let other people define her abilities.",
+      "themes": [
+        "Science",
+        "Equality",
+        "Independence"
+      ],
+      "intro": "Elizabeth Zott is a chemist whose professional ambitions meet the sexism of 1960s America. An unexpected turn makes her a television cooking presenter. She uses that platform to explain science and challenge assumptions about what women should know and do.",
+      "sections": [
+        {
+          "title": "Who gets to be taken seriously?",
+          "paragraphs": [
+            "The novel connects everyday prejudice with unequal access to recognition and opportunity. Elizabeth’s competence does not protect her from institutions that discount it. The tension lies between doing excellent work and being allowed to receive credit for it."
+          ]
+        },
+        {
+          "title": "Teach through familiar things",
+          "paragraphs": [
+            "Cooking becomes a way to bring scientific reasoning into ordinary life. Elizabeth treats her audience as capable of understanding more than the conventions of the program expect. Knowledge can expand confidence when a teacher refuses to underestimate the learner."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What talent remains invisible because a role has already been assigned to its owner? The story pairs humor with grief, parenting, friendship, and the stubborn defense of intellectual independence."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "fiction",
+      "image": "lessons-in-chemistry",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/677234/lessons-in-chemistry-by-bonnie-garmus/",
+      "coverWidth": 302,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780385547345"
+    },
+    {
+      "slug": "where-the-crawdads-sing",
+      "title": "Where the Crawdads Sing",
+      "author": "Delia Owens",
+      "isbn": "9780735219106",
+      "group": "Fiction",
+      "source": "https://www.penguinrandomhouse.com/books/567281/where-the-crawdads-sing-by-delia-owens/",
+      "subtitle": "A marsh becomes both refuge and the setting of a mystery.",
+      "themes": [
+        "Nature",
+        "Isolation",
+        "Prejudice"
+      ],
+      "intro": "Kya Clark grows up largely alone in the marshes of North Carolina. The surrounding town turns her isolation into a reputation, while her close observation of the natural world becomes a source of knowledge. A suspicious death brings her life under public scrutiny.",
+      "sections": [
+        {
+          "title": "Learn to see a place closely",
+          "paragraphs": [
+            "The marsh is more than scenery. Its patterns provide Kya with companionship, practical skills, and a language for understanding relationships. Her expertise complicates the town’s assumption that a person outside its social world must be ignorant."
+          ]
+        },
+        {
+          "title": "The story a community tells",
+          "paragraphs": [
+            "A coming-of-age narrative overlaps with a murder investigation. The book asks how prejudice influences whose testimony is trusted and whose difference becomes evidence against them. Kya’s wish for connection exists alongside her reasons to distrust others."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "How much do we really know about someone we have already reduced to a label? The novel makes loneliness and the desire for belonging part of its suspense."
+          ]
+        }
+      ],
+      "ending": "Kya is acquitted of killing Chase Andrews and later shares her life with Tate. After her death, Tate discovers evidence suggesting she did kill Chase, leaving the reader to reconsider the trial and her hidden life.",
+      "kind": "fiction",
+      "image": "where-the-crawdads-sing",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/567281/where-the-crawdads-sing-by-delia-owens/",
+      "coverWidth": 300,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780735219106"
+    },
+    {
+      "slug": "the-silent-patient",
+      "title": "The Silent Patient",
+      "author": "Alex Michaelides",
+      "isbn": "9781250301697",
+      "group": "Thriller",
+      "source": "https://us.macmillan.com/books/9781250301697/thesilentpatient/",
+      "subtitle": "Silence, obsession, and a narrator whose account demands attention.",
+      "themes": [
+        "Trust",
+        "Trauma",
+        "Perspective"
+      ],
+      "intro": "Alicia Berenson, a painter, stops speaking after killing her husband. Psychotherapist Theo Faber becomes determined to discover her motive. His investigation turns a seemingly straightforward crime into a mystery about memory, interpretation, and the person doing the interpreting.",
+      "sections": [
+        {
+          "title": "Absence becomes a story",
+          "paragraphs": [
+            "Alicia’s refusal to explain herself creates a space that others fill with theories. Her artwork becomes another possible form of testimony. The novel asks how easily an observer can mistake a compelling interpretation for established truth."
+          ]
+        },
+        {
+          "title": "Question the investigator",
+          "paragraphs": [
+            "Theo’s personal history and intense interest in Alicia matter to the narrative. Following his account means watching not only what he discovers but also how he directs the reader’s attention. Apparent insight can hide a desire to control the story."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What evidence do we overlook when we trust the person arranging it for us? The thriller’s force comes from the distance between an explanation and the motives behind it."
+          ]
+        }
+      ],
+      "ending": "Theo was the intruder who confronted Alicia and Gabriel before the killing. The narrative has concealed the timing of his actions. Alicia’s written account ultimately exposes his involvement.",
+      "kind": "fiction",
+      "image": "the-silent-patient",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://us.macmillan.com/books/9781250301697/thesilentpatient/",
+      "coverWidth": 480,
+      "coverHeight": 730,
+      "coverSource": "https://mpd-biblio-covers.imgix.net/9781250301697.jpg"
+    },
+    {
+      "slug": "the-seven-husbands-of-evelyn-hugo",
+      "title": "The Seven Husbands of Evelyn Hugo",
+      "author": "Taylor Jenkins Reid",
+      "isbn": "9781501139239",
+      "group": "Fiction",
+      "source": "https://www.simonandschuster.com/books/The-Seven-Husbands-of-Evelyn-Hugo/Taylor-Jenkins-Reid/9781501139239",
+      "subtitle": "A public legend tells a private story of love and ambition.",
+      "themes": [
+        "Identity",
+        "Fame",
+        "Love"
+      ],
+      "intro": "Retired film star Evelyn Hugo chooses journalist Monique Grant to record her life. The seven marriages that shaped Evelyn’s public image frame a much less orderly private history. Monique gradually discovers that the interview is not simply an opportunity to write a celebrity biography.",
+      "sections": [
+        {
+          "title": "A life larger than its headlines",
+          "paragraphs": [
+            "Evelyn describes the bargains and performances that helped her survive Hollywood. Marriage can be a relationship, a shield, or a career decision. The novel separates the story an industry sells from the needs of the person living inside it."
+          ]
+        },
+        {
+          "title": "Ambition does not cancel vulnerability",
+          "paragraphs": [
+            "Love, friendship, sexuality, grief, and self-protection complicate Evelyn’s carefully maintained persona. Her choices can be understandable without being harmless. The book resists making either success or suffering a complete explanation of character."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "Who controls the final account of a life? Monique must decide what to do with a story that gives her power while changing her understanding of its teller."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "fiction",
+      "image": "the-seven-husbands-of-evelyn-hugo",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.simonandschuster.com/books/The-Seven-Husbands-of-Evelyn-Hugo/Taylor-Jenkins-Reid/9781501139239",
+      "coverWidth": 480,
+      "coverHeight": 725,
+      "coverSource": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781501139239/the-seven-husbands-of-evelyn-hugo-9781501139239_hr.jpg"
+    },
+    {
+      "slug": "thinking-fast-and-slow",
+      "title": "Thinking, Fast and Slow",
+      "author": "Daniel Kahneman",
+      "isbn": "9780374533557",
+      "group": "Psychology",
+      "source": "https://academic.macmillan.com/academictrade/9780374533557/thinkingfastandslow/",
+      "subtitle": "The mental shortcuts behind judgments that feel obvious.",
+      "themes": [
+        "Judgment",
+        "Bias",
+        "Uncertainty"
+      ],
+      "intro": "Daniel Kahneman examines how people judge, predict, and choose. He describes fast, automatic thinking alongside slower, effortful reasoning. These are useful models of mental activity, not two neatly separated organs or personalities.",
+      "sections": [
+        {
+          "title": "Confidence is not the same as accuracy",
+          "paragraphs": [
+            "A coherent explanation can feel convincing even when the evidence is limited. The book explores anchoring, framing, and the tendency to neglect statistical information. Intuition works well in some settings but becomes unreliable when patterns are misleading or feedback is poor."
+          ]
+        },
+        {
+          "title": "Evaluate the decision, not only the result",
+          "paragraphs": [
+            "Luck can produce a good outcome from a weak choice. Kahneman’s work encourages attention to the information available at the time and to how comparisons shape preference. Slower thinking helps, but it is not automatically free of bias."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What would change this judgment, and what relevant information is missing? The useful habit is to make reasoning more inspectable rather than assume that knowing a bias makes us immune to it."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "thinking-fast-and-slow",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://academic.macmillan.com/academictrade/9780374533557/thinkingfastandslow/",
+      "coverWidth": 480,
+      "coverHeight": 719,
+      "coverSource": "https://mpd-biblio-covers.imgix.net/9780374533557.jpg"
+    },
+    {
+      "slug": "outlive",
+      "title": "Outlive",
+      "author": "Peter Attia with Bill Gifford",
+      "isbn": "9780593236598",
+      "group": "Science",
+      "source": "https://www.penguinrandomhouse.com/books/705161/outlive-by-peter-attia-md-with-bill-gifford/",
+      "subtitle": "A framework for thinking about longer, healthier lives.",
+      "themes": [
+        "Prevention",
+        "Healthspan",
+        "Long-Term Thinking"
+      ],
+      "intro": "Peter Attia argues that longevity should include preserving physical, cognitive, and emotional capacity, not simply adding years. With Bill Gifford, he presents a prevention-focused approach to chronic disease and the decisions that may influence later life.",
+      "sections": [
+        {
+          "title": "Look ahead before a crisis",
+          "paragraphs": [
+            "The book contrasts reacting to illness with considering risk earlier. It discusses exercise, nutrition, sleep, and emotional wellbeing as interacting parts of a long-term strategy. Attia’s framework emphasizes individual circumstances rather than a single universal routine."
+          ]
+        },
+        {
+          "title": "Ask what the extra years are for",
+          "paragraphs": [
+            "Healthspan gives the argument its practical meaning: the ability to continue doing things that matter. The book connects future ambitions with present preparation, while recognizing that physical performance is not a substitute for relationships or emotional health."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What abilities would make later life meaningful? This is a summary of the author’s perspective, not a personalized treatment or testing plan. Specific medical decisions require appropriate clinical advice and current evidence."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "outlive",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/705161/outlive-by-peter-attia-md-with-bill-gifford/",
+      "coverWidth": 347,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780593236598"
+    },
+    {
+      "slug": "becoming",
+      "title": "Becoming",
+      "author": "Michelle Obama",
+      "isbn": "9781524763138",
+      "group": "Memoir",
+      "source": "https://www.penguinrandomhouse.com/books/562881/becoming-by-michelle-obama/",
+      "subtitle": "A life shaped by education, public service, and changing expectations.",
+      "themes": [
+        "Identity",
+        "Purpose",
+        "Public Life"
+      ],
+      "intro": "Michelle Obama recounts her childhood in Chicago, education, professional choices, family life, and years in the White House. The memoir examines the gap between an individual’s developing identity and the expectations attached to increasingly visible roles.",
+      "sections": [
+        {
+          "title": "Success does not settle every question",
+          "paragraphs": [
+            "The narrative follows choices about work, relationships, and service rather than treating achievement as a final destination. A path that appears impressive can still require reconsideration when its daily demands no longer fit someone’s values."
+          ]
+        },
+        {
+          "title": "The person inside the public role",
+          "paragraphs": [
+            "Family relationships and ordinary concerns continue alongside political responsibility. Public attention changes how a life is interpreted, often reducing complexity to an image. The memoir restores some of that complexity through the author’s own account."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "Which ambitions are chosen, and which are inherited from other people’s expectations? The idea of becoming keeps identity open to development rather than defining a person by one title or period of life."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "becoming",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/562881/becoming-by-michelle-obama/",
+      "coverWidth": 296,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9781524763138"
+    },
+    {
+      "slug": "born-a-crime",
+      "title": "Born a Crime",
+      "author": "Trevor Noah",
+      "isbn": "9780399588198",
+      "group": "Memoir",
+      "source": "https://www.penguinrandomhouse.com/books/537515/born-a-crime-by-trevor-noah/",
+      "subtitle": "Language, belonging, and a childhood shaped by apartheid.",
+      "themes": [
+        "Language",
+        "Identity",
+        "Family"
+      ],
+      "intro": "Trevor Noah tells stories of growing up in South Africa during apartheid and its aftermath. His birth to a Black mother and white father violated the racial order of the time. Humor shares space with poverty, exclusion, violence, and his mother’s determination.",
+      "sections": [
+        {
+          "title": "Language can open a door",
+          "paragraphs": [
+            "Moving between languages helps Noah navigate communities that classify him differently. Speaking to people in their own language becomes a way to connect across boundaries, even when those boundaries have been enforced by institutions and custom."
+          ]
+        },
+        {
+          "title": "The relationship at the center",
+          "paragraphs": [
+            "His mother’s resourcefulness and independence give the memoir its emotional structure. Her choices expose both the possibilities of refusing assigned limits and the danger of living within violent conditions. The comedy does not erase those stakes."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "How do laws and social labels shape experiences that appear purely personal? The memoir makes a historical system understandable through everyday situations without turning one childhood into every South African’s story."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "born-a-crime",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/537515/born-a-crime-by-trevor-noah/",
+      "coverWidth": 295,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780399588198"
+    },
+    {
+      "slug": "shoe-dog",
+      "title": "Shoe Dog",
+      "author": "Phil Knight",
+      "isbn": "9781501135910",
+      "group": "Business",
+      "source": "https://www.simonandschuster.com/books/Shoe-Dog/Phil-Knight/9781501135910",
+      "subtitle": "The uncertain early years behind a globally familiar brand.",
+      "themes": [
+        "Entrepreneurship",
+        "Risk",
+        "Teamwork"
+      ],
+      "intro": "Phil Knight recounts the early development of the company that became Nike. Starting with the idea of importing running shoes, he describes a business built through relationships, financial pressure, experimentation, and a team whose work preceded its eventual fame.",
+      "sections": [
+        {
+          "title": "The outcome hides the uncertainty",
+          "paragraphs": [
+            "Looking backward can make a successful company seem inevitable. Knight’s account instead emphasizes recurring constraints and decisions made without a secure view of the future. Growth creates new problems as well as new opportunities."
+          ]
+        },
+        {
+          "title": "A company is also a group of people",
+          "paragraphs": [
+            "The memoir connects the enterprise with the personalities and commitments of its early collaborators. Shared purpose matters, but does not remove conflict, operational demands, or the difficulty of sustaining the business."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "Which part of a success story disappears when it becomes a brand legend? This is a founder’s retrospective perspective, so it is most useful as a view into decisions and experience rather than a formula that guarantees another venture’s success."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "shoe-dog",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.simonandschuster.com/books/Shoe-Dog/Phil-Knight/9781501135910",
+      "coverWidth": 480,
+      "coverHeight": 724,
+      "coverSource": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781501135910/shoe-dog-9781501135910_hr.jpg"
+    },
+    {
+      "slug": "the-creative-act",
+      "title": "The Creative Act: A Way of Being",
+      "author": "Rick Rubin",
+      "isbn": "9780593652886",
+      "group": "Creativity",
+      "source": "https://www.penguinrandomhouse.com/books/717356/the-creative-act-by-rick-rubin/",
+      "subtitle": "Creativity begins with attention before it becomes a finished object.",
+      "themes": [
+        "Attention",
+        "Experimentation",
+        "Craft"
+      ],
+      "intro": "Rick Rubin presents creativity as a way of noticing and responding to the world. Rather than a technical guide to music production, the book offers short reflections on the conditions that make discovery, experimentation, and artistic judgment possible.",
+      "sections": [
+        {
+          "title": "Collect before you decide",
+          "paragraphs": [
+            "An artist needs material to work with: observations, sounds, ideas, and experiences. Rubin encourages openness before selection. Judging an idea too early can prevent it from becoming something that could not yet be imagined."
+          ]
+        },
+        {
+          "title": "Experiment without surrendering craft",
+          "paragraphs": [
+            "Making work involves both exploration and decisions about what belongs. The creative process requires room for alternatives, but eventually an artist must shape and release something. A productive constraint can focus attention without becoming a permanent rule."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What changes when a drawing session begins with curiosity rather than the demand to prove talent? The book’s suggestions are invitations to test a creative practice, not scientific laws or one mandatory method."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "the-creative-act",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/717356/the-creative-act-by-rick-rubin/",
+      "coverWidth": 306,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780593652886"
+    },
+    {
+      "slug": "the-anxious-generation",
+      "title": "The Anxious Generation",
+      "author": "Jonathan Haidt",
+      "isbn": "9780593655030",
+      "group": "Psychology",
+      "source": "https://www.penguinrandomhouse.com/books/729231/the-anxious-generation-by-jonathan-haidt/",
+      "subtitle": "An argument about childhood, smartphones, and shared responsibility.",
+      "themes": [
+        "Childhood",
+        "Technology",
+        "Community"
+      ],
+      "intro": "Jonathan Haidt argues that the shift toward smartphone-centered childhood has contributed to worsening adolescent mental health. He connects digital life with reduced independent play and proposes changes that families, schools, and communities could make together.",
+      "sections": [
+        {
+          "title": "An environment, not only an individual habit",
+          "paragraphs": [
+            "The book examines how constant connection can reshape attention, social comparison, and everyday relationships. Haidt contrasts exposure to online risks with restrictions on ordinary offline independence. The focus is on a broader social environment rather than blaming individual children."
+          ]
+        },
+        {
+          "title": "Change is easier when it is shared",
+          "paragraphs": [
+            "Proposed responses include delaying smartphone and social-media use, phone-free schools, and more opportunities for independent activity. The argument emphasizes coordinated norms because one family’s choices are affected by what surrounding peers do."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "Which digital expectations have become normal without a deliberate decision? The book presents a particular causal argument; interpretation of the evidence remains debated. Its claims should be evaluated rather than treated as a complete explanation of every young person’s experience."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "the-anxious-generation",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/729231/the-anxious-generation-by-jonathan-haidt/",
+      "coverWidth": 296,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780593655030"
+    },
+    {
+      "slug": "brief-answers-to-the-big-questions",
+      "title": "Brief Answers to the Big Questions",
+      "author": "Stephen Hawking",
+      "isbn": "9781984819192",
+      "group": "Science",
+      "source": "https://www.penguinrandomhouse.com/books/600621/brief-answers-to-the-big-questions-by-stephen-hawking/",
+      "subtitle": "Scientific curiosity reaches from the cosmos to humanity’s future.",
+      "themes": [
+        "Cosmology",
+        "Technology",
+        "Curiosity"
+      ],
+      "intro": "Stephen Hawking considers large questions about the universe, intelligent life, technology, and human survival. The collection combines scientific explanation with his perspective on the responsibilities that come with knowledge and the uncertainties that remain.",
+      "sections": [
+        {
+          "title": "A question can be bigger than its present answer",
+          "paragraphs": [
+            "The essays approach subjects such as the origins of the universe and black holes through scientific reasoning. They communicate a willingness to ask fundamental questions without pretending that every aspect of reality has been settled."
+          ]
+        },
+        {
+          "title": "Progress creates responsibility",
+          "paragraphs": [
+            "Hawking also looks toward artificial intelligence, exploration, and risks to humanity’s future. These discussions extend beyond established physical theory into forecasting and judgment. Distinguishing those kinds of claims helps a reader stay curious and critical."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "How should an expanding ability to understand and build change our sense of responsibility? The lasting invitation is to keep asking difficult questions while remembering that an accessible explanation is a beginning, not the end of a scientific education."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "brief-answers-to-the-big-questions",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/600621/brief-answers-to-the-big-questions-by-stephen-hawking/",
+      "coverWidth": 318,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9781984819192"
+    },
+    {
+      "slug": "dare-to-lead",
+      "title": "Dare to Lead",
+      "author": "Brené Brown",
+      "isbn": "9780399592522",
+      "group": "Business",
+      "source": "https://www.penguinrandomhouse.com/books/557595/dare-to-lead-by-brene-brown-phd-msw/",
+      "subtitle": "Leadership requires the courage to face uncertainty together.",
+      "themes": [
+        "Leadership",
+        "Trust",
+        "Courage"
+      ],
+      "intro": "Brené Brown connects leadership with developing people and ideas rather than accumulating status. Her approach emphasizes vulnerability, clear values, trust, and the ability to recover after failure. Courage is presented as a practice that can be developed.",
+      "sections": [
+        {
+          "title": "Replace the performance of certainty",
+          "paragraphs": [
+            "A leader does not need to pretend to have every answer. Asking better questions and admitting uncertainty can make difficult work more honest. This openness does not remove accountability; it makes the real problem easier for a team to discuss."
+          ]
+        },
+        {
+          "title": "Make values visible in behavior",
+          "paragraphs": [
+            "The book asks teams to connect stated principles with everyday decisions and conversations. Trust depends on repeated conduct, not merely a declaration that people should feel safe. Avoiding discomfort can allow unresolved issues to grow."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What conversation is being postponed because it might feel uncomfortable? The useful test is whether a leadership habit helps people do clearer, more responsible work together—not whether it gives the leader a convincing image."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "dare-to-lead",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/557595/dare-to-lead-by-brene-brown-phd-msw/",
+      "coverWidth": 298,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780399592522"
+    },
+    {
+      "slug": "digital-minimalism",
+      "title": "Digital Minimalism",
+      "author": "Cal Newport",
+      "isbn": "9780525536512",
+      "group": "Technology",
+      "source": "https://www.penguinrandomhouse.com/books/575667/digital-minimalism-by-cal-newport/",
+      "subtitle": "Choose digital tools according to the life you want them to support.",
+      "themes": [
+        "Attention",
+        "Technology",
+        "Intentional Living"
+      ],
+      "intro": "Cal Newport proposes a deliberate approach to personal technology. Instead of keeping every tool that offers some benefit, digital minimalism asks which tools strongly support chosen values and under what conditions they should be used.",
+      "sections": [
+        {
+          "title": "Begin with a reason, not an app",
+          "paragraphs": [
+            "The argument shifts attention from scattered settings changes toward a philosophy of use. A tool can be useful while still occupying more time or attention than its contribution deserves. Convenience alone does not decide its place."
+          ]
+        },
+        {
+          "title": "Create room for something better",
+          "paragraphs": [
+            "Newport describes a thirty-day break from optional technologies followed by selective reintroduction. Meaningful leisure, solitude, and direct conversation matter because removing a habit leaves a space that another activity needs to fill."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "Which online activity has a clear purpose, and which has become the default whenever there is a pause? The goal is not to reject technology but to make its role specific enough that it serves the rest of life."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "digital-minimalism",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://www.penguinrandomhouse.com/books/575667/digital-minimalism-by-cal-newport/",
+      "coverWidth": 298,
+      "coverHeight": 450,
+      "coverSource": "https://images.penguinrandomhouse.com/cover/9780525536512"
+    },
+    {
+      "slug": "factfulness",
+      "title": "Factfulness",
+      "author": "Hans Rosling, Ola Rosling & Anna Rosling Rönnlund",
+      "isbn": "9781250123824",
+      "group": "Science",
+      "source": "https://us.macmillan.com/books/9781250123824/factfulness/",
+      "subtitle": "A clearer view of the world starts with questioning our instincts.",
+      "themes": [
+        "Data",
+        "Perspective",
+        "Critical Thinking"
+      ],
+      "intro": "The Roslings examine why people often misunderstand global conditions and trends. They describe habits of thought that make dramatic events, simple divisions, and alarming stories feel more representative than the wider evidence supports.",
+      "sections": [
+        {
+          "title": "Look for the missing comparison",
+          "paragraphs": [
+            "A number becomes more meaningful when its scale and context are visible. The book encourages comparisons, attention to change over time, and skepticism toward descriptions that divide a varied world into only two categories."
+          ]
+        },
+        {
+          "title": "Improvement and suffering can coexist",
+          "paragraphs": [
+            "Recognizing progress does not require denying serious problems. The authors argue that a more accurate picture helps people direct concern toward the right questions. Optimism is less useful than a habit of checking what the evidence actually shows."
+          ]
+        },
+        {
+          "title": "A question to carry away",
+          "paragraphs": [
+            "What would a less dramatic but more complete account look like? Published statistics belong to their period, so specific figures should be updated before reuse. The enduring lesson is a way of examining claims, not a promise that every trend is positive."
+          ]
+        }
+      ],
+      "ending": "",
+      "kind": "nonfiction",
+      "image": "factfulness",
+      "date": "2026-10-09",
+      "bestseller": true,
+      "bestsellerSource": "https://us.macmillan.com/books/9781250123824/factfulness/",
+      "coverWidth": 480,
+      "coverHeight": 742,
+      "coverSource": "https://mpd-biblio-covers.imgix.net/9781250123824.jpg"
+    }
+  ]
+}

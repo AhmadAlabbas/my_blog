@@ -1,0 +1,114 @@
+{
+  "photos": [
+    {
+      "image": "london-green",
+      "title": "Room to breathe",
+      "alt": "An open green field with football players and a wide London sky",
+      "category": "London",
+      "caption": "London trip · December 2025",
+      "width": 900,
+      "height": 1600,
+      "smallWidth": 360,
+      "trip": "December 2025"
+    },
+    {
+      "image": "london-winter",
+      "title": "The quieter season",
+      "alt": "Bare trees arching over a winter path with scattered snow",
+      "category": "London",
+      "caption": "London trip · December 2025",
+      "width": 900,
+      "height": 1600,
+      "smallWidth": 360,
+      "trip": "December 2025"
+    },
+    {
+      "image": "photo-flight",
+      "title": "Above the clouds",
+      "alt": "A view of a plane wing, clouds, and the landscape from a window",
+      "category": "London",
+      "caption": "London trip · December 2025",
+      "width": 900,
+      "height": 1600,
+      "smallWidth": 360,
+      "trip": "December 2025"
+    },
+    {
+      "image": "photo-london-street",
+      "title": "An ordinary afternoon",
+      "alt": "A London street with bare trees and parked cars under a blue sky",
+      "category": "London",
+      "caption": "London trip · December 2025",
+      "width": 900,
+      "height": 1600,
+      "smallWidth": 360,
+      "trip": "December 2025"
+    },
+    {
+      "image": "photo-night-lights",
+      "title": "After dark",
+      "alt": "Trees and colorful lights photographed at night",
+      "category": "London",
+      "caption": "London trip · December 2025",
+      "width": 900,
+      "height": 1600,
+      "smallWidth": 360,
+      "trip": "December 2025"
+    },
+    {
+      "image": "photo-footsteps",
+      "title": "Keep moving",
+      "alt": "A downward view of running shoes and legs on the pavement",
+      "category": "London",
+      "caption": "London trip · December 2025",
+      "width": 900,
+      "height": 1600,
+      "smallWidth": 360,
+      "trip": "December 2025"
+    },
+    {
+      "image": "london-lake",
+      "title": "Winter by the water",
+      "alt": "A quiet winter lake bordered by bare trees",
+      "category": "London",
+      "caption": "London trip · December 2025",
+      "width": 900,
+      "height": 1600,
+      "smallWidth": 360,
+      "trip": "December 2025"
+    },
+    {
+      "image": "photo-gates",
+      "title": "At the gates",
+      "alt": "Ahmad standing at a decorative gate bearing a palm and crossed-swords emblem",
+      "category": "London",
+      "caption": "London trip · December 2025",
+      "width": 900,
+      "height": 1600,
+      "smallWidth": 360,
+      "trip": "December 2025"
+    },
+    {
+      "image": "photo-company",
+      "title": "Good company",
+      "alt": "Ahmad with another person indoors beside a window",
+      "category": "London",
+      "caption": "London trip · December 2025",
+      "width": 900,
+      "height": 1600,
+      "smallWidth": 360,
+      "trip": "December 2025"
+    },
+    {
+      "image": "photo-guest",
+      "title": "A visitor’s notebook",
+      "alt": "Ahmad holding a Google guest badge with its QR code removed",
+      "category": "London",
+      "caption": "London trip · December 2025 · Guest badge QR code removed",
+      "width": 900,
+      "height": 1600,
+      "smallWidth": 360,
+      "trip": "December 2025"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "curiosity": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640
+  },
+  "systems": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "A luminous copper coil sculpture against a dark plum backdrop"
+  },
+  "reading-world": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "A warm painted still life of open books, a coral cup, and sunlight"
+  },
+  "conversation": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640
+  },
+  "london-green": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "An open green field with football players and a wide London sky"
+  },
+  "london-winter": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "Bare trees arching over a winter path with scattered snow"
+  },
+  "london-lake": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "A quiet winter lake bordered by bare trees"
+  },
+  "kfupm-campus": {
+    "width": 1535,
+    "height": 1025,
+    "smallWidth": 640
+  },
+  "kfupm-tower": {
+    "width": 1535,
+    "height": 1025,
+    "smallWidth": 640
+  },
+  "waves": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640
+  },
+  "digital-tools": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Chrome ribbons, mint glass tiles, and a blue sphere on an ice-blue background"
+  },
+  "building": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Orange and saffron geometric architecture with forest-green shadows"
+  },
+  "photo-portrait": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "Ahmad photographed indoors in a casual portrait"
+  },
+  "photo-flight": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "A view of a plane wing, clouds, and the landscape from a window"
+  },
+  "photo-london-street": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "A London street with bare trees and parked cars under a blue sky"
+  },
+  "photo-night-lights": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "Trees and colorful lights photographed at night"
+  },
+  "photo-footsteps": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "A downward view of running shoes and legs on the pavement"
+  },
+  "photo-gates": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "Ahmad standing at a decorative gate bearing a palm and crossed-swords emblem"
+  },
+  "photo-company": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "Ahmad with another person indoors beside a window"
+  },
+  "photo-guest": {
+    "width": 900,
+    "height": 1600,
+    "smallWidth": 360,
+    "alt": "Ahmad holding a Google guest badge with its QR code removed"
+  },
+  "circuit-thinking": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Fluid black ink paths linking lilac circles and a golden disc"
+  },
+  "measuring-world": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Ivory ceramic forms surrounded by golden arcs on a rose plinth"
+  },
+  "studio-study": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Watercolor and pencil still life of a sketchbook, pigment jars, pencils, and a cup"
+  },
+  "engineering-study": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Graphite drawing of a copper coil, analog meter, and cable with an ochre wash"
+  },
+  "waves-study": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Expressive indigo and terracotta brushstrokes flowing across cream paper"
+  },
+  "tools-study": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Mint rectangles, black connecting lines, and colorful circles drawn in pastel crayon"
+  },
+  "hero-print": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Indigo screenprint arches, a coral sun and golden stairs"
+  },
+  "hero-textile": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Embroidered green hills with rose circles and ochre threads"
+  },
+  "understanding-print": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Original indigo linocut of a compass, geometric solid and eye"
+  },
+  "interface-mosaic": {
+    "width": 1536,
+    "height": 1024,
+    "smallWidth": 640,
+    "alt": "Ceramic composition of orange, cobalt, pink and ivory tiles"
+  },
+  "kfupm-about": {
+    "width": 1600,
+    "height": 904,
+    "smallWidth": 640,
+    "alt": "KFUPM campus paths, palm trees, colonnades and tower, photographed in 2021"
+  },
+  "kfupm-personal": {
+    "file": "kfupm-personal.jpg",
+    "width": 443,
+    "height": 451,
+    "alt": "KFUPM campus with its hillside letters and tower"
+  },
+  "laqman": {
+    "file": "laqman.png",
+    "width": 367,
+    "height": 681,
+    "alt": "Laqman, Ahmad Alabbas\u2019s father"
+  }
+}
