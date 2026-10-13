@@ -24,6 +24,21 @@ The PHP integration suite is `source/tests/test-cms.mjs`; it requires
 `@php-wasm/node` and `@php-wasm/universal` and uses a disposable SQLite database.
 The other test files contain snippets already included in that suite.
 
+`source/tests/mobile-layout.mjs` checks the PHP-rendered English/Arabic home and
+contact pages at phone, tablet, and desktop widths, including menu opening and
+independent bookshelf scrolling. It requires `playwright-core` and Chromium.
+Run it against an isolated, seeded PHP development site:
+
+```sh
+cd source
+BLOG_TEST_BASE_URL=http://127.0.0.1:8001 node tests/mobile-layout.mjs
+```
+
+In this cloud environment, the dependencies live in `/workspace/blog-tools/`,
+and `node /workspace/blog-tools/serve-php.mjs` starts the disposable PHP 8.3/
+SQLite development site used by that check. It serves local rendering checks;
+it is not a production server or a connection to the Hostinger database.
+
 ## Existing Hostinger installation
 
 Follow [source/BILINGUAL-UPDATE.md](source/BILINGUAL-UPDATE.md) for updates.
