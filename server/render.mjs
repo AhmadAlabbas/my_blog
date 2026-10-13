@@ -97,7 +97,7 @@ export function renderer(config,arabic){
     else if(post){title=post.title;description=post.subtitle;$('main').html(postMain(post,lang,data,!!preview));}
     else if(slug==='index'){
       title=lang==='ar'?'كتب وأفكار وحياة يقودها الفضول':'Books, ideas, and a curious life';
-      $('.personal-hero-copy h1').text(setting(data,'hero_title',lang));$('.personal-hero-copy .dek').text(setting(data,'hero_intro',lang));
+      $('.personal-hero-copy h1').html(escape(setting(data,'hero_title',lang)).replaceAll('\n','<br>'));$('.personal-hero-copy .dek').text(setting(data,'hero_intro',lang));
       const articles=data.posts.filter(p=>p.type==='article');const featured=articles.find(p=>p.slug==='why-i-love-electrical-engineering-and-physics')||articles[0];
       if(featured){$('.featured-blocks > .card').replaceWith(card(featured,lang));$('.notebook-quote .text-link').attr('href',pageURL(featured.slug,lang));}else $('#featured').remove();
       $('#articles .card-grid').replaceWith(cards(articles.filter(p=>p.id!==featured?.id).slice(0,6),lang));
