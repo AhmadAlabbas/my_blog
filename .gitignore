@@ -14,3 +14,5 @@ blog-config.php
 *.db
 *.zip
 artifacts/
+dist/
+.local-data/

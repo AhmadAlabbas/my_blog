@@ -1,8 +1,8 @@
-// Run against the PHP site with isolated development data, not the static preview.
+// Run against the Node.js site with isolated development data, not the static preview.
 import assert from 'node:assert/strict';
 import {chromium} from 'playwright-core';
 
-const base=process.env.BLOG_TEST_BASE_URL || 'http://127.0.0.1:8001';
+const base=process.env.BLOG_TEST_BASE_URL || 'http://127.0.0.1:3000';
 const browser=await chromium.launch({
   executablePath:process.env.CHROMIUM_PATH || '/usr/bin/chromium',
   args:['--no-sandbox'],
@@ -18,7 +18,7 @@ try {
     for(const route of ['/','/ar/','/contact.html','/ar/contact.html']) {
       await page.goto(new URL(route,base).href);
       await page.evaluate(()=>document.fonts.ready);
-      assert(await page.locator('.form-trap').count(), 'Use the PHP site: missing spam-trap field');
+      assert(await page.locator('.form-trap').count(), 'Use the running server: missing spam-trap field');
       async function fits() {
         const dimensions=await page.evaluate(()=>({
           viewport:document.documentElement.clientWidth,
@@ -53,7 +53,7 @@ try {
     }
     await context.close();
   }
-  console.log(`PASS: ${checks} overflow checks on PHP home/contact pages in English/Arabic; mobile menus and independent bookshelf scrolling.`);
+  console.log(`PASS: ${checks} overflow checks on server-rendered home/contact pages in English/Arabic; mobile menus and independent bookshelf scrolling.`);
 } finally {
   await browser.close();
 }

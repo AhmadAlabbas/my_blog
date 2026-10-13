@@ -1,11 +1,26 @@
-# Ahmad Alabbas blog
+# Ahmad Alabbas blog — Node.js development
 
-Edit the files in source/. Read source/README.md, HOSTINGER-SETUP.md, BILINGUAL-UPDATE.md and QA.md first.
+Use the existing checkout; cloud tasks are isolated, so do not create a worktree
+unless requested. Read README.md and HOSTINGER-GITHUB.md.
 
-All optimized website assets and their licenses are included. Original high-resolution working images and duplicate generated deployment folders were excluded to fit the transfer limit. They are not required for the normal build.
+The active app is Express on Node.js 24. Run `npm ci`, `npm run build`,
+`npm test`, then `npm run dev` or `npm start`. Run `npm run test:mobile`
+against the running Node app. PHP/Python are migration references, not part
+of Node build/start/deployment.
 
-Install Python dependencies from source/requirements.txt. From source run python build.py, python build_hostinger.py and python validate.py. These recreate public/ (static preview) and hostinger/ (PHP deployment). PHP/MySQL features need a configured database to run; read setup instructions and use an isolated development database.
+Backend: server/. Layouts: web/templates/. Shared frontend/styles/assets:
+source/. Initial content is source/backend/_cms/seed.json and arabic.json;
+afterward edit content in the authenticated Node dashboard at /admin/.
+English is /; Arabic is /ar/. Preserve RTL, paired article translations,
+independent language bookshelves, artwork licenses and supplied photos.
 
-The existing site is bilingual (en/ar), with RTL Arabic, paired article translations, independent bookshelves and shared translated gallery. Preserve content and the Hostinger installation. Never overwrite live private/blog-config.php, assets/uploads or the database, and do not rerun the installer on the existing site. Dashboard edits and uploaded images may be newer than this export. Ask for a current backup if needed.
+Local SQLite, secrets and uploads are in ignored .local-data/. Production uses
+MySQL and an external persistent uploads path from Hostinger environment
+settings. Never commit credentials, database dumps or uploaded media.
 
-This conversation's deployment was confirmed working by Ahmad on October 10, 2026.
+The export may be older than live dashboard edits. Preserve the existing
+MySQL database, assets/uploads and private/blog-config.php. The Node schema
+supports existing aa_* tables and legacy password hashes; migrations preserve
+existing content and use draft Arabic translations for changed originals.
+Do not rerun the installer on an existing site. Obtain a current backup and
+validate a staging Node deployment before a live migration or domain switch.

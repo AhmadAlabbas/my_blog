@@ -1,106 +1,83 @@
-# Develop with Codex and deploy through GitHub
+# Hostinger Node.js deployment from GitHub
 
-Codex edits the source, GitHub stores the changes and runs the checks, and GitHub
-Actions uploads the tested PHP release to Hostinger over SSH. Once connected,
-each push to `main` deploys automatically. Pull requests run checks without
-deploying. GitHub's Actions tab shows build and deployment results.
+The blog now has a native Node server and dashboard. Hostinger's Node.js GitHub
+importer is the correct route for this version. Routine changes need no ZIP
+upload or PHP deployment workflow.
 
-Use your domain's regular PHP hosting. Hostinger's Node.js Git import wizard
-does not run this site's PHP dashboard. You do not need that importer or the
-Hostinger GitHub app for this workflow.
+## Import the app
 
-## One-time connection
-
-1. In Hostinger, open Websites, your domain's dashboard, then SSH Access.
-   Enable SSH and record the host, username, and port. Use the actual values
-   Hostinger shows; the port is often 65002.
-2. Back up the existing files and database before the first automated update.
-3. Create a dedicated SSH key on your own computer:
-
-   ```sh
-   ssh-keygen -t ed25519 -C github-hostinger -f hostinger_github
-   ```
-
-   Leave the passphrase empty for automated deployment. Add the contents of
-   `hostinger_github.pub` to the hosting account's authorized SSH keys using
-   Hostinger's SSH key management. Keep `hostinger_github` private; do not commit
-   it or send it in chat.
-4. Test the key and confirm the server identity through a trusted Hostinger
-   connection:
-
-   ```sh
-   ssh -i hostinger_github -p YOUR_PORT YOUR_USER@YOUR_HOST
-   ```
-
-   In that session, find the absolute document-root path for the existing
-   domain. It usually resembles
-   `/home/u123456789/domains/ahmadalabbas.com/public_html`. Use the actual
-   directory; do not create or replace the website to obtain a path.
-5. In [GitHub repository settings](https://github.com/AhmadAlabbas/my_blog/settings/secrets/actions),
-   open Settings → Secrets and variables → Actions. Add these **repository
-   variables** under Variables:
+1. In Hostinger's Node.js app import screen, select `AhmadAlabbas/my_blog`,
+   branch `main`. If missing, grant the Hostinger GitHub app access to this
+   repository and refresh the list.
+2. Choose a Node.js/Express app, Node **24**, project root **/**, build command
+   **npm run build**, and start command **npm start**. If asked for an entry
+   file, use `server.js`. This is a running server: do not choose
+   “Deploy as static” or treat `dist` as a static output folder.
+3. Before starting production, configure these variables securely in Hostinger.
+   Use a temporary hostname first when replacing an existing website and set
+   `PUBLIC_URL` to that hostname.
 
    | Variable | Value |
    | --- | --- |
-   | `HOSTINGER_SSH_HOST` | SSH server hostname or IPv4 address |
-   | `HOSTINGER_SSH_USER` | SSH username |
-   | `HOSTINGER_SSH_PORT` | SSH port shown in hPanel |
-   | `HOSTINGER_DEPLOY_PATH` | Absolute `/home/.../public_html` path for this domain |
-   | `HOSTINGER_DEPLOY_ENABLED` | Keep `false` until the connection settings are complete; then set `true` |
+   | `NODE_ENV` | `production` |
+   | `PUBLIC_URL` | Complete HTTPS origin, e.g. `https://ahmadalabbas.com` |
+   | `DB_DRIVER` | `mysql` |
+   | `MYSQL_HOST` | Exact database host supplied by Hostinger |
+   | `MYSQL_PORT` | Supplied port, usually `3306` |
+   | `MYSQL_DATABASE` | Database name |
+   | `MYSQL_USER` | Database username |
+   | `MYSQL_PASSWORD` | Database password, entered in secure settings |
+   | `SESSION_SECRET` | Random secret of at least 32 characters |
+   | `UPLOAD_DIR` | Absolute writable media path that survives app deployments |
+   | `SETUP_TOKEN` | Separate random secret of at least 32 characters, for a new admin only |
 
-   Under Secrets, add these **repository secrets**:
+   Hostinger supplies `PORT`; the server reads it automatically. If the database
+   requires TLS, set `MYSQL_SSL=true`; certificate verification stays enabled.
+   Do not put credentials in GitHub or chat.
 
-   | Secret | Value |
-   | --- | --- |
-   | `HOSTINGER_SSH_KEY` | Complete private key file, including BEGIN/END lines |
-   | `HOSTINGER_KNOWN_HOSTS` | OpenSSH known-hosts record for the verified Hostinger SSH server |
+   Confirm the persistent media path available to your Hostinger Node app. It
+   must be outside the replaceable app deployment directory. If your plan does
+   not provide this storage, image uploads need another persistent storage
+   service before production deployment. Files inside a fresh Git checkout
+   must not be assumed to survive subsequent deployments.
+4. Deploy. `/health` should return `{"status":"ok","runtime":"node"}`.
+   Test `/`, `/ar/`, `/admin/`, publishing, a draft, Contact, signup/unsubscribe
+   and an image upload before switching the live domain.
+5. Enable automatic deployment from `main` in Hostinger if the importer offers
+   it. Hostinger rebuilds on GitHub changes. GitHub Actions also checks the app;
+   use passing pull requests before merging for a review/check gate ahead of
+   Hostinger's automatic deployment.
 
-   After a verified SSH connection, its host-key record is in your computer's
-   `.ssh/known_hosts`. For a nonstandard port, retrieve the matching record:
+## Preserve existing content
 
-   ```sh
-   ssh-keygen -F '[YOUR_HOST]:YOUR_PORT' -f ~/.ssh/known_hosts
-   ```
+Back up MySQL, website files and `assets/uploads` before migration. Configure
+Node with the existing database or a restored staging copy. It supports the
+existing `aa_*` tables and PHP bcrypt hashes, adds its own session table, and
+preserves edited content, messages, subscribers and translation statuses. Seed
+imports happen only when both posts and admins are absent. Missing bilingual
+metadata is additive.
 
-   For port 22, use `YOUR_HOST` instead of `[YOUR_HOST]:YOUR_PORT`. Store the
-   matching record in the secret. The workflow requires strict host-key
-   checking and does not accept unknown servers automatically.
-6. Set `HOSTINGER_DEPLOY_ENABLED` to `true`. Open
-   [Actions](https://github.com/AhmadAlabbas/my_blog/actions), select
-   **Verify and deploy to Hostinger**, and click **Run workflow** on `main`.
-   Confirm that build, PHP integration, phone-layout checks, and deployment
-   pass. Check the live English/Arabic pages, admin login and forms afterward.
-   Clear Hostinger's website cache if it continues showing old files.
+Copy existing media into the selected persistent storage location, keeping the
+original files intact. References stay `/assets/uploads/<filename>` and are
+served from `UPLOAD_DIR`.
 
-## Routine development
+With existing admins, use your current account; setup is locked. For a new
+database, create your account at `/admin/setup` using `SETUP_TOKEN`, then remove
+that variable from Hostinger and restart. Do not run either installer on an
+existing database.
 
-Ask Codex for a change. Review the GitHub diff or pull request. When the tested
-change reaches `main`, the workflow builds and deploys it. There are no routine
-ZIP uploads. Set `HOSTINGER_DEPLOY_ENABLED` to `false` to pause deployment while
-keeping build checks enabled.
+After staging validation, switch the domain to Node and update `PUBLIC_URL`.
+Local tests do not verify actual Hostinger credentials, storage, import or the
+live domain switch.
 
-The release contains generated website files at the web-root level, including
-`.htaccess`. It excludes `admin/setup.php`, `assets/uploads`, private database
-configuration and local database files. Deployment overwrites matching release
-files and does not delete unrelated files. It never runs the installer or resets
-the existing database. Live dashboard content stays in that database; JSON in
-GitHub is seed data for fresh installations, not a backup of live edits.
+## Development and checks
 
-This workflow updates an existing installation. A brand-new site requires the
-initial private PHP/MySQL configuration and installation described in
-`source/HOSTINGER-SETUP.md` before enabling automatic updates.
+Run `npm ci`, `npm run build`, `npm test`, `npm start`. No PHP/Python runtime is
+needed. `npm run test:mobile` checks the running app with Chromium. CI also runs
+integration tests on disposable MySQL 8.4. MySQL tests require `TEST_MYSQL=1`
+and `MYSQL_*` settings for a fresh dedicated database ending in `_test`. Never
+point tests at production.
 
-## Local checks
-
-Install Python dependencies from `source/requirements.txt` and the pinned Node
-test packages (`@php-wasm/node@3.1.54`, `@php-wasm/universal@3.1.54`,
-`playwright-core@1.64.0`) in `source/node_modules`. From `source`, build the
-static and PHP outputs, run `validate.py`, and run `node tests/test-cms.mjs`.
-From the repository root, run `node tools/serve-php.mjs` for a disposable PHP
-rendering site. In another terminal, run `node source/tests/mobile-layout.mjs`.
-Chromium must be installed; `CHROMIUM_PATH` can override its location.
-
-`python tools/package_hostinger.py` creates the update archive under ignored
-`artifacts/`. `python tools/test_deployment.py` checks archive exclusions and
-exercises the deployment script against an isolated local SSH stand-in.
-This proves file preservation, not real Hostinger connectivity.
+Legacy SSH/PHP deployment tools remain as references and are no longer called
+by GitHub Actions. `HOSTINGER_SSH_*` GitHub settings are unnecessary for native
+Node.js import.

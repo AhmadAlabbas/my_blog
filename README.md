@@ -1,52 +1,56 @@
-# Ahmad Alabbas blog
+# Ahmad Alabbas — Node.js blog
 
-Bilingual English/Arabic personal blog with a PHP dashboard for Hostinger.
+An Express app with an authenticated dashboard, bilingual English/Arabic pages,
+independent bookshelves, a shared gallery, contact messages, newsletter signup,
+and image uploads. Node.js runs the public site and backend. PHP and Python are
+not required to build or run this version.
 
-For automatic deployment from GitHub, follow [HOSTINGER-GITHUB.md](HOSTINGER-GITHUB.md).
-Pushes to `main` build and test the site; deployment starts after the one-time
-SSH connection settings are configured in GitHub.
+## Develop with Codex
 
-Start with [CODEX-START.md](CODEX-START.md) and [source/README.md](source/README.md).
-Edit the authoring files in `source/`; generated output is excluded from Git.
-
-## Build and verify
+Use Node.js 24 (Node 22.13+ is also supported):
 
 ```sh
-python3 -m venv .venv
-.venv/bin/python -m pip install -r source/requirements.txt
-cd source
-../.venv/bin/python build.py
-../.venv/bin/python build_hostinger.py
-../.venv/bin/python validate.py
+npm ci
+npm run build
+npm test
+npm run dev
 ```
 
-`source/public/` is the static preview. `source/hostinger/` is the PHP deployment
-output. For a static development server, run `python3 -m http.server 8000
---bind 127.0.0.1 --directory public` from `source/`.
+`npm start` starts the server; `PORT` defaults to 3000. Local development uses an
+isolated SQLite database in ignored `.local-data/`. Local session/setup secrets
+are generated there with restrictive permissions. To create a local account,
+open `/admin/setup` and read the local setup token from `.local-data/setup-token`
+on your own machine. Never commit it or send it in chat. Setup locks after an
+admin exists.
 
-The PHP integration suite is `source/tests/test-cms.mjs`; it requires
-`@php-wasm/node` and `@php-wasm/universal` and uses a disposable SQLite database.
-The other test files contain snippets already included in that suite.
+Edit backend behavior in `server/`, layouts in `web/templates/`, and shared
+frontend code/styles/assets in `source/`. Run `npm run build` after changing
+layouts or assets. The dashboard edits the database. Seed JSON is not a backup
+of live dashboard edits: `source/backend/_cms/seed.json` and `arabic.json` provide
+initial content/translations and are read as data only.
 
-`source/tests/mobile-layout.mjs` checks the PHP-rendered English/Arabic home and
-contact pages at phone, tablet, and desktop widths, including menu opening and
-independent bookshelf scrolling. It requires `playwright-core` and Chromium.
-Run it against an isolated, seeded PHP development site:
+`npm test` covers setup locking, authentication, CSRF, publishing/drafts,
+translations, shelf separation, gallery/settings/video editing, uploads,
+messages, subscribers/unsubscribe, SEO, migration preservation, and legacy
+password compatibility. GitHub Actions runs it with SQLite and MySQL. Run
+`npm run test:mobile` against the running Node app for mobile checks. Chromium
+is required; `CHROMIUM_PATH` overrides `/usr/bin/chromium`. It checks both
+languages at seven viewport widths, menus and independent bookshelf scrolling.
+Browser emulation does not replace testing on a physical iPhone.
 
-```sh
-cd source
-BLOG_TEST_BASE_URL=http://127.0.0.1:8001 node tests/mobile-layout.mjs
-```
+## Deploy through GitHub
 
-In this cloud environment, the dependencies live in `/workspace/blog-tools/`,
-and `node /workspace/blog-tools/serve-php.mjs` starts the disposable PHP 8.3/
-SQLite development site used by that check. It serves local rendering checks;
-it is not a production server or a connection to the Hostinger database.
+Follow [HOSTINGER-GITHUB.md](HOSTINGER-GITHUB.md). Import this repository as a
+Node.js app with Node 24, `npm run build`, and `npm start`. Root `package.json`
+and its lockfile enable Hostinger's full Node import.
 
-## Existing Hostinger installation
+Production requires persistent MySQL and an uploads directory that survives
+deployments, configured through Hostinger's secure environment settings.
+See `.env.example` for names. Existing `aa_*` tables and PHP bcrypt passwords
+are supported; missing bilingual metadata is added without replacing entries.
+Back up the current site/database/uploads and verify a staging Node deployment
+before switching the live domain. Hostinger connection and domain cutover are
+separate steps.
 
-Follow [source/BILINGUAL-UPDATE.md](source/BILINGUAL-UPDATE.md) for updates.
-Back up the live database and files before deployment. Preserve
-`private/blog-config.php`, `assets/uploads`, and dashboard content. Never rerun
-the installer on an existing installation. GitHub contains source and seed
-content, not the live database or credentials.
+Old PHP/Python tools remain as migration references. The active GitHub workflow
+tests Node.js and no longer deploys the PHP release.
