@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {load} from 'cheerio';
+import {featuredPosts,readingMinutes,relatedPosts,searchPosts,welcomeIntro} from './editorial.mjs';
 
 export const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const pageURL=(slug,lang='en')=>(lang==='ar'?'/ar/':'/')+(slug==='index'?'':slug+'.html');
@@ -45,14 +46,18 @@ export function renderer(config,arabic){
   };
   const safeImage=filename=>/^assets\/(images|book-covers|uploads)\/[A-Za-z0-9_.-]+\.(webp|png|jpg|jpeg)$/.test(filename)&&fs.existsSync(filename.startsWith('assets/uploads/')?path.join(config.uploadDir,path.basename(filename)):path.join(config.dist,filename));
   const picture=(filename,alt)=>safeImage(filename)?`<img src="/${escape(filename)}" alt="${escape(alt)}" loading="lazy" decoding="async">`:'';
-  const card=(p,lang)=>`<article class="card ${p.type==='book'?'book-summary-card':'museum-card'}" data-category="${escape(p.category)}" ${p.type==='book'?`data-book-group="${escape(p.category)}" data-bestseller="${bestsellers.has(p.slug)}"`:''}><a class="card-image" href="${pageURL(p.slug,lang)}">${picture(p.image,p.title)}</a><div class="card-content"><p class="eyebrow">${escape(p.type==='book'?p.author:p.category)}</p><h3><a href="${pageURL(p.slug,lang)}">${escape(p.title)}</a></h3><p class="summary">${escape(p.subtitle)}</p><p class="meta">${escape(p.published_at)}</p></div></article>`;
+  const readTime=(post,lang)=>lang==='ar'?`${readingMinutes(post,lang)} دقائق قراءة`:`${readingMinutes(post,lang)} min read`;
+  const card=(p,lang)=>`<article class="card ${p.type==='book'?'book-summary-card':'museum-card'}" data-category="${escape(p.category)}" ${p.type==='book'?`data-book-group="${escape(p.category)}" data-bestseller="${bestsellers.has(p.slug)}"`:''}><a class="card-image" href="${pageURL(p.slug,lang)}">${picture(p.image,p.title)}</a><div class="card-content"><p class="eyebrow">${escape(p.type==='book'?p.author:t(p.category,lang))}</p><h3><a href="${pageURL(p.slug,lang)}">${escape(p.title)}</a></h3><p class="summary">${escape(p.subtitle)}</p><p class="meta"><time datetime="${escape(p.published_at)}">${escape(p.published_at)}</time> · ${readTime(p,lang)}</p></div></article>`;
   const cards=(rows,lang,books=false)=>`<div class="card-grid ${books?'bookshelf-grid':''}">${rows.map(p=>card(p,lang)).join('')}</div>`;
   const emptyArabicBooks='<div class="arabic-books-empty"><h2>مكتبة عربية مستقلة</h2><p>ستظهر ملخصات الكتب العربية هنا عند إضافتها.</p></div>';
   const t=(text,lang)=>lang==='ar'?(arabic.ui[text]||text):text;
   const setting=(data,key,lang,fallback='')=>data.settings[key+(lang==='ar'?'_ar':'')]??(lang==='ar'?arabic.settings[key+'_ar']:undefined)??fallback;
   const mast=(title,description)=>`<section class="page-masthead"><div class="wrap"><h1>${escape(title)}</h1><p class="dek">${escape(description)}</p></div></section>`;
+  function discovery(slug,lang,posts,query='',topic=''){
+    return `<form class="discovery-form" role="search" method="get" action="${pageURL(slug,lang)}"><label for="collection-search">${lang==='ar'?'ابحث عن فكرة':'Find an idea'}<input id="collection-search" name="q" type="search" maxlength="240" value="${escape(query)}" placeholder="${lang==='ar'?'عنوان أو موضوع أو كلمات من النص':'A title, topic, or words from the text'}"></label><label for="collection-topic">${lang==='ar'?'الموضوع':'Topic'}<select id="collection-topic" name="topic"><option value="">${lang==='ar'?'كل المواضيع':'All topics'}</option>${[...new Set(posts.map(p=>p.category))].filter(Boolean).map(category=>`<option value="${escape(category)}" ${topic===category?'selected':''}>${escape(t(category,lang))}</option>`).join('')}</select></label><button type="submit">${lang==='ar'?'بحث':'Search'}</button><a class="text-link" href="${pageURL(slug,lang)}">${lang==='ar'?'مسح البحث':'Reset'}</a></form>`;
+  }
   const newsletter=(data,lang)=>`<section class="newsletter" id="newsletter"><div class="wrap newsletter-inner"><div><p class="eyebrow">${t('Stay updated',lang)}</p><h2>${t('A note, now and then.',lang)}</h2><p>${escape(setting(data,'newsletter_intro',lang))}</p></div><form class="newsletter-form" method="post" action="/api/subscribe"><input type="hidden" name="lang" value="${lang}"><label for="newsletter-email">${t('Email address',lang)}</label><div class="input-row"><input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="${t('Your email address',lang)}" required><button>${lang==='ar'?'اشترك':'Subscribe'}</button></div><label class="newsletter-consent"><input type="checkbox" name="consent" value="1" required>${lang==='ar'?'أرغب في تلقي تحديثات المدونة عبر البريد.':'I want occasional blog updates by email.'}</label><input class="form-trap" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><p class="form-note">${lang==='ar'?'يمكنك إلغاء الاشتراك باستخدام الرابط في التحديثات المقبلة.':'Your signup is saved privately. Unsubscribe using the link in future updates.'}</p></form></div></section>`;
-  function finish($,slug,lang,title,description,data,post=null,status=200,preview=false){
+  function finish($,slug,lang,title,description,data,post=null,status=200,preview=false,filtered=false){
     const name=setting(data,'name',lang,'Ahmad Alabbas');
     const canonical=config.publicURL+pageURL(slug,lang);
     $('html').attr({lang,dir:lang==='ar'?'rtl':'ltr'});
@@ -60,7 +65,7 @@ export function renderer(config,arabic){
     $('title,meta[name="description"],meta[name="robots"],meta[property^="og:"],meta[name^="twitter:"],link[rel="canonical"],link[rel="alternate"],script[type="application/ld+json"]').remove();
     const image=config.publicURL+'/'+(safeImage(post?.image||'')?post.image:slug==='gallery'?'assets/images/london-green-1600.webp':slug==='about'?'assets/images/kfupm-personal.jpg':'assets/images/curiosity-1600.webp');
     const equivalent=post?(post.type==='book'?[data.languages.get(post.id)||'en']:data.translations.get(post.id)?.status==='published'?['en','ar']:['en']):['en','ar'];
-    $('head').append(`<title>${escape(title)} — ${escape(name)}</title><meta name="description" content="${escape(description)}"><link rel="canonical" href="${escape(canonical)}"><meta name="robots" content="${preview||status===404?'noindex,nofollow':'index,follow,max-image-preview:large'}"><meta property="og:type" content="${post?'article':'website'}"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:url" content="${escape(canonical)}"><meta property="og:image" content="${escape(image)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${escape(image)}">`);
+    $('head').append(`<title>${escape(title)} — ${escape(name)}</title><meta name="description" content="${escape(description)}"><link rel="canonical" href="${escape(canonical)}"><meta name="robots" content="${preview||status===404?'noindex,nofollow':filtered||slug==='search'?'noindex,follow':'index,follow,max-image-preview:large'}"><meta property="og:type" content="${post?'article':'website'}"><meta property="og:title" content="${escape(title)}"><meta property="og:description" content="${escape(description)}"><meta property="og:url" content="${escape(canonical)}"><meta property="og:image" content="${escape(image)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="${escape(image)}">`);
     if(!preview&&status!==404)for(const language of equivalent)$('head').append(`<link rel="alternate" hreflang="${language}" href="${escape(config.publicURL+pageURL(slug,language))}">`);
     if(!preview&&equivalent.includes('en'))$('head').append(`<link rel="alternate" hreflang="x-default" href="${escape(config.publicURL+pageURL(slug,'en'))}">`);
     const opposite=lang==='ar'?'en':'ar';const switchSlug=post?.type==='book'?'book-summaries':equivalent.includes(opposite)?slug:'articles';
@@ -70,9 +75,20 @@ export function renderer(config,arabic){
     const configured=Object.entries(socialHosts).some(([key,hosts])=>validSocial(data.settings['social_'+key],hosts));
     $('.site-socials').each((_,el)=>{const box=$(el);box.empty();for(const [key,hosts] of Object.entries(socialHosts)){const url=data.settings['social_'+key]||'';const icon=fs.readFileSync(path.join(config.dist,'assets/social',key+'.svg'),'utf8');box.append(validSocial(url,hosts)?`<a href="${escape(url)}" aria-label="${key}" target="_blank" rel="noopener noreferrer">${icon}</a>`:`<span class="social-unconfigured" role="img" aria-label="${key}">${icon}</span>`);}});
     if(configured)$('.footer-socials small').text(lang==='ar'?'تابعني خارج دفتر الملاحظات.':'Find me beyond the notebook.');
-    $('.search-results').html(data.posts.map(p=>`<a class="search-result" href="${pageURL(p.slug,lang)}" data-search="${escape((p.title+' '+p.category+' '+p.author).toLowerCase())}"><span>${escape(p.category)}</span>${escape(p.title)}</a>`).join(''));
+    $('.search-results').html(data.posts.map(p=>`<a class="search-result" href="${pageURL(p.slug,lang)}" data-search="${escape([p.title,p.subtitle,p.category,t(p.category,lang),p.author,p.intro,p.body].join(' ').replace(/[<>]/g,' ').toLowerCase())}"><span>${escape(t(p.category,lang))}</span>${escape(p.title)}</a>`).join(''));
+    const searchForm=$('<form class="dialog-search-form" method="get"></form>').attr('action',pageURL('search',lang));
+    $('.search-dialog label[for="search-input"],.search-dialog #search-input').appendTo(searchForm);
+    searchForm.find('input').attr({name:'q',maxlength:240});
+    searchForm.append(`<button type="submit">${lang==='ar'?'عرض نتائج البحث':'View search results'}</button>`);
+    $('.search-top').after(searchForm);
+    $('#mobileMenu').append(`<a href="${pageURL('search',lang)}">${lang==='ar'?'بحث':'Search'}</a>`);
+    const navSlug=post?(post.type==='book'?'book-summaries':'articles'):['notes','science','technology','business','travel','personal'].includes(slug)?'articles':slug==='books'?'book-summaries':slug;
+    $('.desktop-nav a,#mobileMenu a').each((_,el)=>{const link=$(el);link.removeAttr('aria-current');if(new URL(link.attr('href'),config.publicURL+'/').pathname.replace(/index\.html$/,'')===pageURL(navSlug,lang))link.attr('aria-current','page');});
     $('script[src^="config.js"]').remove();$('head').append(`<script>window.SITE_CONFIG=${JSON.stringify({contactAction:config.publicURL+'/api/contact',newsletterAction:config.publicURL+'/api/subscribe'}).replaceAll('<','\\u003c')}</script>`);
     $('script[src*="arabic-ui.js"]').attr('src','/arabic-ui.js');
+    $('head').append('<link rel="stylesheet" href="/enhancements.css">');
+    // Bust frontend caches on deployment, including the updated search behavior.
+    $('script[src]').each((_,el)=>{const filename=$(el).attr('src').split('?')[0].replace(/^\//,'');const file=path.join(config.dist,filename);if(fs.existsSync(file))$(el).attr('src','/'+filename+'?v='+crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,10));});
     $('link[href*=".css"]').each((_,el)=>{const filename=$(el).attr('href').split('?')[0].replace(/^\//,'');const file=path.join(config.dist,filename);if(fs.existsSync(file))$(el).attr('href','/'+filename+'?v='+crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,10));});
     const person={'@type':'Person','@id':config.publicURL+'/#person',name:data.settings.name,url:config.publicURL+'/about.html'};
     const graph=[person,{'@type':'WebSite',url:config.publicURL+'/',name:data.settings.name,inLanguage:['en','ar']},{'@type':slug==='about'?'AboutPage':slug==='contact'?'ContactPage':'WebPage',url:canonical,name:title,inLanguage:lang}];
@@ -88,10 +104,15 @@ export function renderer(config,arabic){
   }
   function postMain(post,lang,data,preview=false){
     const book=post.type==='book';
+    const body=load(markdown(post.body,picture,JSON.parse(data.settings.watch_videos||'[]')),null,false);
+    const sections=[];
+    body('h2').each((index,element)=>{const id='note-'+(index+1);body(element).attr('id',id);sections.push({id,title:body(element).text()});});
+    const contents=sections.length>1?`<details class="reading-contents"><summary>${lang==='ar'?'في هذا المقال':'In this note'}</summary><nav aria-label="${lang==='ar'?'محتويات المقال':'Article contents'}"><ol>${sections.map(section=>`<li><a href="#${section.id}">${escape(section.title)}</a></li>`).join('')}</ol></nav></details>`:'';
+    const related=relatedPosts(post,data.posts);
     const heading=book?`<section class="book-heading wrap"><div class="book-portrait">${picture(post.image,post.title)}</div><header><p class="eyebrow">${escape(post.category)}</p><h1>${escape(post.title)}</h1><p class="dek">${escape(post.subtitle)}</p><p class="book-author">${escape(post.author)}</p><p class="meta">${escape(post.published_at)}</p></header></section>`:`<figure class="article-cover ${post.slug==='for-my-dad-laqman'?'family-cover':''}">${picture(post.image,post.title)}</figure><header class="article-heading wrap"><p class="eyebrow">${escape(post.category)}</p><h1>${escape(post.title)}</h1><p class="dek">${escape(post.subtitle)}</p><div class="byline">${escape(post.author)} · ${escape(post.published_at)}</div></header>`;
-    return (preview?'<p class="draft-disclosure">Private preview</p>':'')+heading+`<div class="wrap"><div class="reading-layout"><article class="article-body"><p>${escape(post.intro)}</p>${markdown(post.body,picture,JSON.parse(data.settings.watch_videos||'[]'))}${book&&post.ending?`<details class="spoiler"><summary>${lang==='ar'?'نهاية القصة — حرق الأحداث':'Plot outcome · Ending spoilers'}</summary><p>${escape(post.ending)}</p></details>`:''}${post.source_url?`<p><a href="${escape(post.source_url)}" target="_blank" rel="noopener noreferrer">${t('Official book information ↗',lang)}</a></p>`:''}<div class="share-row"><button type="button" data-copy-link>${t('Copy link',lang)}</button><button type="button" data-native-share hidden>${t('Share',lang)}</button><span class="share-status" role="status"></span></div><p class="share-fallback" hidden><a href="${pageURL(post.slug,lang)}">${t('Copy URL',lang)}</a></p></article></div></div><section class="section wrap"><h2>${t('Keep exploring',lang)}</h2>${cards(data.posts.filter(p=>p.type===post.type&&p.id!==post.id).slice(0,3),lang,book)}</section>`+newsletter(data,lang);
+    return (preview?'<p class="draft-disclosure">Private preview</p>':'')+heading+`<div class="wrap"><div class="reading-layout"><div class="reading-tools"><p class="reading-time">${readTime(post,lang)}</p>${contents}</div><article class="article-body" id="article-content"><p>${escape(post.intro)}</p>${body.html()}${book&&post.ending?`<details class="spoiler"><summary>${lang==='ar'?'نهاية القصة — حرق الأحداث':'Plot outcome · Ending spoilers'}</summary><p>${escape(post.ending)}</p></details>`:''}${post.source_url?`<p><a href="${escape(post.source_url)}" target="_blank" rel="noopener noreferrer">${t('Official book information ↗',lang)}</a></p>`:''}<div class="share-row"><button type="button" data-copy-link>${t('Copy link',lang)}</button><button type="button" data-native-share hidden>${t('Share',lang)}</button><span class="share-status" role="status"></span></div><p class="share-fallback" hidden><a href="${pageURL(post.slug,lang)}">${t('Copy URL',lang)}</a></p></article></div></div>${related.length?`<section class="section wrap related-section"><div class="section-head"><div><p class="eyebrow">${lang==='ar'?'أفكار مترابطة':'Follow the thread'}</p><h2>${lang==='ar'?'قد يعجبك أيضاً':'You might also enjoy'}</h2></div></div><div class="related-grid">${related.map(p=>card(p,lang)).join('')}</div></section>`:''}`+newsletter(data,lang);
   }
-  function render(slug,lang,data,{preview=null,result=null,status=200}={}){
+  function render(slug,lang,data,{preview=null,result=null,status=200,query='',topic=''}={}){
     let post=preview||data.posts.find(p=>p.slug===slug);
     let title='',description=setting(data,'tagline',lang),$=load(read(slug,lang));
     if(result){title=result.title;description=result.message;$=load(read('index',lang));$('main').html(mast(title,description));}
@@ -99,20 +120,35 @@ export function renderer(config,arabic){
     else if(slug==='index'){
       title=lang==='ar'?'كتب وأفكار وحياة يقودها الفضول':'Books, ideas, and a curious life';
       $('.personal-hero-copy h1').html(escape(setting(data,'hero_title',lang)).replaceAll('\n','<br>'));$('.personal-hero-copy .dek').text(setting(data,'hero_intro',lang));
-      const articles=data.posts.filter(p=>p.type==='article');const featured=articles.find(p=>p.slug==='why-i-love-electrical-engineering-and-physics')||articles[0];
-      if(featured){$('.featured-blocks > .card').replaceWith(card(featured,lang));$('.notebook-quote .text-link').attr('href',pageURL(featured.slug,lang));}else $('#featured').remove();
-      $('#articles .card-grid').replaceWith(cards(articles.filter(p=>p.id!==featured?.id).slice(0,6),lang));
+      $('.personal-hero-copy .dek').after(`<p class="welcome-intro">${escape(setting(data,'welcome_intro',lang,welcomeIntro[lang]))}</p>`);
+      $('.personal-hero-links').append(`<a class="text-link" href="${pageURL('search',lang)}">${lang==='ar'?'ابحث عن فكرة':'Find an idea'}</a>`);
+      const articles=data.posts.filter(p=>p.type==='article');const featured=featuredPosts(data.posts,data.settings.featured_articles);
+      if(featured.length){
+        $('#featured .section-head .eyebrow').text(lang==='ar'?'ابدأ من هنا':'Start here');
+        $('#featured .section-head h2').text(lang==='ar'?'ثلاث أفكار تستحق القراءة.':'Three notes to begin with.');
+        $('.featured-blocks').replaceWith(`<div class="featured-grid">${featured.map(p=>card(p,lang)).join('')}</div>`);
+      }else $('#featured').remove();
+      $('#articles .card-grid').replaceWith(cards(articles.slice(0,6),lang));
+      $('#articles .section-head > .text-link').attr('href',pageURL('articles',lang)).text(lang==='ar'?`تصفح ${articles.length} مقالاً`:`Browse all ${articles.length} articles`);
+      $('#featured').before(`<section class="section wrap notebook-paths"><div class="section-head"><div><p class="eyebrow">${lang==='ar'?'مسارات الفضول':'Where curiosity leads'}</p><h2>${lang==='ar'?'اختر ما يثير اهتمامك.':'Follow what interests you.'}</h2></div></div><div class="notebook-path-grid"><a href="${pageURL('work',lang)}"><span class="eyebrow">01</span><h3>${lang==='ar'?'مشاريع وأفكار':'Projects & ideas'}</h3><p>${lang==='ar'?'استكشف ما أعمل عليه.':'Explore the things I’m working on.'}</p></a><a href="${pageURL('book-summaries',lang)}"><span class="eyebrow">02</span><h3>${lang==='ar'?'كتب وقراءة':'Books & reading'}</h3><p>${lang==='ar'?'كتاب جديد ومنظور مختلف.':'A new book, a different perspective.'}</p></a><a href="${pageURL('articles',lang)}?topic=Science"><span class="eyebrow">03</span><h3>${lang==='ar'?'علوم وتعلم':'Science & learning'}</h3><p>${lang==='ar'?'أسئلة عن العالم وكيف يعمل.':'Questions about the world and how it works.'}</p></a></div></section>`);
       const books=data.posts.filter(p=>p.type==='book');
       const carousel=`<div class="book-carousel" data-book-carousel><div class="book-carousel-toolbar"><p>${t('Every book, a different world.',lang)}</p><button type="button" data-book-carousel-toggle aria-pressed="false" hidden>${t('Pause scrolling',lang)}</button></div><div class="book-carousel-viewport" data-book-viewport tabindex="0"><div class="book-carousel-track"><div class="book-carousel-group">${books.map(p=>card(p,lang)).join('')}</div></div></div></div>`;
       $('#reading .book-carousel,#reading .arabic-books-empty').remove();$('#reading > .wrap').append(books.length?carousel:emptyArabicBooks);
       $('.gallery-grid.home-gallery').html(gallery(data.gallery.slice(0,3),lang));
       $('.about-wash h2').text(setting(data,'about_title',lang));$('.about-wash .lead').text(setting(data,'hero_intro',lang));
+    }else if(slug==='search'){
+      title=lang==='ar'?'ابحث في المدونة':'Search the notebook';
+      const rows=searchPosts(data.posts,query,topic,lang==='ar'?arabic.ui:{});
+      const count=lang==='ar'?`${rows.length} نتيجة`:`${rows.length} ${rows.length===1?'result':'results'}`;
+      $('main').html(mast(title,lang==='ar'?'ابحث في المقالات وملخصات الكتب عن فكرة أو موضوع.':'Find an idea across articles and book summaries.')+`<section class="section wrap">${discovery(slug,lang,data.posts,query,topic)}<p class="result-count" role="status">${count}</p>${rows.length?cards(rows,lang):`<p class="collection-empty">${lang==='ar'?'لم نجد نتائج. جرب كلمات أخرى أو امسح الموضوع.':'No matches. Try different words or clear the topic.'}</p>`}</section>`);
     }else if(['articles','notes','science','technology','business','travel','personal','books','book-summaries'].includes(slug)){
       const books=['books','book-summaries'].includes(slug);const category=['science','technology','business','travel','personal'].includes(slug)?slug[0].toUpperCase()+slug.slice(1):'';
       title=t(books?'Book summaries':category||'Articles',lang);
-      const rows=data.posts.filter(p=>p.type===(books?'book':'article')&&(!category||p.category===category));
+      const collection=data.posts.filter(p=>p.type===(books?'book':'article')&&(!category||p.category===category));
+      const rows=searchPosts(collection,query,topic,lang==='ar'?arabic.ui:{});
       let filters='';if(books)filters=`<div class="collection-toolbar"><p data-book-count>${rows.length} ${lang==='ar'?'كتب':'books'}</p><div class="filter-buttons"><button type="button" data-book-filter="All" aria-pressed="true">${lang==='ar'?'الكل':'All books'}</button><button type="button" data-book-filter="Bestsellers" aria-pressed="false">${t('NYT bestsellers',lang)}</button>${[...new Set(rows.map(p=>p.category))].map(c=>`<button type="button" data-book-filter="${escape(c)}">${escape(c)}</button>`).join('')}</div></div>`;
-      $('main').html(mast(title,description)+`<section class="section wrap">${filters}${rows.length?cards(rows,lang,books):books&&lang==='ar'?emptyArabicBooks:`<p>${lang==='ar'?'ستظهر المقالات الجديدة هنا.':'New notes will appear here as they are published.'}</p>`}</section>`+newsletter(data,lang));
+      const empty=query||topic?`<p class="collection-empty">${lang==='ar'?'لم نجد نتائج. جرب كلمات أخرى أو امسح الموضوع.':'No matches. Try different words or clear the topic.'}</p>`:books&&lang==='ar'?emptyArabicBooks:`<p>${lang==='ar'?'ستظهر المقالات الجديدة هنا.':'New notes will appear here as they are published.'}</p>`;
+      $('main').html(mast(title,description)+`<section class="section wrap">${discovery(slug,lang,collection,query,topic)}${books?filters:`<p class="result-count" role="status">${rows.length} ${lang==='ar'?'مقالاً':'articles'}</p>`}${rows.length?cards(rows,lang,books):empty}</section>`+newsletter(data,lang));
     }else if(slug==='gallery'){
       title=t('Gallery',lang);$('.gallery-grid').html(gallery(data.gallery,lang));$('.collection-toolbar').remove();$('.gallery-grid').before(`<div class="collection-toolbar"><p data-gallery-count aria-live="polite">${data.gallery.length} ${lang==='ar'?'صور':'photographs'}</p><div class="filter-buttons"><button type="button" data-gallery-filter="All" aria-pressed="true">${lang==='ar'?'الكل':'All'}</button>${[...new Set(data.gallery.map(g=>g.category))].filter(Boolean).map(category=>`<button type="button" data-gallery-filter="${escape(category)}" aria-pressed="false">${escape(category)}</button>`).join('')}</div></div>`);
     }else if(slug==='about'){
@@ -130,7 +166,7 @@ export function renderer(config,arabic){
     else{status=404;title=lang==='ar'?'الصفحة غير موجودة':'Page not found';$('main').html(mast(title,lang==='ar'?'هذه الصفحة غير متاحة.':'This page is unavailable.'));}
     if(!result&&!post){$('.newsletter').replaceWith(newsletter(data,lang));}
     if(slug!=='index')$('script[src="pixel-notes.js"],script[src="pixel-world.js"]').remove();
-    return {status,html:finish($,slug,lang,title,description,data,post,status,!!preview)};
+    return {status,html:finish($,slug,lang,title,description,data,post,status,!!preview,!!(query||topic))};
   }
   function gallery(rows,lang){return rows.map((g,i)=>`<figure class="gallery-item" data-category="${escape(g.category)}"><a class="gallery-open" href="/${escape(g.image)}" data-photo="${escape(path.basename(g.image).replace(/-(1600|640)\.webp$/,''))}" data-title="${escape(g.title)}" data-alt="${escape(g.alt)}">${picture(g.image,g.alt)}<span class="gallery-hover">${lang==='ar'?'عرض الصورة':'View image ↗'}</span></a><figcaption><small>${i+1} / ${escape(g.category)}</small><span>${escape(g.title)}</span><p>${lang==='ar'?'رحلة لندن — ديسمبر ٢٠٢٥':'London trip · December 2025'}</p></figcaption></figure>`).join('');}
   return {render,picture,safeImage};

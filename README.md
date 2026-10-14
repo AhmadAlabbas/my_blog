@@ -5,6 +5,22 @@ independent bookshelves, a shared gallery, contact messages, newsletter signup,
 and image uploads. Node.js runs the public site and backend. PHP and Python are
 not required to build or run this version.
 
+## Homepage and discovery
+
+In the dashboard's **Home, About & Work** section, choose three featured
+articles and edit the welcome introduction in English and Arabic. Existing
+page text stays editable. An unavailable Arabic translation is replaced by
+another published Arabic article in the featured selection.
+
+Article and book collections support combined text search and topic filters.
+`/search.html` and `/ar/search.html` search all published content in that
+language. Native GET forms work without JavaScript; dialog search also handles
+Arabic diacritics. Filtered pages stay out of the search index.
+
+Articles have estimated reading time, heading links, and recommendations
+ranked by shared topic and title/subtitle terms. The mobile browser checks
+cover home, contact, collections, reading pages, and search.
+
 ## Develop with Codex
 
 Use Node.js 24 (Node 22.13+ is also supported):

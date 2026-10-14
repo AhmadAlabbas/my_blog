@@ -6,15 +6,16 @@ function closeMenu() {
   if (!menuButton || !mobileMenu) return;
   mobileMenu.hidden = true;
   menuButton.setAttribute('aria-expanded', 'false');
-  menuButton.textContent = 'Menu';
+  menuButton.textContent = document.documentElement.lang==='ar'?'القائمة':'Menu';
 }
 menuButton?.addEventListener('click', () => {
   const open = menuButton.getAttribute('aria-expanded') !== 'true';
   menuButton.setAttribute('aria-expanded', String(open));
-  menuButton.textContent = open ? 'Close' : 'Menu';
+  menuButton.textContent = document.documentElement.lang==='ar'?(open?'إغلاق':'القائمة'):(open?'Close':'Menu');
   mobileMenu.hidden = !open;
 });
 mobileMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+document.addEventListener('click',event=>{if(!event.target.closest('.site-header'))closeMenu();});
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') {
     closeMenu(); menuButton.focus();
@@ -40,6 +41,7 @@ if (form && endpoint) {
 form?.addEventListener('submit',event=>{if(form.querySelector('input[type=email]').disabled || !form.getAttribute('action'))event.preventDefault();});
 
 // Lightweight local search: no network request or visitor data collection.
+const normalizeSearch=value=>String(value).normalize('NFKD').replace(/\p{M}/gu,'').replace(/ـ/g,'').replace(/[أإآٱ]/g,'ا').replace(/ى/g,'ي').toLowerCase();
 const searchDialog = document.querySelector('.search-dialog');
 const searchInput = document.querySelector('#search-input');
 document.querySelector('[data-open-search]')?.addEventListener('click', () => {
@@ -48,10 +50,10 @@ document.querySelector('[data-open-search]')?.addEventListener('click', () => {
 document.querySelector('[data-close-search]')?.addEventListener('click', () => searchDialog.close());
 searchDialog?.addEventListener('click', event => { if (event.target === searchDialog) searchDialog.close(); });
 searchInput?.addEventListener('input', () => {
-  const terms = searchInput.value.toLowerCase().trim().split(/\s+/);
+  const terms = normalizeSearch(searchInput.value).trim().split(/\s+/);
   let found = 0;
   document.querySelectorAll('.search-result').forEach(result => {
-    result.hidden = !terms.every(term => result.dataset.search.includes(term));
+    result.hidden = !terms.every(term => normalizeSearch(result.dataset.search).includes(term));
     if (!result.hidden) found++;
   });
   document.querySelector('.search-empty').hidden = found > 0;

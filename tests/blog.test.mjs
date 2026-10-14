@@ -7,6 +7,7 @@ import {createApp} from '../server/app.mjs';
 import {configuration,root} from '../server/config.mjs';
 import {seedStore} from '../server/store.mjs';
 import bcrypt from 'bcryptjs';
+import {load} from 'cheerio';
 
 let directory,db,server,base,config;
 const session={cookie:''},guest={cookie:''},second={cookie:''};
@@ -45,6 +46,49 @@ test('public Node pages preserve the English/Arabic content, shelf separation an
   assert.equal(images((await request('/gallery.html',null,guest)).text).length,10);
 });
 
+test('homepage selections, native search, topic filters and reading links work in both languages',async()=>{
+  for(const prefix of ['/','/ar/']){
+    const home=load((await request(prefix,null,guest)).text);
+    assert.equal(home('.featured-grid .card').length,3);
+    assert.equal(new Set(home('.featured-grid h3 a').map((_,el)=>home(el).attr('href')).get()).size,3);
+    assert(home('.welcome-intro').text().length>20);
+    assert.equal(home('.notebook-path-grid > a').length,3);
+    assert.equal(home('.site-footer .language-switch').length,0);
+    const query=prefix==='/ar/'?'الفيزياء':'physics';
+    const result=await request(prefix+'search.html?q='+encodeURIComponent(query)+'&topic=Science',null,guest);
+    assert.equal(result.status,200);const search=load(result.text);
+    assert(search('main .card').length>0);
+    search('main .card').each((_,el)=>assert.equal(search(el).attr('data-category'),'Science'));
+    assert.equal(search('meta[name="robots"]').attr('content'),'noindex,follow');
+    assert.equal(search('.desktop-nav [aria-current]').length,0);
+    assert.equal(search('#mobileMenu [aria-current]').attr('href'),prefix+'search.html');
+    assert.equal(search('.discovery-form input[name="q"]').attr('value'),query);
+    const empty=load((await request(prefix+'articles.html?q=impossible-no-matches',null,guest)).text);
+    assert.equal(empty('main .card').length,0);assert(empty('.collection-empty').length);
+  }
+  const book=load((await request('/book-summaries.html?q=atomic',null,guest)).text);
+  assert.equal(book('main .card').length,1);assert(book('main').text().includes('Atomic Habits'));
+  const english=load((await request('/search.html?q=Harry%20Potter',null,guest)).text);
+  const arabic=load((await request('/ar/search.html?q=Harry%20Potter',null,guest)).text);
+  assert.equal(english('main .card').length,7);assert.equal(arabic('main .card').length,0);
+  const plain=load((await request('/ar/articles.html?q='+encodeURIComponent('الهندسة'),null,guest)).text);
+  const marked=load((await request('/ar/articles.html?q='+encodeURIComponent('الْهَنْدَسَة'),null,guest)).text);
+  assert(plain('main .card').length>0);assert.equal(plain('main .card').length,marked('main .card').length);
+  const topicSearch=load((await request('/ar/articles.html?q='+encodeURIComponent('العلوم')+'&topic=Science',null,guest)).text);
+  assert(topicSearch('main .card').length>0);
+  const hostile='\"><script>alert("query")</script>';
+  const escaped=load((await request('/search.html?q='+encodeURIComponent(hostile),null,guest)).text);
+  assert.equal(escaped('main script').length,0);assert.equal(escaped('#collection-search').attr('value'),hostile);
+  const article=(await db.all("SELECT * FROM aa_posts WHERE type='article' AND category='Science'" )).find(p=>(p.body.match(/^## /gm)||[]).length>1);
+  for(const prefix of ['/','/ar/']){
+    const page=load((await request(prefix+article.slug+'.html',null,guest)).text);
+    assert(page('.reading-time').text());assert(page('.reading-contents a').length>1);
+    page('.reading-contents a').each((_,el)=>assert.equal(page(page(el).attr('href')).length,1));
+    const related=page('.related-grid .card');assert.equal(related.length,3);
+    related.each((_,el)=>{assert.equal(page(el).attr('data-category'),'Science');assert.notEqual(page(el).find('h3 a').attr('href'),prefix+article.slug+'.html');});
+  }
+});
+
 test('setup validates CSRF/token and locks once; anonymous dashboard access is rejected',async()=>{
   assert.equal((await request('/admin/',null,guest)).status,302);
   let r=await request('/admin/setup');const csrf=token(r.text);
@@ -79,6 +123,27 @@ test('draft privacy, authenticated previews, bilingual publishing and escaping',
   assert.equal((await request('/ar/node-test-note.html',null,guest)).status,404);
   const sitemap=(await request('/sitemap.xml',null,guest)).text;assert(sitemap.includes('/node-test-note.html'));assert(!sitemap.includes('/ar/node-test-note.html'));assert(sitemap.includes('image:loc'));assert(sitemap.includes('hreflang="ar"'));
   assert.equal((await save({id:String(postID),slug:'index'})).status,422);
+});
+
+test('dashboard homepage choices preserve existing content and unavailable Arabic translations stay private',async()=>{
+  const before=(await db.all('SELECT setting_value FROM aa_settings WHERE setting_key=?',['hero_intro']))[0].setting_value;
+  let r=await request('/admin/?section=pages');const $=load(r.text);
+  assert.equal($('select[name^="featured_"]').length,3);assert($('textarea[name="welcome_intro_ar"]').length);
+  assert($('textarea[name="welcome_intro"]').text().length>20);assert($('textarea[name="welcome_intro_ar"]').text().length>20);
+  const picks=[post.slug,'reading-beyond-the-summary','build-something-small-and-useful'];
+  r=await request('/admin/?section=pages',{csrf:token(r.text),action:'save_pages',featured_1:picks[0],featured_2:picks[1],featured_3:picks[2],welcome_intro:'My notebook <script>example</script>',welcome_intro_ar:'دفتر أفكاري'});
+  assert.equal(r.status,302);
+  assert.equal((await db.all('SELECT setting_value FROM aa_settings WHERE setting_key=?',['hero_intro']))[0].setting_value,before);
+  const home=load((await request('/',null,guest)).text);
+  assert.deepEqual(home('.featured-grid h3 a').map((_,el)=>home(el).attr('href')).get(),picks.map(slug=>'/'+slug+'.html'));
+  assert.equal(home('.welcome-intro script').length,0);assert.equal(home('.welcome-intro').text(),'My notebook <script>example</script>');
+  const ar=load((await request('/ar/',null,guest)).text);
+  assert.equal(ar('.featured-grid .card').length,3);assert(!ar('.featured-grid').text().includes(post.title_ar));
+  const search=load((await request('/ar/search.html?q='+encodeURIComponent(post.title_ar),null,guest)).text);assert.equal(search('main .card').length,0);
+  const csrf=token((await request('/admin/?section=pages')).text);
+  assert.equal((await request('/admin/?section=pages',{csrf,action:'save_pages',featured_1:'does-not-exist'})).status,422);
+  assert.equal((await db.all('SELECT setting_value FROM aa_settings WHERE setting_key=?',['featured_articles']))[0].setting_value,picks.join(','));
+  assert.equal((await save({slug:'search'})).status,422);
 });
 
 test('Arabic books have their own shelf and Arabic editor direction',async()=>{

@@ -63,7 +63,8 @@ export async function createApp(config=configuration()){
   });
   app.get(/^\/(?:ar\/)?(?:[a-z0-9-]+\.html)?$/,async(req,res)=>{
     const language=req.path.startsWith('/ar/')?'ar':'en';let slug=req.path.replace(/^\/ar\//,'/').replace(/^\//,'').replace(/\.html$/,'')||'index';slug={notes:'articles',books:'book-summaries'}[slug]||slug;
-    const data=await viewData(db,language,arabic);const page=render.render(slug,language,data);res.set('Cache-Control','no-cache').status(page.status).send(page.html);
+    const query=typeof req.query.q==='string'?req.query.q.slice(0,240):'',topic=typeof req.query.topic==='string'?req.query.topic.slice(0,80):'';
+    const data=await viewData(db,language,arabic);const page=render.render(slug,language,data,{query,topic});res.set('Cache-Control','no-cache').status(page.status).send(page.html);
   });
   app.use((_req,res)=>res.status(404).send('Not found'));
   app.use((error,_req,res,_next)=>{if(error.code==='LIMIT_FILE_SIZE'){res.status(422).send('Choose an image smaller than 8 MB.');return;}console.error('Blog request failed:',error.name);res.status(500).send('This request could not finish. Please try again.');});

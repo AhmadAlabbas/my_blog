@@ -6,10 +6,11 @@ import multer from 'multer';
 import sharp from 'sharp';
 import {escape,viewData,youtubeID,socialHosts,validSocial} from './render.mjs';
 import {equal,randomToken} from './security.mjs';
+import {starterSlugs,welcomeIntro} from './editorial.mjs';
 
 const navigation={overview:'Overview',articles:'Articles',books:'Book summaries',gallery:'Gallery',videos:'YouTube videos',media:'Media library',pages:'Home, About & Work',messages:'Messages',subscribers:'Subscribers',settings:'Blog settings',seo:'Search visibility',account:'Account'};
 const postKeys=['type','slug','title','subtitle','category','author','image','intro','body','ending','source_url','isbn','status','published_at'];
-const reserved=new Set(['index','about','work','contact','gallery','books','book-summaries','articles','notes','science','technology','business','travel','personal','privacy','credits','404','article','admin-preview']);
+const reserved=new Set(['index','about','work','contact','gallery','books','book-summaries','articles','notes','science','technology','business','travel','personal','privacy','credits','search','404','article','admin-preview']);
 const csrf=s=>`<input type="hidden" name="csrf" value="${s.csrf}">`;
 const field=(name,label,value='',type='text')=>`<label>${escape(label)}<input name="${name}" type="${type}" value="${escape(value)}"></label>`;
 const area=(name,label,value='',rows=8)=>`<label>${escape(label)}<textarea name="${name}" rows="${rows}">${escape(value)}</textarea></label>`;
@@ -94,10 +95,16 @@ export function registerAdmin(app,{db,config,guard,render,arabic}){
       }else if(action==='delete_gallery'){
         await db.transaction(async tx=>{await tx.run('DELETE FROM aa_gallery_translations WHERE gallery_id=?',[Number(body.id)||0]);await tx.run('DELETE FROM aa_gallery WHERE id=?',[Number(body.id)||0]);});
       }else if(action==='save_pages'||action==='save_settings'){
-        const keys=action==='save_pages'?['hero_title','hero_intro','about_title','about_body','work_body','hero_title_ar','hero_intro_ar','about_title_ar','about_body_ar','work_body_ar']:['name','tagline','contact_email','newsletter_intro','name_ar','tagline_ar','newsletter_intro_ar',...Object.keys(socialHosts).map(k=>'social_'+k)];
+        const keys=action==='save_pages'?['hero_title','hero_intro','welcome_intro','about_title','about_body','work_body','hero_title_ar','hero_intro_ar','welcome_intro_ar','about_title_ar','about_body_ar','work_body_ar']:['name','tagline','contact_email','newsletter_intro','name_ar','tagline_ar','newsletter_intro_ar',...Object.keys(socialHosts).map(k=>'social_'+k)];
         for(const [key,hosts] of Object.entries(socialHosts))if(body['social_'+key]&&!validSocial(body['social_'+key],hosts))throw Error('Use a valid HTTPS social profile URL.');
         if(body.contact_email&&!emailValid(body.contact_email))throw Error('Use a valid contact email.');
-        await db.transaction(async tx=>{for(const key of keys)if(Object.hasOwn(body,key))await set(tx,key,cut(body[key],key.includes('body')?50000:10000));});section=action==='save_pages'?'pages':'settings';
+        let featured;
+        if(action==='save_pages'&&Object.hasOwn(body,'featured_1')){
+          featured=[...new Set([1,2,3].map(index=>String(body['featured_'+index]||'')).filter(Boolean))];
+          const published=await db.all("SELECT slug FROM aa_posts WHERE type='article' AND status='published'");
+          if(featured.some(slug=>!published.some(post=>post.slug===slug)))throw Error('Choose published articles for the homepage.');
+        }
+        await db.transaction(async tx=>{for(const key of keys)if(Object.hasOwn(body,key))await set(tx,key,cut(body[key],key.includes('body')?50000:10000));if(featured)await set(tx,'featured_articles',featured.join(','));});section=action==='save_pages'?'pages':'settings';
       }else if(action==='save_video'||action==='delete_video'){
         const current=JSON.parse((await db.all('SELECT setting_value FROM aa_settings WHERE setting_key=?',['watch_videos']))[0]?.setting_value||'[]');const index=Number(body.id);
         if(action==='delete_video')current.splice(index,1);
@@ -157,7 +164,11 @@ export function registerAdmin(app,{db,config,guard,render,arabic}){
       main+=form('upload','<h2>Add a photo, artwork, or book cover</h2><p>PNG, JPEG, or WebP · Up to 8 MB.</p><input type="file" name="illustration" accept="image/png,image/jpeg,image/webp" required>','enctype="multipart/form-data"');
       main+='<div class="media-grid">'+media().map(file=>`<article class="panel">${render.picture(file,path.basename(file))}<small>${escape(file)}</small></article>`).join('')+'</div>';
     }else if(section==='pages'){
-      let fields='';for(const suffix of ['', '_ar']){fields+=suffix?'<div dir="rtl" lang="ar"><h2>Arabic pages</h2>':'<h2>English pages</h2>';for(const key of ['hero_title','hero_intro','about_title','about_body','work_body'])fields+=key.includes('title')?field(key+suffix,key.replaceAll('_',' '),s[key+suffix]):area(key+suffix,key.replaceAll('_',' '),s[key+suffix]);if(suffix)fields+='</div>';}
+      let fields='<h2>Featured articles</h2><p>Choose up to three published articles. Arabic pages use their published translations, with other articles filling any gaps. Empty choices use the default selection.</p>';
+      const featured=(s.featured_articles||starterSlugs.join(',')).split(',');
+      const articles=data.all.filter(post=>post.type==='article'&&post.status==='published');
+      for(let index=1;index<=3;index++)fields+=`<label>Featured article ${index}<select name="featured_${index}"><option value="">Automatic</option>${articles.map(post=>`<option value="${escape(post.slug)}" ${featured[index-1]===post.slug?'selected':''}>${escape(post.title)}</option>`).join('')}</select></label>`;
+      for(const suffix of ['', '_ar']){fields+=suffix?'<div dir="rtl" lang="ar"><h2>Arabic pages</h2>':'<h2>English pages</h2>';for(const key of ['hero_title','hero_intro','welcome_intro','about_title','about_body','work_body'])fields+=key.includes('title')?field(key+suffix,key.replaceAll('_',' '),s[key+suffix]):area(key+suffix,key.replaceAll('_',' '),s[key+suffix]??(key==='welcome_intro'?welcomeIntro[suffix?'ar':'en']:''));if(suffix)fields+='</div>';}
       main+=form('save_pages',fields);
     }else if(section==='settings'){
       let fields='';for(const key of ['name','tagline','contact_email','newsletter_intro','name_ar','tagline_ar','newsletter_intro_ar',...Object.keys(socialHosts).map(k=>'social_'+k)])fields+=field(key,key.replaceAll('_',' '),s[key],key.startsWith('social_')?'url':key==='contact_email'?'email':'text');main+=form('save_settings',fields);
