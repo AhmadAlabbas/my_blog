@@ -10,7 +10,8 @@
     "start": "node --env-file-if-exists=.env server.js",
     "dev": "node --env-file-if-exists=.env --watch server.js",
     "test": "node --test tests/*.test.mjs",
-    "test:mobile": "node source/tests/mobile-layout.mjs"
+    "test:mobile": "node source/tests/mobile-layout.mjs",
+    "test:scenes": "node source/tests/home-scenes.mjs"
   },
   "devDependencies": { "playwright-core": "1.64.0" },
   "dependencies": {

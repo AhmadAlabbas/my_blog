@@ -21,6 +21,15 @@ Articles have estimated reading time, heading links, and recommendations
 ranked by shared topic and title/subtitle terms. The mobile browser checks
 cover home, contact, collections, reading pages, and search.
 
+The homepage uses three original moving paper illustrations and an animated
+title ribbon in a warm cream, clay, copper, and olive palette. Story links,
+featured articles, gallery photos, and introductions come from the existing
+content. The motion control pauses the moving scenes and ribbon; reduced-motion
+and data-saving preferences show static artwork. Images remain as a fallback
+without JavaScript. No video player, audio, or remote media service is needed.
+Run `npm run test:scenes` against the running app to check actual moving pixels,
+pause/resume, offscreen behavior, reduced motion, and bilingual phone layouts.
+
 ## Develop with Codex
 
 Use Node.js 24 (Node 22.13+ is also supported):

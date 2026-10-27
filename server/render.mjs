@@ -2,7 +2,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import {load} from 'cheerio';
-import {featuredPosts,readingMinutes,relatedPosts,searchPosts,welcomeIntro} from './editorial.mjs';
+import {readingMinutes,relatedPosts,searchPosts} from './editorial.mjs';
+import {homepage} from './homepage.mjs';
 
 export const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const pageURL=(slug,lang='en')=>(lang==='ar'?'/ar/':'/')+(slug==='index'?'':slug+'.html');
@@ -87,6 +88,7 @@ export function renderer(config,arabic){
     $('script[src^="config.js"]').remove();$('head').append(`<script>window.SITE_CONFIG=${JSON.stringify({contactAction:config.publicURL+'/api/contact',newsletterAction:config.publicURL+'/api/subscribe'}).replaceAll('<','\\u003c')}</script>`);
     $('script[src*="arabic-ui.js"]').attr('src','/arabic-ui.js');
     $('head').append('<link rel="stylesheet" href="/enhancements.css">');
+    if($('body').hasClass('home-cinema'))$('head').append('<link rel="stylesheet" href="/home-scenes.css">');
     // Bust frontend caches on deployment, including the updated search behavior.
     $('script[src]').each((_,el)=>{const filename=$(el).attr('src').split('?')[0].replace(/^\//,'');const file=path.join(config.dist,filename);if(fs.existsSync(file))$(el).attr('src','/'+filename+'?v='+crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,10));});
     $('link[href*=".css"]').each((_,el)=>{const filename=$(el).attr('href').split('?')[0].replace(/^\//,'');const file=path.join(config.dist,filename);if(fs.existsSync(file))$(el).attr('href','/'+filename+'?v='+crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,10));});
@@ -119,23 +121,11 @@ export function renderer(config,arabic){
     else if(post){title=post.title;description=post.subtitle;$('main').html(postMain(post,lang,data,!!preview));}
     else if(slug==='index'){
       title=lang==='ar'?'كتب وأفكار وحياة يقودها الفضول':'Books, ideas, and a curious life';
-      $('.personal-hero-copy h1').html(escape(setting(data,'hero_title',lang)).replaceAll('\n','<br>'));$('.personal-hero-copy .dek').text(setting(data,'hero_intro',lang));
-      $('.personal-hero-copy .dek').after(`<p class="welcome-intro">${escape(setting(data,'welcome_intro',lang,welcomeIntro[lang]))}</p>`);
-      $('.personal-hero-links').append(`<a class="text-link" href="${pageURL('search',lang)}">${lang==='ar'?'ابحث عن فكرة':'Find an idea'}</a>`);
-      const articles=data.posts.filter(p=>p.type==='article');const featured=featuredPosts(data.posts,data.settings.featured_articles);
-      if(featured.length){
-        $('#featured .section-head .eyebrow').text(lang==='ar'?'ابدأ من هنا':'Start here');
-        $('#featured .section-head h2').text(lang==='ar'?'ثلاث أفكار تستحق القراءة.':'Three notes to begin with.');
-        $('.featured-blocks').replaceWith(`<div class="featured-grid">${featured.map(p=>card(p,lang)).join('')}</div>`);
-      }else $('#featured').remove();
-      $('#articles .card-grid').replaceWith(cards(articles.slice(0,6),lang));
-      $('#articles .section-head > .text-link').attr('href',pageURL('articles',lang)).text(lang==='ar'?`تصفح ${articles.length} مقالاً`:`Browse all ${articles.length} articles`);
-      $('#featured').before(`<section class="section wrap notebook-paths"><div class="section-head"><div><p class="eyebrow">${lang==='ar'?'مسارات الفضول':'Where curiosity leads'}</p><h2>${lang==='ar'?'اختر ما يثير اهتمامك.':'Follow what interests you.'}</h2></div></div><div class="notebook-path-grid"><a href="${pageURL('work',lang)}"><span class="eyebrow">01</span><h3>${lang==='ar'?'مشاريع وأفكار':'Projects & ideas'}</h3><p>${lang==='ar'?'استكشف ما أعمل عليه.':'Explore the things I’m working on.'}</p></a><a href="${pageURL('book-summaries',lang)}"><span class="eyebrow">02</span><h3>${lang==='ar'?'كتب وقراءة':'Books & reading'}</h3><p>${lang==='ar'?'كتاب جديد ومنظور مختلف.':'A new book, a different perspective.'}</p></a><a href="${pageURL('articles',lang)}?topic=Science"><span class="eyebrow">03</span><h3>${lang==='ar'?'علوم وتعلم':'Science & learning'}</h3><p>${lang==='ar'?'أسئلة عن العالم وكيف يعمل.':'Questions about the world and how it works.'}</p></a></div></section>`);
-      const books=data.posts.filter(p=>p.type==='book');
-      const carousel=`<div class="book-carousel" data-book-carousel><div class="book-carousel-toolbar"><p>${t('Every book, a different world.',lang)}</p><button type="button" data-book-carousel-toggle aria-pressed="false" hidden>${t('Pause scrolling',lang)}</button></div><div class="book-carousel-viewport" data-book-viewport tabindex="0"><div class="book-carousel-track"><div class="book-carousel-group">${books.map(p=>card(p,lang)).join('')}</div></div></div></div>`;
-      $('#reading .book-carousel,#reading .arabic-books-empty').remove();$('#reading > .wrap').append(books.length?carousel:emptyArabicBooks);
-      $('.gallery-grid.home-gallery').html(gallery(data.gallery.slice(0,3),lang));
-      $('.about-wash h2').text(setting(data,'about_title',lang));$('.about-wash .lead').text(setting(data,'hero_intro',lang));
+      const viewer=$('main .photo-viewer').toString();
+      $('body').addClass('home-cinema');
+      $('main').html(homepage({data,lang,escape,pageURL,picture,card,cards,gallery,newsletter,setting})+viewer);
+      $('script[src="motion.js"],script[src="living-art.js"],script[src="pixel-notes.js"],script[src="pixel-world.js"]').remove();
+      $('body').append('<script src="/home-scenes.js" defer></script>');
     }else if(slug==='search'){
       title=lang==='ar'?'ابحث في المدونة':'Search the notebook';
       const rows=searchPosts(data.posts,query,topic,lang==='ar'?arabic.ui:{});

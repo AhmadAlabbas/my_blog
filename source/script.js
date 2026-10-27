@@ -157,7 +157,8 @@ document.querySelectorAll('[data-book-carousel]').forEach(carousel => {
   let manualPause = reduced.matches;
   let hovering = false, focused = false, touching = false, visible = true;
   let frame = 0, previous = 0, resumeAt = 0;
-  const running = () => !manualPause && !hovering && !focused && !touching && visible && !document.hidden;
+  const cinema=document.querySelector('.home-cinema');
+  const running = () => !manualPause && !hovering && !focused && !touching && visible && !document.hidden && !cinema?.classList.contains('is-paused') && !navigator.connection?.saveData;
   function updateLabel() {
     toggle.textContent = manualPause ? 'Resume scrolling' : 'Pause scrolling';
     toggle.setAttribute('aria-pressed', String(manualPause));
@@ -191,6 +192,7 @@ document.querySelectorAll('[data-book-carousel]').forEach(carousel => {
   viewport.addEventListener('wheel', () => { resumeAt = performance.now() + 4000; }, {passive:true});
   reduced.addEventListener('change', () => { manualPause = reduced.matches; updateLabel(); sync(); });
   document.addEventListener('visibilitychange', sync);
+  if(cinema)new MutationObserver(sync).observe(cinema,{attributes:true,attributeFilter:['class']});
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(entries => { visible = entries[0].isIntersecting; sync(); }).observe(carousel);
   }
