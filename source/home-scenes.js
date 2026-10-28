@@ -8,6 +8,9 @@
   const control = root.querySelector('[data-story-motion]');
   const arabic = document.documentElement.lang === 'ar';
   const tau = Math.PI * 2;
+  const artworkURL = new URL('./advanced-art.js',document.currentScript?.src || location.href);
+  artworkURL.search = new URL(document.currentScript?.src || location.href).search;
+  let advancedModule;
   let paused = false, frameRequest = 0, lastFrame = 0, elapsed = 0;
   const policyOff = () => reduced.matches || Boolean(connection?.saveData);
   const texture = document.createElement('canvas');
@@ -30,6 +33,42 @@
     return {canvas, context, type: canvas.dataset.storyCanvas, width: 0, height: 0, visible: false, frames: 0, pattern: context.createPattern(texture, 'repeat')};
   }).filter(Boolean);
   if (!states.length) return;
+
+  // Paint the detailed sculptures into the same 2D surface. The illustrated
+  // first frame remains available during loading and on devices without WebGL.
+  function releaseArtwork(state) {
+    state.artwork?.dispose();
+    state.artwork = state.artCanvas = null;
+    state.canvas.dataset.renderer = 'illustration';
+  }
+  function requestArtwork(state) {
+    if (state.advancedAttempted || state.upgradePending || !running(state)) return;
+    state.upgradePending = true;
+    const start = async () => {
+      try {
+        if (!running(state)) return;
+        advancedModule ||= import(artworkURL.href);
+        const {createArtwork} = await advancedModule;
+        if (!running(state)) return;
+        state.advancedAttempted = true;
+        state.artCanvas = document.createElement('canvas');
+        state.artwork = createArtwork(state.artCanvas,state.type);
+        state.artwork.resize(state.width,state.height,state.ratio);
+        state.upgradeStarted = performance.now();
+        state.artCanvas.addEventListener('webglcontextlost',event=>{
+          event.preventDefault();
+          releaseArtwork(state);
+          if (state.visible) render(state);
+        },{once:true});
+      } catch {
+        // Missing GPU support or an interrupted asset request must never hide content.
+        state.advancedAttempted = true;
+        releaseArtwork(state);
+      } finally { state.upgradePending = false; }
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(start,{timeout:1200});
+    else setTimeout(start,200);
+  }
 
   function path(ctx, draw, fill, stroke, width = 1) {
     ctx.beginPath(); draw(ctx);
@@ -222,15 +261,28 @@
     const background = ctx.createLinearGradient(0, 0, width, height * .7);
     background.addColorStop(0, colors[0]); background.addColorStop(1, colors[1]);
     ctx.fillStyle = background; ctx.fillRect(0, 0, width, height);
-    const mobile = width < 720;
-    const scale = mobile ? Math.min(width / 700, height / 500) : Math.min(width / 1250, height / 750);
-    ctx.save();
-    ctx.translate(mobile ? width * .5 : width * .725, mobile ? height * .49 : height * .49);
-    ctx.scale(scale, scale);
-    if (type === 'signals') signals(ctx, elapsed);
-    else if (type === 'reading') reading(ctx, elapsed);
-    else studio(ctx, elapsed);
-    ctx.restore();
+    const blend=state.artwork?Math.min(1,Math.max(0,(performance.now()-state.upgradeStarted)/450)):0;
+    if (blend<1) {
+      const mobile = width < 720;
+      const scale = mobile ? Math.min(width / 700, height / 500) : Math.min(width / 1250, height / 750);
+      ctx.save();ctx.globalAlpha=1-blend;
+      ctx.translate(mobile ? width * .5 : width * .725, mobile ? height * .49 : height * .49);
+      ctx.scale(scale, scale);
+      if (type === 'signals') signals(ctx, elapsed);
+      else if (type === 'reading') reading(ctx, elapsed);
+      else studio(ctx, elapsed);
+      ctx.restore();
+    }
+    if (state.artwork) {
+      try {
+        if(state.artwork.lost)throw Error('Artwork context unavailable');
+        state.artwork.render(elapsed);
+        ctx.globalAlpha=blend;
+        ctx.drawImage(state.artCanvas,0,0,width,height);
+        ctx.globalAlpha=1;
+        state.canvas.dataset.renderer='sculpture';
+      } catch { ctx.globalAlpha=1;releaseArtwork(state);render(state);return; }
+    } else state.canvas.dataset.renderer='illustration';
     if (state.pattern) { ctx.globalAlpha = .29; ctx.fillStyle = state.pattern; ctx.fillRect(0, 0, width, height); ctx.globalAlpha = 1; }
     state.canvas.dataset.frame = String(++state.frames);
   }
@@ -242,6 +294,7 @@
     state.width = width; state.height = height; state.ratio = ratio;
     state.canvas.width = Math.max(1, Math.round(width * ratio));
     state.canvas.height = Math.max(1, Math.round(height * ratio));
+    state.artwork?.resize(width,height,ratio);
     render(state);
   }
   function running(state) { return !paused && !policyOff() && !document.hidden && state.visible; }
@@ -269,6 +322,7 @@
       control.setAttribute('aria-label', control.textContent);
     }
     states.forEach(state => { state.canvas.dataset.motionState = !state.visible || document.hidden ? 'offscreen' : stopped ? 'paused' : 'running'; });
+    states.filter(running).forEach(requestArtwork);
     if (states.some(running) && !frameRequest) frameRequest = requestAnimationFrame(tick);
     else if (!states.some(running) && frameRequest) { cancelAnimationFrame(frameRequest); frameRequest = 0; lastFrame = 0; }
   }
@@ -293,7 +347,11 @@
   reduced.addEventListener('change', sync);
   connection?.addEventListener?.('change', sync);
   document.addEventListener('visibilitychange', sync);
-  window.addEventListener('pagehide', () => { if (frameRequest) cancelAnimationFrame(frameRequest); frameRequest = 0; lastFrame = 0; });
+  window.addEventListener('pagehide', event => {
+    if (frameRequest) cancelAnimationFrame(frameRequest);
+    frameRequest = 0; lastFrame = 0;
+    if(!event.persisted)states.forEach(releaseArtwork);
+  });
   window.addEventListener('pageshow', sync);
   sync();
 })();

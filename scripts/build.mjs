@@ -9,6 +9,10 @@ fs.cpSync(path.join(root,'source/assets'),path.join(output,'assets'),{recursive:
 for(const entry of fs.readdirSync(path.join(root,'source'))){
   if(/\.(css|js|svg)$/.test(entry))fs.copyFileSync(path.join(root,'source',entry),path.join(output,entry));
 }
+// Self-host the pinned 3D engine; the homepage makes no CDN requests.
+fs.mkdirSync(path.join(output,'vendor'));
+for(const name of ['three.module.js','three.core.js'])fs.copyFileSync(path.join(root,'node_modules/three/build',name),path.join(output,'vendor',name));
+fs.copyFileSync(path.join(root,'node_modules/three/LICENSE'),path.join(output,'vendor/THREE-LICENSE.txt'));
 fs.mkdirSync(path.join(output,'admin'));
 for(const name of ['admin.css','admin.js'])fs.copyFileSync(path.join(root,'source/backend/admin',name),path.join(output,'admin',name));
 // HTML templates retain the supplied artwork, layouts and complete translations.

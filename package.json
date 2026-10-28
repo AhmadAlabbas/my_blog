@@ -4,22 +4,28 @@
   "private": true,
   "type": "module",
   "main": "server.js",
-  "engines": { "node": ">=22.13.0 <25" },
+  "engines": {
+    "node": ">=22.13.0 <25"
+  },
   "scripts": {
     "build": "node scripts/build.mjs",
     "start": "node --env-file-if-exists=.env server.js",
     "dev": "node --env-file-if-exists=.env --watch server.js",
     "test": "node --test tests/*.test.mjs",
     "test:mobile": "node source/tests/mobile-layout.mjs",
-    "test:scenes": "node source/tests/home-scenes.mjs"
+    "test:scenes": "node source/tests/home-scenes.mjs",
+    "test:sculptures": "node source/tests/advanced-scenes.mjs"
   },
-  "devDependencies": { "playwright-core": "1.64.0" },
+  "devDependencies": {
+    "playwright-core": "1.64.0"
+  },
   "dependencies": {
     "bcryptjs": "3.0.3",
     "cheerio": "1.2.0",
     "express": "5.3.0",
     "multer": "2.4.0",
     "mysql2": "3.24.6",
-    "sharp": "0.35.5"
+    "sharp": "0.35.5",
+    "three": "0.186.1"
   }
 }

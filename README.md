@@ -21,14 +21,21 @@ Articles have estimated reading time, heading links, and recommendations
 ranked by shared topic and title/subtitle terms. The mobile browser checks
 cover home, contact, collections, reading pages, and search.
 
-The homepage uses three original moving paper illustrations and an animated
-title ribbon in a warm cream, clay, copper, and olive palette. Story links,
+The homepage uses original animated sculptures (a copper brain, a paper aircraft,
+and an opening book) and a moving title ribbon in a warm cream, clay, copper,
+and olive palette. The detailed scenes load only when visible and use a
+self-hosted, pinned Three.js engine; illustrations appear immediately and remain
+available when WebGL or the optional engine download fails. Story links,
 featured articles, gallery photos, and introductions come from the existing
 content. The motion control pauses the moving scenes and ribbon; reduced-motion
-and data-saving preferences show static artwork. Images remain as a fallback
+and data-saving preferences show static artwork without downloading the 3D engine.
+Images remain as a fallback
 without JavaScript. No video player, audio, or remote media service is needed.
 Run `npm run test:scenes` against the running app to check actual moving pixels,
 pause/resume, offscreen behavior, reduced motion, and bilingual phone layouts.
+`npm run test:sculptures` requires all three detailed scenes to render with
+changing pixels and verifies blocked-download, GPU-loss, and motion-policy
+fallbacks. Its software GPU is used only for browser testing.
 
 ## Develop with Codex
 

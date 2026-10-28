@@ -20,7 +20,7 @@ export async function createApp(config=configuration()){
   app.get(/^\/ar$/,(_req,res)=>res.redirect(301,'/ar/'));
   app.use('/assets/uploads',express.static(config.uploadDir,{dotfiles:'deny',index:false}));
   app.use((req,res,next)=>{if(req.path==='/arabic-ui.js'){res.type('js').send(fs.readFileSync(path.join(config.dist,'templates/arabic-ui.js')));return;}if(req.path.includes('/templates/')||req.path.endsWith('.php')&&!req.path.startsWith('/api/')&&!req.path.startsWith('/admin/')){res.status(404).send('Not found');return;}next();});
-  for(const folder of ['assets','admin'])app.use('/'+folder,express.static(path.join(config.dist,folder),{dotfiles:'deny',index:false}));
+  for(const folder of ['assets','admin','vendor'])app.use('/'+folder,express.static(path.join(config.dist,folder),{dotfiles:'deny',index:false}));
   app.get(/^\/[a-zA-Z0-9-]+\.(css|js|svg)$/,express.static(config.dist,{dotfiles:'deny',index:false}));
   registerAdmin(app,{db,config,guard,render,arabic});
   const lang=req=>(req.body?.lang||req.query.lang)==='ar'?'ar':'en';

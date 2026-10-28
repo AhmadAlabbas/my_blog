@@ -74,3 +74,4 @@ jobs:
           export CHROMIUM_PATH="$(node -e 'process.stdout.write(require("playwright-core").chromium.executablePath())')"
           npm run test:mobile
           npm run test:scenes
+          npm run test:sculptures
