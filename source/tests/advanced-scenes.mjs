@@ -44,6 +44,13 @@ async function advancing(page,target,renderer){
   const after=await frame(page,target);
   assert(before.pixels!==after.pixels,`${renderer}: actual artwork pixels must change`);
 }
+async function matchingPoster(page,target){
+  await page.waitForFunction(target=>document.querySelector(target)?.dataset.renderer==='poster',target);
+  const before=await frame(page,target);await turns(page,15);const after=await frame(page,target);
+  assert.equal(after.count,before.count,'Static fallback must not switch to an older illustration');
+  assert.equal(await page.locator(target).evaluate(el=>getComputedStyle(el).opacity),'0');
+  assert(await page.locator(target).evaluate(el=>{const img=el.closest('.home-story-scene').querySelector('.home-story-poster img');return img.complete&&img.naturalWidth>0&&img.currentSrc.includes('/assets/home-scenes/');}),'The current sculpture poster remains visible');
+}
 async function readable(page){
   assert((await page.locator('h1').innerText()).trim().length>8);
   assert(await page.locator('.home-story-copy a[href]').count()>0,'Story links remain usable');
@@ -72,6 +79,27 @@ try{
     await context.close();
   }
 
+  // A slow first visit must show the current design, without a page refresh or layout swap.
+  {
+    const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'no-preference'});
+    let release;const gate=new Promise(resolve=>release=resolve);
+    await context.route('**/advanced-art.js*',async route=>{await gate;await route.continue();});
+    const page=await context.newPage();let navigations=0;
+    page.on('framenavigated',frame=>{if(frame===page.mainFrame())navigations++;});
+    try{
+      await page.goto(new URL('/',base).href,{waitUntil:'domcontentloaded'});
+      await page.locator('.home-story-poster img').first().evaluate(img=>img.decode());
+      await matchingPoster(page,studio);
+      const before=await page.locator('h1').boundingBox();
+      release();
+      await page.waitForFunction(target=>document.querySelector(target)?.dataset.renderer==='sculpture',studio,{timeout:30000});
+      const after=await page.locator('h1').boundingBox();
+      assert(Math.abs(after.y-before.y)<1&&Math.abs(after.height-before.height)<1,'Starting motion does not shift page content');
+      assert.equal(navigations,1,'The artwork starts without a page refresh');
+      fallbackChecks++;
+    }finally{release();await context.close();}
+  }
+
   // A failed optional module download must retain animated first-party illustrations.
   {
     const context=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'no-preference'});
@@ -83,7 +111,7 @@ try{
     await page.locator(studio).scrollIntoViewIfNeeded();
     await failedRequest;
     assert(intercepted,'The optional detailed-artwork request was actually blocked');
-    await advancing(page,studio,'illustration');
+    await matchingPoster(page,studio);
     await readable(page);assert.deepEqual(errors,[]);
     fallbackChecks++;
     await context.close();
@@ -104,7 +132,7 @@ try{
     await open(page);
     await page.locator(studio).scrollIntoViewIfNeeded();
     await page.waitForFunction(()=>window.__webglAttempts>0,null,{timeout:20000});
-    await advancing(page,studio,'illustration');
+    await matchingPoster(page,studio);
     await readable(page);assert.deepEqual(errors,[]);
     fallbackChecks++;
     await context.close();
@@ -130,8 +158,8 @@ try{
       const extension=window.__artGL[0]?.getExtension('WEBGL_lose_context');
       if(!extension)return false;extension.loseContext();return true;
     }),'Software WebGL exposes context-loss testing');
-    await page.waitForFunction(target=>document.querySelector(target)?.dataset.renderer==='illustration',studio,{timeout:10000});
-    await advancing(page,studio,'illustration');
+    await page.waitForFunction(target=>document.querySelector(target)?.dataset.renderer==='poster',studio,{timeout:10000});
+    await matchingPoster(page,studio);
     await readable(page);assert.deepEqual(errors,[]);
     fallbackChecks++;
     await context.close();
@@ -152,8 +180,8 @@ try{
       await turns(page,3);
       const before=await frame(page,target);await turns(page,15);const after=await frame(page,target);
       assert.equal(after.count,before.count,policy+': no continued rendering');
-      assert(after.pixels===before.pixels,policy+': retain a complete still illustration');
-      assert.equal(after.renderer,'illustration');
+      assert(after.pixels===before.pixels,policy+': retain the current sculpture poster');
+      assert.equal(after.renderer,'poster');
     }
     assert.deepEqual(requests,[],policy+': detailed engine is not downloaded');
     await readable(page);assert.deepEqual(errors,[]);

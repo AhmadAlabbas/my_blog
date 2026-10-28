@@ -31,8 +31,10 @@
 .home-story-scene canvas,
 .home-story-poster { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; }
 .home-story-poster { background: #ffffff; }
-.home-story-poster img { width: 66%; height: 100%; margin-inline-start: 34%; object-fit: cover; mix-blend-mode: multiply; }
-.home-story-scene:has(canvas[data-frame]) .home-story-poster { visibility: hidden; }
+.home-story-poster { overflow: hidden; }
+.home-story-poster img { position: absolute; max-width: none; width: auto; height: 100%; left: 72.5%; transform: translateX(-72.5%); }
+.home-story-scene canvas { opacity: 0; }
+.home-story-scene canvas[data-renderer="sculpture"] { opacity: 1; }
 .home-story-copy {
   position: relative;
   min-width: 0;
@@ -136,7 +138,7 @@
 .home-motion-control[aria-pressed=true]::before { content: '▷'; }
 .home-motion-control:disabled { cursor: default; opacity: .8; }
 .home-motion-control[hidden] { display: none; }
-html[lang=ar] .home-story-scene canvas { transform: scaleX(-1); }
+html[lang=ar] .home-story-scene canvas, html[lang=ar] .home-story-poster { transform: scaleX(-1); }
 html[lang=ar] .home-cinema h1, html[lang=ar] .home-cinema h2 { letter-spacing: 0; }
 html[lang=ar] .home-story-copy h1 { font-size: clamp(40px,4vw,60px); line-height: 1.4; }
 html[lang=ar] .home-story-copy h2 { font-size: clamp(30px,2.8vw,43px); line-height: 1.5; }
@@ -162,7 +164,7 @@ html[lang=ar] .home-about h2 { font-family: var(--serif); line-height: 1.5; }
   .home-story-scene canvas { position: relative; inset: auto; flex: none; width: 100%; height: clamp(260px,76vw,440px); z-index: -1; }
   .home-story-poster { top: 60px; bottom: auto; height: clamp(260px,76vw,440px); }
   .home-story-hero .home-story-poster { top: 110px; }
-  .home-story-poster img { width: 100%; margin: 0; }
+  .home-story-poster img { width: auto; margin: 0; left: 50%; transform: translateX(-50%); }
   .home-story-copy { width: auto; margin: 0 16px; padding: 28px; border-radius: 8px; }
   .home-story-copy h1 { font-size: clamp(40px,10vw,52px); line-height: 1.08; }
   .home-story-copy h2 { font-size: 34px; line-height: 1.18; }

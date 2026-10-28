@@ -6,7 +6,7 @@ export function homepage({data,lang,escape:e,pageURL:url,picture,card,cards,gall
   const books=data.posts.filter(post=>post.type==='book');
   const selected=featuredPosts(data.posts,data.settings.featured_articles);
   const lead=selected[0];
-  const art=(kind,poster,eager=false)=>`<div class="home-story-poster" aria-hidden="true">${picture(poster,'').replace('loading="lazy"',eager?'loading="eager" fetchpriority="high"':'loading="lazy"')}</div><canvas data-story-canvas="${kind}" width="1200" height="750" aria-hidden="true"></canvas>`;
+  const art=(kind,_poster,eager=false)=>`<picture class="home-story-poster" aria-hidden="true"><source media="(max-width:700px)" srcset="/assets/home-scenes/${kind}-mobile.webp"><img src="/assets/home-scenes/${kind}.webp" alt="" width="1440" height="865" loading="${eager?'eager':'lazy'}" ${eager?'fetchpriority="high"':''}></picture><canvas data-story-canvas="${kind}" width="1200" height="750" aria-hidden="true"></canvas>`;
   const link=(slug,label,style='home-story-link')=>`<a class="${style}" href="${url(slug,lang)}"><span>${e(label)}</span><span aria-hidden="true">${ar?'←':'↗'}</span></a>`;
   const quotes=(articles.length?articles:data.posts).slice(0,8);
   const quoteRow=(offset)=>{

@@ -24,11 +24,12 @@ cover home, contact, collections, reading pages, and search.
 The homepage uses original animated sculptures (a glossy blue brain, a paper aircraft,
 and an opening book) and a moving title ribbon on a black-and-white base with bright blue, red, yellow,
 and green accents. The detailed scenes load only when visible and use a
-self-hosted, pinned Three.js engine; illustrations appear immediately and remain
-available when WebGL or the optional engine download fails. Story links,
+self-hosted, pinned Three.js engine; matching desktop/mobile sculpture posters appear immediately and remain
+available when WebGL or the optional engine download fails. The first live frame
+uses the same pose, so loading does not swap older artwork into the homepage. Story links,
 featured articles, gallery photos, and introductions come from the existing
 content. The motion control pauses the moving scenes and ribbon; reduced-motion
-and data-saving preferences show static artwork without downloading the 3D engine.
+and data-saving preferences show the same static posters without downloading the 3D engine.
 Images remain as a fallback
 without JavaScript. No video player, audio, or remote media service is needed.
 Run `npm run test:scenes` against the running app to check actual moving pixels,
@@ -36,6 +37,10 @@ pause/resume, offscreen behavior, reduced motion, and bilingual phone layouts.
 `npm run test:sculptures` requires all three detailed scenes to render with
 changing pixels and verifies blocked-download, GPU-loss, and motion-policy
 fallbacks. Its software GPU is used only for browser testing.
+After changing sculpture geometry or colors, regenerate the matching stills:
+run the local app, then `node scripts/render-scene-posters.mjs` (set
+`BLOG_TEST_BASE_URL` if using another port), and rebuild. The committed posters
+keep first paint consistent with the live artwork without a production GPU.
 
 ## Develop with Codex
 
