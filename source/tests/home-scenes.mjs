@@ -147,6 +147,10 @@ try{
         assert(copy&&art&&art.y+art.height<=copy.y+2,`${route}: mobile introduction follows the artwork`);
       }
       await stationary(page,studio);
+      await page.locator('.site-footer').scrollIntoViewIfNeeded();
+      await page.waitForFunction(()=>document.body.classList.contains('is-footer-visible'));
+      assert(!(await motion.isVisible()),'Motion control must not cover footer links');
+      assert.equal(await page.locator('.footer-nav').evaluate(el=>getComputedStyle(el).backgroundColor),'rgba(0, 0, 0, 0)','Footer links share the footer surface');
       layoutChecks++;
     }
     await context.close();

@@ -20,7 +20,7 @@
   const random = () => { randomSeed = (randomSeed * 16807) % 2147483647; return randomSeed / 2147483647; };
   if (textureContext) {
     for (let n = 0; n < 2300; n++) {
-      textureContext.fillStyle = n % 3 ? '#70472d' : '#fffdf1';
+      textureContext.fillStyle = n % 3 ? '#275aff' : '#ffffff';
       textureContext.globalAlpha = .12 + random() * .18;
       textureContext.fillRect(random() * 128, random() * 128, .4 + random(), .4 + random());
     }
@@ -97,7 +97,7 @@
   function ground(ctx, y, width = 280) {
     ctx.save(); ctx.scale(1, .22);
     const gradient = ctx.createRadialGradient(0, y / .22, 5, 0, y / .22, width);
-    gradient.addColorStop(0, '#5f38242b'); gradient.addColorStop(1, '#5f382400');
+    gradient.addColorStop(0, '#182c592b'); gradient.addColorStop(1, '#182c5900');
     circle(ctx, 0, y / .22, width, gradient); ctx.restore();
   }
 
@@ -106,11 +106,11 @@
     ground(ctx, 243, 315);
     // The sun and fine orbital lines frame the paper sculpture.
     const sun = ctx.createRadialGradient(95, -94, 5, 90, -60, 190);
-    sun.addColorStop(0, '#f4c981'); sun.addColorStop(1, '#d58c50');
+    sun.addColorStop(0, '#ffdf36'); sun.addColorStop(1, '#ffb600');
     circle(ctx, 90, -60, 179, sun);
     ctx.save(); ctx.translate(90, -60); ctx.rotate(-.35 + Math.sin(time * .12) * .03); ctx.scale(1.35, .55);
-    circle(ctx, 0, 0, 214, null, '#aa6c424d', 1.5);
-    circle(ctx, 0, 0, 238, null, '#aa6c4235', 1);
+    circle(ctx, 0, 0, 214, null, '#275aff4d', 1.5);
+    circle(ctx, 0, 0, 238, null, '#275aff35', 1);
     ctx.restore();
 
     // A fan of folded sheets, each with its own soft edge and cast shadow.
@@ -120,37 +120,37 @@
       ctx.rotate(-.27 + sheet * .075 + Math.sin(time * .22) * .018);
       shadow(ctx, .11, 20, 11);
       const paper = ctx.createLinearGradient(-190, -70, 200, 120);
-      paper.addColorStop(0, sheet % 2 ? '#f9eed4' : '#fff7e7');
-      paper.addColorStop(.64, sheet % 2 ? '#ede0bd' : '#f4e7cb');
-      paper.addColorStop(1, '#ccb38c');
+      paper.addColorStop(0, sheet % 2 ? '#f9fcff' : '#ffffff');
+      paper.addColorStop(.64, sheet % 2 ? '#e1ebff' : '#eef4ff');
+      paper.addColorStop(1, '#aec8ff');
       path(ctx, c => {
         c.moveTo(-232, -57);
         c.bezierCurveTo(-98, -138 - bend, 35, -32 + bend, 222, -103);
         c.lineTo(245, 112);
         c.bezierCurveTo(67, 195, -86, 70, -218, 171);
         c.closePath();
-      }, paper, '#b5956d55', 1);
+      }, paper, '#275aff55', 1);
       noShadow(ctx);
-      bezier(ctx, [[-219, 166], [-87, 67], [75, 193], [242, 110]], '#b89a7770', 1.3);
+      bezier(ctx, [[-219, 166], [-87, 67], [75, 193], [242, 110]], '#457aff70', 1.3);
       if (sheet === 0) {
         for (let line = 0; line < 6; line++) {
           const offset = line * 19;
-          bezier(ctx, [[-180, 10 + offset], [-68, -48 + offset], [30, 48 + offset], [175, -7 + offset]], '#8f755342', 1.1);
+          bezier(ctx, [[-180, 10 + offset], [-68, -48 + offset], [30, 48 + offset], [175, -7 + offset]], '#275aff42', 1.1);
         }
         ctx.save(); ctx.translate(-140, -13); ctx.rotate(-.1);
-        circle(ctx, 0, 0, 7, '#b75d3e'); circle(ctx, 22, 0, 7, '#b7994d'); circle(ctx, 44, 0, 7, '#7f8060');
+        circle(ctx, 0, 0, 7, '#ef3f42'); circle(ctx, 22, 0, 7, '#ffdf36'); circle(ctx, 44, 0, 7, '#00a65a');
         ctx.restore();
       }
       ctx.restore();
     }
     // An ink-like orbit sweeps around the stacked sheets.
-    bezier(ctx, [[-284, 127], [-308, -106], [233, -198], [306, -18]], '#9d604970', 1.1);
+    bezier(ctx, [[-284, 127], [-308, -106], [233, -198], [306, -18]], '#275aff70', 1.1);
     const orbit = curvePoint([[-284, 127], [-308, -106], [233, -198], [306, -18]], (time * .025 + .38) % 1);
-    circle(ctx, orbit.x, orbit.y, 5, '#875d42');
+    circle(ctx, orbit.x, orbit.y, 5, '#174dd0');
     ctx.save(); ctx.translate(233, 135 + drift * .4); ctx.rotate(-.2 + Math.sin(time * .17) * .05);
-    path(ctx, c => { c.moveTo(-6, -54); c.lineTo(6, -54); c.lineTo(6, 64); c.lineTo(0, 82); c.lineTo(-6, 64); c.closePath(); }, '#a65a3c');
-    path(ctx, c => { c.moveTo(-6, 64); c.lineTo(0, 82); c.lineTo(6, 64); c.closePath(); }, '#e7c9a4');
-    path(ctx, c => { c.moveTo(-2, 76); c.lineTo(0, 82); c.lineTo(2, 76); }, '#4e3f2e');
+    path(ctx, c => { c.moveTo(-6, -54); c.lineTo(6, -54); c.lineTo(6, 64); c.lineTo(0, 82); c.lineTo(-6, 64); c.closePath(); }, '#275aff');
+    path(ctx, c => { c.moveTo(-6, 64); c.lineTo(0, 82); c.lineTo(6, 64); c.closePath(); }, '#e3eeff');
+    path(ctx, c => { c.moveTo(-2, 76); c.lineTo(0, 82); c.lineTo(2, 76); }, '#111111');
     ctx.restore();
   }
 
@@ -158,11 +158,11 @@
     ground(ctx, 245, 325);
     // A copper disc gives the signal field a tangible, sculptural center.
     const disk = ctx.createLinearGradient(-220, -210, 240, 230);
-    disk.addColorStop(0, '#c6714c'); disk.addColorStop(.5, '#ac503c'); disk.addColorStop(1, '#6e4132');
+    disk.addColorStop(0, '#ef3f42'); disk.addColorStop(.5, '#275aff'); disk.addColorStop(1, '#174dd0');
     shadow(ctx, .19, 38, 23);
     circle(ctx, 0, 0, 230, disk);
     noShadow(ctx);
-    circle(ctx, 0, 0, 230, null, '#e9c29499', 1.2);
+    circle(ctx, 0, 0, 230, null, '#c9dfff99', 1.2);
     ctx.save(); ctx.rotate(-.33);
     for (let line = 0; line < 29; line++) {
       const y = (line - 14) * 12.6;
@@ -170,15 +170,15 @@
       const shift = Math.sin(time * .37 + line * .14) * 10;
       const points = [[-275, y * .58], [-100, y - amplitude + shift], [100, y + amplitude + shift], [275, y * .58]];
       const high = line % 4 === 0;
-      bezier(ctx, points, high ? '#edc08d' : '#d8946e', high ? 2.3 : 1.05);
+      bezier(ctx, points, high ? '#ffdf36' : '#ffdf36', high ? 2.3 : 1.05);
       // Terminal pads are fixed; the warm lights pass through the curves.
-      circle(ctx, points[0][0], points[0][1], high ? 3.5 : 2, '#edc08d');
-      circle(ctx, points[3][0], points[3][1], high ? 3.5 : 2, '#edc08d');
+      circle(ctx, points[0][0], points[0][1], high ? 3.5 : 2, '#ffdf36');
+      circle(ctx, points[3][0], points[3][1], high ? 3.5 : 2, '#ffdf36');
       if (line % 3 === 0) {
         const progress = (time * (.065 + (line % 4) * .004) + line * .078 + .17) % 1;
         const point = curvePoint(points, progress);
-        ctx.shadowColor = '#ffe3a2'; ctx.shadowBlur = 14;
-        circle(ctx, point.x, point.y, 3.8, '#fff0c4');
+        ctx.shadowColor = '#ffdf36'; ctx.shadowBlur = 14;
+        circle(ctx, point.x, point.y, 3.8, '#ffffff');
         noShadow(ctx);
       }
     }
@@ -187,14 +187,14 @@
     ctx.save(); ctx.rotate(time * .025);
     for (let ring = 0; ring < 3; ring++) {
       const radius = 252 + ring * 20;
-      path(ctx, c => c.arc(0, 0, radius, -.15 + ring * .5, Math.PI * 1.22 + ring * .2), null, '#8b4d3748', .9);
+      path(ctx, c => c.arc(0, 0, radius, -.15 + ring * .5, Math.PI * 1.22 + ring * .2), null, '#275aff48', .9);
       const angle = ring * 1.9;
-      circle(ctx, Math.cos(angle) * radius, Math.sin(angle) * radius, 3.3, '#9e6549');
+      circle(ctx, Math.cos(angle) * radius, Math.sin(angle) * radius, 3.3, '#ef3f42');
     }
     ctx.restore();
     const wave = [];
     for (let x = -300; x <= 300; x += 4) wave.push([x, 102 + Math.sin(x * .023 + time * .65) * 20]);
-    path(ctx, c => { c.moveTo(...wave[0]); wave.slice(1).forEach(point => c.lineTo(...point)); }, null, '#fae1b6a6', 1.8);
+    path(ctx, c => { c.moveTo(...wave[0]); wave.slice(1).forEach(point => c.lineTo(...point)); }, null, '#f0f7ffa6', 1.8);
   }
 
   function reading(ctx, time) {
@@ -202,7 +202,7 @@
     ground(ctx, 218, 335);
     // Behind the book: a quiet halo, like late-afternoon light through a window.
     const glow = ctx.createRadialGradient(50, -62, 25, 50, -62, 255);
-    glow.addColorStop(0, '#e3b46b9c'); glow.addColorStop(1, '#e3b46b00');
+    glow.addColorStop(0, '#ffdf369c'); glow.addColorStop(1, '#ffdf3600');
     circle(ctx, 50, -62, 255, glow);
     ctx.save(); ctx.translate(0, 25 + breath); ctx.rotate(-.055);
     shadow(ctx, .18, 30, 20);
@@ -211,13 +211,13 @@
       c.moveTo(-275, -68); c.quadraticCurveTo(-142, -108, 0, -30);
       c.quadraticCurveTo(142, -112, 275, -71); c.lineTo(281, 159);
       c.quadraticCurveTo(140, 135, 0, 191); c.quadraticCurveTo(-138, 138, -282, 159); c.closePath();
-    }, '#6e7560', '#535d4999', 2);
+    }, '#00a65a', '#087d4c99', 2);
     noShadow(ctx);
     for (let page = 8; page >= 0; page--) {
       const depth = page * 2.8;
       const curl = Math.sin(time * .38 + page * .18) * (3 + page * .45);
       const paper = ctx.createLinearGradient(-250, -70, 210, 180);
-      paper.addColorStop(0, '#fff4d9'); paper.addColorStop(.47, '#f4e4bc'); paper.addColorStop(.5, '#cfb88e'); paper.addColorStop(.54, '#f8eacb'); paper.addColorStop(1, '#e3cda5');
+      paper.addColorStop(0, '#ffffff'); paper.addColorStop(.47, '#ffffff'); paper.addColorStop(.5, '#a2bfff'); paper.addColorStop(.54, '#ffffff'); paper.addColorStop(1, '#dde9ff');
       path(ctx, c => {
         c.moveTo(0, -46 - depth);
         c.bezierCurveTo(-87, -115 - depth - curl, -195, -126 - depth, -260, -78 - depth);
@@ -227,36 +227,36 @@
         c.lineTo(261, -79 - depth);
         c.bezierCurveTo(188, -127 - depth, 88, -118 - depth + curl, 0, -46 - depth);
         c.closePath();
-      }, paper, '#b79c7280', .7);
+      }, paper, '#9db7ff80', .7);
     }
     // Short lines follow the curvature of the open pages; the illustration stays language-neutral.
     for (let row = 0; row < 9; row++) {
       const y = -61 + row * 16;
-      bezier(ctx, [[-223, y - 14], [-163, y - 43], [-88, y - 21], [-28, y + 20]], '#90734d40', 1);
-      bezier(ctx, [[28, y + 20], [90, y - 21], [162, y - 43], [223, y - 14]], '#90734d40', 1);
+      bezier(ctx, [[-223, y - 14], [-163, y - 43], [-88, y - 21], [-28, y + 20]], '#275aff40', 1);
+      bezier(ctx, [[28, y + 20], [90, y - 21], [162, y - 43], [223, y - 14]], '#275aff40', 1);
     }
     // A leaf lifts slowly above the book, offering continuous motion rather than a page-flip effect.
     const lift = 40 + Math.sin(time * .38) * 19;
     ctx.save(); shadow(ctx, .12, 17, 15);
     const leaf = ctx.createLinearGradient(0, -170, 220, 30);
-    leaf.addColorStop(0, '#fff7e0'); leaf.addColorStop(1, '#e4cca0');
+    leaf.addColorStop(0, '#ffffff'); leaf.addColorStop(1, '#c2d6ff');
     path(ctx, c => {
       c.moveTo(0, -66); c.bezierCurveTo(72, -122 - lift, 118, -175 - lift, 198, -158 - lift);
       c.bezierCurveTo(206, -85, 154, 25, 19, 119);
       c.bezierCurveTo(8, 51, 5, -10, 0, -66); c.closePath();
-    }, leaf, '#c8ae8055', .8);
+    }, leaf, '#b8d3ff55', .8);
     noShadow(ctx);
-    for (let line = 0; line < 5; line++) bezier(ctx, [[24 + line * 3, -49 + line * 20], [91, -104 - lift + line * 16], [128, -123 - lift + line * 17], [177, -129 - lift + line * 17]], '#98784935', 1);
+    for (let line = 0; line < 5; line++) bezier(ctx, [[24 + line * 3, -49 + line * 20], [91, -104 - lift + line * 16], [128, -123 - lift + line * 17], [177, -129 - lift + line * 17]], '#00a65a35', 1);
     ctx.restore();
     // A terracotta ribbon and its loose tail settle across the lower page edge.
-    path(ctx, c => { c.moveTo(14, 102); c.bezierCurveTo(28, 160, 22, 183, 42, 222); c.lineTo(50, 209); c.lineTo(63, 211); c.bezierCurveTo(39, 165, 44, 142, 34, 100); c.closePath(); }, '#b76d4d');
+    path(ctx, c => { c.moveTo(14, 102); c.bezierCurveTo(28, 160, 22, 183, 42, 222); c.lineTo(50, 209); c.lineTo(63, 211); c.bezierCurveTo(39, 165, 44, 142, 34, 100); c.closePath(); }, '#ef3f42');
     ctx.restore();
   }
 
   function render(state) {
     const {context: ctx, width, height, type} = state;
     if (!width || !height) return;
-    const colors = type === 'signals' ? ['#ead4b8', '#d99b76'] : type === 'reading' ? ['#f0e6cc', '#e8cf9f'] : ['#f0dfc8', '#e6b38d'];
+    const colors = type === 'signals' ? ['#ffffff', '#f0f5ff'] : type === 'reading' ? ['#ffffff', '#effff5'] : ['#ffffff', '#f4f7ff'];
     ctx.setTransform(state.ratio, 0, 0, state.ratio, 0, 0);
     const background = ctx.createLinearGradient(0, 0, width, height * .7);
     background.addColorStop(0, colors[0]); background.addColorStop(1, colors[1]);
@@ -283,7 +283,7 @@
         state.canvas.dataset.renderer='sculpture';
       } catch { ctx.globalAlpha=1;releaseArtwork(state);render(state);return; }
     } else state.canvas.dataset.renderer='illustration';
-    if (state.pattern) { ctx.globalAlpha = .29; ctx.fillStyle = state.pattern; ctx.fillRect(0, 0, width, height); ctx.globalAlpha = 1; }
+    if (state.pattern) { ctx.globalAlpha = .025; ctx.fillStyle = state.pattern; ctx.fillRect(0, 0, width, height); ctx.globalAlpha = 1; }
     state.canvas.dataset.frame = String(++state.frames);
   }
   function resize(state) {
@@ -343,6 +343,8 @@
     }, {threshold: .01});
     states.forEach(state => observer.observe(state.canvas));
   }
+  const footer=root.querySelector('.site-footer');
+  if(footer&&'IntersectionObserver' in window)new IntersectionObserver(entries=>{root.classList.toggle('is-footer-visible',entries[0].isIntersecting);}).observe(footer);
   control?.addEventListener('click', () => { paused = !paused; sync(); });
   reduced.addEventListener('change', sync);
   connection?.addEventListener?.('change', sync);

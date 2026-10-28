@@ -64,7 +64,7 @@ try{
       await page.waitForFunction(({target,start})=>Number(document.querySelector(target).dataset.frame)>start+18,{target,start},{timeout:20000});
       await advancing(page,target,'sculpture');
       const background=await page.locator(target).evaluate(canvas=>Array.from(canvas.getContext('2d').getImageData(3,3,1,1).data));
-      assert(background[0]>background[2]+10,'Transparent sculpture frames retain the warm paper background');
+      assert(Math.min(...background.slice(0,3))>220&&Math.max(...background.slice(0,3))-Math.min(...background.slice(0,3))<32,'Transparent sculpture frames retain the clean white background');
       sculptureChecks++;
     }
     await readable(page);

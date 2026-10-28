@@ -21,9 +21,9 @@ Articles have estimated reading time, heading links, and recommendations
 ranked by shared topic and title/subtitle terms. The mobile browser checks
 cover home, contact, collections, reading pages, and search.
 
-The homepage uses original animated sculptures (a copper brain, a paper aircraft,
-and an opening book) and a moving title ribbon in a warm cream, clay, copper,
-and olive palette. The detailed scenes load only when visible and use a
+The homepage uses original animated sculptures (a glossy blue brain, a paper aircraft,
+and an opening book) and a moving title ribbon on a black-and-white base with bright blue, red, yellow,
+and green accents. The detailed scenes load only when visible and use a
 self-hosted, pinned Three.js engine; illustrations appear immediately and remain
 available when WebGL or the optional engine download fails. Story links,
 featured articles, gallery photos, and introductions come from the existing

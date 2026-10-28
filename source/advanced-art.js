@@ -3,10 +3,10 @@ import * as THREE from './vendor/three.module.js';
 // Original procedural sculptures. Geometry, paper and light are generated locally.
 const TAU = Math.PI * 2;
 const WHITE = 0xffffff;
-const CLAY = 0xa7543b;
-const COPPER = 0xc77e58;
-const GOLD = 0xd7ad69;
-const INK = 0x71513d;
+const CLAY = 0xef3f42;
+const COPPER = 0x275aff;
+const GOLD = 0xffdf36;
+const INK = 0x173c8a;
 
 function seeded(seed = 137) {
   return () => { seed = seed * 16807 % 2147483647; return seed / 2147483647; };
@@ -120,7 +120,7 @@ function brain(group) {
   const random = seeded(71);
   const form = new THREE.Group();
   group.add(form);
-  const skin = new THREE.MeshPhysicalMaterial({color: 0x9c4e38, roughness: .48, metalness: .24, clearcoat: .18});
+  const skin = new THREE.MeshPhysicalMaterial({color: 0x1640d6, roughness: .30, metalness: .30, clearcoat: .5});
   const ridgeMaterial = new THREE.MeshPhysicalMaterial({vertexColors: true, roughness: .34, metalness: .43, clearcoat: .24});
   const ridges = [];
   const shells = [];
@@ -168,7 +168,7 @@ function brain(group) {
           const u = center + .075 * Math.sin(v * 5.2 + phase) + .049 * Math.sin(v * 10.1 - phase) + .025 * Math.sin(v * 18 + phase);
           points.push(point(side, THREE.MathUtils.clamp(u, .08, 3.03), v, .035));
         }
-        ridges.push({geometry: tube(points, .065 + random() * .022, 66, 7), color: band % 4 === 0 ? 0xd3a072 : band % 3 === 0 ? 0xb56545 : COPPER});
+        ridges.push({geometry: tube(points, .065 + random() * .022, 66, 7), color: band % 4 === 0 ? 0xffdf36 : band % 3 === 0 ? 0x30c578 : COPPER});
       }
     }
     for (let seam = 0; seam < 9; seam++) {
@@ -179,7 +179,7 @@ function brain(group) {
         const q = step / 12;
         points.push(point(side, u0 + q * .34, v0 + Math.sin(q * Math.PI) * .10, .04));
       }
-      ridges.push({geometry: tube(points, .055, 20, 6), color: 0xbd734f});
+      ridges.push({geometry: tube(points, .055, 20, 6), color: 0x448aff});
     }
   }
   form.add(new THREE.Mesh(merge(shells), skin));
@@ -229,12 +229,12 @@ function brain(group) {
       connections.push(new THREE.QuadraticBezierCurve3(origin, middle, target));
     }
   }
-  form.add(new THREE.LineSegments(curvesGeometry(connections, 18), new THREE.LineBasicMaterial({color: 0xf1d4a2, transparent: true, opacity: .42})));
-  const dots = new THREE.InstancedMesh(new THREE.SphereGeometry(.025, 6, 4), new THREE.MeshStandardMaterial({color: 0xf4dfaf, roughness: .27, metalness: .45}), nodes.length);
+  form.add(new THREE.LineSegments(curvesGeometry(connections, 18), new THREE.LineBasicMaterial({color: 0xb4e4ff, transparent: true, opacity: .42})));
+  const dots = new THREE.InstancedMesh(new THREE.SphereGeometry(.025, 6, 4), new THREE.MeshStandardMaterial({color: 0xffffff, roughness: .27, metalness: .45}), nodes.length);
   const dummy = new THREE.Object3D();
   nodes.forEach((node, index) => { dummy.position.copy(node); dummy.updateMatrix(); dots.setMatrixAt(index, dummy.matrix); });
   form.add(dots);
-  const animateSignals = particles(form, connections, {count: 45, radius: .034, color: 0xffe2a0, speed: .15});
+  const animateSignals = particles(form, connections, {count: 45, radius: .034, color: 0xffdf36, speed: .15});
   form.rotation.set(.11, -.48, -.12);
   return time => {
     form.rotation.y = -.48 + Math.sin(time * .11) * .18;
@@ -257,12 +257,12 @@ function aircraft(group) {
   const wingMidLeft = [-.65, .015, -1.05], wingMidRight = [-.65, .015, 1.05];
   const keel = [-1.60, -.54, 0];
   const triangles = [
-    [nose, wingMidLeft, foldLeft, 0xfffcf4], [foldLeft, wingMidLeft, wingLeft, 0xf3e8d5],
-    [nose, foldRight, wingMidRight, 0xf6eedf], [foldRight, wingRight, wingMidRight, 0xfffcf3],
-    [nose, ridge, foldLeft, 0xead5b3], [nose, foldRight, ridge, 0xfdf4df],
-    [ridge, tail, foldLeft, 0xd8b38a], [ridge, foldRight, tail, 0xe6c69f],
-    [nose, keel, tail, 0xad6347],
-    [foldLeft, tail, wingLeft, 0xdcbd95], [foldRight, wingRight, tail, 0xe9cdaa],
+    [nose, wingMidLeft, foldLeft, 0xffffff], [foldLeft, wingMidLeft, wingLeft, 0xe6eeff],
+    [nose, foldRight, wingMidRight, 0xffffff], [foldRight, wingRight, wingMidRight, 0xffffff],
+    [nose, ridge, foldLeft, 0xffdf36], [nose, foldRight, ridge, 0xffffff],
+    [ridge, tail, foldLeft, 0xef3f42], [ridge, foldRight, tail, 0x275aff],
+    [nose, keel, tail, 0xef3f42],
+    [foldLeft, tail, wingLeft, 0x275aff], [foldRight, wingRight, tail, 0xffdf36],
   ];
   const positions = [], colors = [];
   const color = new THREE.Color();
@@ -278,7 +278,7 @@ function aircraft(group) {
   const paper = new THREE.MeshPhysicalMaterial({vertexColors: true, side: THREE.DoubleSide, roughness: .65, metalness: .035, clearcoat: .08});
   craft.add(new THREE.Mesh(geometry, paper));
   const edges = new THREE.EdgesGeometry(geometry, 10);
-  craft.add(new THREE.LineSegments(edges, new THREE.LineBasicMaterial({color: 0xa5744e, transparent: true, opacity: .58})));
+  craft.add(new THREE.LineSegments(edges, new THREE.LineBasicMaterial({color: 0x275aff, transparent: true, opacity: .58})));
 
   // Hairline inset creases emphasize the multiple folded paper planes.
   const creases = [];
@@ -290,7 +290,7 @@ function aircraft(group) {
   }
   const creaseGeometry = new THREE.BufferGeometry();
   creaseGeometry.setAttribute('position', new THREE.Float32BufferAttribute(creases, 3));
-  craft.add(new THREE.LineSegments(creaseGeometry, new THREE.LineBasicMaterial({color: 0xb19776, transparent: true, opacity: .35})));
+  craft.add(new THREE.LineSegments(creaseGeometry, new THREE.LineBasicMaterial({color: 0x275aff, transparent: true, opacity: .35})));
   craft.rotation.set(.10, -.21, .18);
   craft.scale.setScalar(1.03);
 
@@ -314,8 +314,8 @@ function aircraft(group) {
   flowGroup.rotation.z = .18;
   flowGroup.position.z = -.35;
   group.add(flowGroup);
-  flowGroup.add(new THREE.LineSegments(curvesGeometry(flows, 60), new THREE.LineBasicMaterial({color: 0xbda282, transparent: true, opacity: .25, depthWrite: false})));
-  const animateSignals = particles(flowGroup, flows, {count: 61, radius: .022, color: 0xbc754c, speed: .065});
+  flowGroup.add(new THREE.LineSegments(curvesGeometry(flows, 60), new THREE.LineBasicMaterial({color: 0x6798ff, transparent: true, opacity: .25, depthWrite: false})));
+  const animateSignals = particles(flowGroup, flows, {count: 61, radius: .022, color: 0xef3f42, speed: .065});
 
   // A folded strip trails in the wake, resolving into the same signal field.
   const fragments = new THREE.InstancedMesh(new THREE.TetrahedronGeometry(.065), new THREE.MeshStandardMaterial({color: COPPER, metalness: .48, roughness: .40}), 16);
@@ -350,11 +350,11 @@ function pageTexture() {
   const canvas = document.createElement('canvas');
   canvas.width = 768; canvas.height = 1024;
   const context = canvas.getContext('2d');
-  context.fillStyle = '#fffcf5'; context.fillRect(0, 0, 768, 1024);
+  context.fillStyle = '#ffffff'; context.fillRect(0, 0, 768, 1024);
   // Abstract typesetting stays decorative when the artwork is mirrored for RTL.
-  context.fillStyle = '#aa6c48'; context.fillRect(91, 100, 150, 3);
-  context.fillStyle = '#634b3a'; context.fillRect(91, 159, 480, 6); context.fillRect(91, 203, 375, 6);
-  context.fillStyle = '#bc8761'; context.fillRect(90, 246, 54, 2);
+  context.fillStyle = '#275aff'; context.fillRect(91, 100, 150, 3);
+  context.fillStyle = '#111111'; context.fillRect(91, 159, 480, 6); context.fillRect(91, 203, 375, 6);
+  context.fillStyle = '#ef3f42'; context.fillRect(90, 246, 54, 2);
   const random = seeded(48);
   for (let row = 0; row < 31; row++) {
     if (row === 10 || row === 23) continue;
@@ -363,12 +363,12 @@ function pageTexture() {
     const end = row === 9 || row === 22 || row === 30 ? 390 + random() * 110 : 676;
     while (x < end - 18) {
       const length = Math.min(end - x, 14 + random() * 42);
-      context.fillStyle = `rgba(93,74,56,${.32 + random() * .28})`;
+      context.fillStyle = `rgba(25,40,65,${.32 + random() * .28})`;
       context.fillRect(x, y, length, 1.8);
       x += length + 6 + random() * 5;
     }
   }
-  context.fillStyle = '#aa6c48'; context.fillRect(365, 960, 24, 2);
+  context.fillStyle = '#275aff'; context.fillRect(365, 960, 24, 2);
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.anisotropy = 4;
@@ -401,8 +401,8 @@ function pageGeometry(side, layer = 0, columns = 28, rows = 14) {
 function reading(group) {
   const book = new THREE.Group();
   group.add(book);
-  const coverMaterial = new THREE.MeshPhysicalMaterial({color: 0x9d503a, roughness: .55, metalness: .16, clearcoat: .10});
-  const edgeMaterial = new THREE.MeshStandardMaterial({color: 0xc5945e, metalness: .55, roughness: .4});
+  const coverMaterial = new THREE.MeshPhysicalMaterial({color: 0x00a65a, roughness: .55, metalness: .16, clearcoat: .10});
+  const edgeMaterial = new THREE.MeshStandardMaterial({color: 0xffdf36, metalness: .55, roughness: .4});
   for (const side of [-1, 1]) {
     const board = new THREE.Mesh(new THREE.BoxGeometry(2.14, .09, 2.94), coverMaterial);
     board.position.set(side * 1.04, -.18, 0); board.rotation.z = side * -.025;
@@ -414,7 +414,7 @@ function reading(group) {
   spine.rotation.x = Math.PI / 2; spine.position.y = -.13; book.add(spine);
   const leaves = [];
   for (let layer = 1; layer <= 25; layer++) for (const side of [-1, 1]) {
-    leaves.push({geometry: pageGeometry(side, layer, 20, 6), color: layer % 5 === 0 ? 0xe6d6ba : 0xf4ead6});
+    leaves.push({geometry: pageGeometry(side, layer, 20, 6), color: layer % 5 === 0 ? 0xe4f0ff : 0xffffff});
   }
   book.add(new THREE.Mesh(merge(leaves), new THREE.MeshStandardMaterial({vertexColors: true, side: THREE.DoubleSide, roughness: .85, metalness: .01})));
   const texture = pageTexture();
@@ -434,7 +434,7 @@ function reading(group) {
   }
   const edgeGeometry = new THREE.BufferGeometry();
   edgeGeometry.setAttribute('position', new THREE.Float32BufferAttribute(edgeLines, 3));
-  book.add(new THREE.LineSegments(edgeGeometry, new THREE.LineBasicMaterial({color: 0xb69c7b, transparent: true, opacity: .47})));
+  book.add(new THREE.LineSegments(edgeGeometry, new THREE.LineBasicMaterial({color: 0xa2b8df, transparent: true, opacity: .47})));
 
   const turning = [];
   for (let index = 0; index < 2; index++) {
@@ -457,7 +457,7 @@ function reading(group) {
     book.add(mesh);
     loose.push(mesh);
   }
-  const ribbon = new THREE.Mesh(tube([new THREE.Vector3(.15, .15, -.95), new THREE.Vector3(.16, .18, .45), new THREE.Vector3(.22, -.02, 1.30), new THREE.Vector3(.27, -.45, 1.66)], .035, 24, 4), new THREE.MeshStandardMaterial({color: 0xb96443, roughness: .74}));
+  const ribbon = new THREE.Mesh(tube([new THREE.Vector3(.15, .15, -.95), new THREE.Vector3(.16, .18, .45), new THREE.Vector3(.22, -.02, 1.30), new THREE.Vector3(.27, -.45, 1.66)], .035, 24, 4), new THREE.MeshStandardMaterial({color: 0xef3f42, roughness: .74}));
   book.add(ribbon);
   book.rotation.set(.02, -.28, -.095);
   return time => {
@@ -533,12 +533,12 @@ export function createArtwork(canvas, kind = 'studio') {
     else if (kind === 'signals') camera.position.set(0, 4.2, 8.4);
     else camera.position.set(0, 1.3, 8.8);
     camera.lookAt(0, 0, 0);
-    scene.add(new THREE.HemisphereLight(0xfff9ee, 0xb29a84, 2.2));
-    const key = new THREE.DirectionalLight(0xfff4dc, 3.2);
+    scene.add(new THREE.HemisphereLight(0xffffff, 0xa1b6dd, 2.2));
+    const key = new THREE.DirectionalLight(0xffffff, 3.2);
     key.position.set(-3, 6, 5); scene.add(key);
     const fill = new THREE.DirectionalLight(0xffffff, 2.0);
     fill.position.set(5, 2, -3); scene.add(fill);
-    const rim = new THREE.DirectionalLight(0xf4be86, 1.25);
+    const rim = new THREE.DirectionalLight(0xd8e9ff, 1.25);
     rim.position.set(-2, 1, -5); scene.add(rim);
     const sculpture = new THREE.Group();
     scene.add(sculpture);
