@@ -45,6 +45,23 @@ try {
         await fits();
       }
       await page.evaluate(()=>window.scrollTo(0,0));
+      if(route.includes('why-i-love-electrical-engineering-and-physics.html')) {
+        assert.equal(await page.locator('[data-reader-progress]').count(),1,'Reading progress exists');
+        assert.equal(await page.locator('.reader-back').count(),1,'Back to collection is available');
+        assert.equal(await page.locator('.reader-outro a').count(),2,'End-of-article navigation exists');
+        if(width===390){
+          const body=page.locator('.article-body');
+          const normal=await body.evaluate(el=>parseFloat(getComputedStyle(el).fontSize));
+          await page.locator('[data-reading-size="spacious"]').click();
+          const enlarged=await body.evaluate(el=>parseFloat(getComputedStyle(el).fontSize));
+          assert(enlarged>normal,'Text size button must enlarge article copy');
+          assert.equal(await page.locator('[data-reading-size="spacious"]').getAttribute('aria-pressed'),'true');
+          await page.locator('[data-reading-size="regular"]').click();
+          assert.equal(await body.evaluate(el=>parseFloat(getComputedStyle(el).fontSize)),normal);
+          assert(await page.locator('[data-reader-progress]').isVisible(),'Progress becomes visible with JavaScript');
+          await fits();
+        }
+      }
       if(width<500) {
         await page.locator('.menu-button').click();
         assert(await page.locator('#mobileMenu').isVisible());

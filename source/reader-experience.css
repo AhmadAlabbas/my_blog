@@ -1,0 +1,225 @@
+/* Quiet long-form reading experience: English and Arabic.
+   Only attached to article and book detail pages. */
+.reader-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  z-index: 55;
+  pointer-events: none;
+  background: transparent;
+}
+.reader-progress[hidden] { display: none; }
+.reader-progress > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #2b4536;
+  transform-origin: left center;
+  transform: scaleX(var(--reader-progress,0));
+  transition: transform 90ms linear;
+}
+html[dir=rtl] .reader-progress > span { transform-origin: right center; }
+.reader-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px 24px;
+  padding-bottom: 17px;
+}
+.reading-tools {
+  margin-block: 0 30px;
+  padding: 0 0 24px;
+  border-top: 1px solid #deded9;
+  border-bottom: 1px solid #deded9;
+}
+.reader-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: #242924;
+  font: 600 13px/1.4 var(--sans);
+  text-decoration: none;
+}
+.reader-back:hover,
+.reader-back:focus-visible,
+.reader-outro a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.reader-back svg { width: 16px; height: 16px; }
+.reader-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; }
+.reader-actions .reading-time {
+  margin: 0;
+  white-space: nowrap;
+  color: #5b5b57;
+  font: 500 13px/1.4 var(--sans);
+}
+.reader-size {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid #dcdcd6;
+  border-radius: 3px;
+  background: #fff;
+}
+.reader-size button {
+  display: grid;
+  place-items: center;
+  min-width: 39px;
+  min-height: 36px;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  color: #30302d;
+  font: 600 13px/1 var(--sans);
+}
+.reader-size button:last-child { font-size: 17px; }
+.reader-size button:hover { background: #f2f3ef; }
+.reader-size button[aria-pressed=true] { color: #fff; background: #171b17; }
+.reader-size button:focus-visible { outline: 2px solid #374e3e; outline-offset: 2px; }
+.reading-contents {
+  background: #f8f8f5;
+  border: 1px solid #e5e5e0;
+  border-radius: 3px;
+  padding: 12px 17px;
+  font: 400 14px/1.6 var(--sans);
+}
+.reading-contents summary {
+  font: 600 13px/1.6 var(--sans);
+  color: #252525;
+}
+.reading-contents ol {
+  margin: 8px 0 0;
+  padding-inline-start: 22px;
+  color: #5d5f59;
+}
+.reading-contents a {
+  color: #30332f;
+  padding-block: 8px;
+}
+.reading-contents a:hover,
+.reading-contents a:focus-visible {
+  color: #1b4a2c;
+  text-decoration: underline;
+}
+.article-cover:not(.family-cover) {
+  background: #fafaf8;
+  border: 0;
+  border-radius: 3px;
+  padding: 0;
+}
+.article-cover:not(.family-cover) img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 630px;
+  object-fit: contain;
+  border-radius: 2px;
+  padding: 0;
+}
+.article-heading,
+.book-heading > header { color: #191919; }
+.article-heading h1,
+.book-heading h1 {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -.037em;
+  line-height: 1.13;
+}
+.article-heading .dek,
+.book-heading .dek { color: #545651; }
+.article-heading .byline,
+.book-heading .meta { color: #6b6d67; }
+.article-body {
+  color: #232522;
+  font-size: 21px;
+  line-height: 1.85;
+  max-width: 66ch;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}
+.article-body > p:first-of-type {
+  font-size: 1.08em;
+  line-height: 1.75;
+  color: #323932;
+}
+.article-body h2 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(27px,3vw,37px);
+  margin-block: 1.8em .7em;
+  line-height: 1.22;
+  letter-spacing: -.028em;
+  scroll-margin-top: 120px;
+}
+.article-body blockquote,
+html[lang=ar] .article-body blockquote {
+  margin: 35px 0;
+  padding: 24px 28px;
+  color: #292b28;
+  background: #f7f7f3;
+  border: 0;
+  border-inline-start: 3px solid #2d3d32;
+  border-radius: 2px;
+  font-size: clamp(23px,2.4vw,29px);
+  line-height: 1.5;
+}
+.article-body .inline-figure img { border-radius: 3px; }
+.article-body a { text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.article-body a:hover { text-decoration-thickness: 2px; }
+.book-portrait {
+  background: #f8f8f5;
+  border: 0;
+  border-radius: 3px;
+}
+.book-portrait img { transform: none; max-height: 490px; object-fit: contain; }
+.reader-outro {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-block: 30px 0;
+  padding-top: 24px;
+  border-top: 1px solid #e4e4e0;
+  font: 600 13px/1.6 var(--sans);
+}
+.reader-outro a { min-height: 44px; display: inline-flex; align-items: center; }
+.reading-spacious .article-body { font-size: 24px; line-height: 1.95; }
+html[lang=ar] .article-body {
+  max-width: 66ch;
+  font-size: 21px;
+  line-height: 2.05;
+}
+html[lang=ar] .article-body > p:first-of-type { line-height: 1.95; }
+html[lang=ar] .article-body h2 { line-height: 1.6; letter-spacing: 0; }
+html[lang=ar] .reading-spacious .article-body {
+  font-size: 24px;
+  line-height: 2.12;
+}
+html[lang=ar] .article-heading h1,
+html[lang=ar] .book-heading h1 { letter-spacing: 0; }
+@media(max-width:700px) {
+  .reader-tools { gap: 10px 14px; }
+  .reader-actions { width: 100%; justify-content: space-between; gap: 10px; }
+  .reader-back { font-size: 13px; }
+  .reader-size button { min-width: 42px; min-height: 38px; }
+  .reading-contents { padding: 13px 16px; }
+  .article-body, html[lang=ar] .article-body { font-size: 19px; line-height: 1.9; }
+  html[lang=ar] .article-body { line-height: 2; }
+  .reading-spacious .article-body,
+  html[lang=ar] .reading-spacious .article-body { font-size: 21px; }
+  .article-body blockquote,html[lang=ar] .article-body blockquote { padding: 19px 20px; font-size: 22px; }
+  .article-body h2 { font-size: 27px; }
+  .reader-outro { gap: 6px 18px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .reader-progress > span { transition: none; }
+}
+@media print {
+  .reader-progress, .reader-tools, .reader-outro { display: none !important; }
+  .article-cover:not(.family-cover) img { max-height: 240px; }
+  .article-body, html[lang=ar] .article-body {
+    font-size: 12pt !important;
+    line-height: 1.6 !important;
+    color: #000;
+  }
+}
