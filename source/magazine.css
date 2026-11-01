@@ -318,3 +318,12 @@ html[lang=ar] .mag-outlook h2 { line-height:1.5; }
   .mag-books-archive .bookshelf-grid .card-image { height:300px; }
   .mag-books-archive .bookshelf-grid .card-image img { height:250px; }
 }
+
+/* A second, softer thought under the introduction; editable in the dashboard. */
+.mag-opening .mag-welcome-note {
+  padding-inline-start:17px;
+  border-inline-start:2px solid #d9ddd6;
+  color:#737972;
+  font:400 14px/1.67 var(--sans);
+  margin:0 0 23px;
+}
