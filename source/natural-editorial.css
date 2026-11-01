@@ -1,0 +1,351 @@
+/* Natural editorial system — inspired by the restraint of Gates Notes.
+   White canvas, black chrome, typographic hierarchy, images for colour.
+   This file is intentionally loaded last on all public Node pages. */
+:root {
+  --paper: #fff;
+  --wash: #fff;
+  --ink: #161616;
+  --muted: #62625f;
+  --forest: #090909;
+  --navy: #090909;
+  --green: #333b35;
+  --cobalt: #333b35;
+  --line: #e4e4e0;
+}
+html { background: #fff; }
+body { background: #fff; color: #161616; }
+main { background: #fff; }
+h1, h2, h3 { text-wrap: balance; }
+.text-link { color: #191919; border-bottom-color: #191919; }
+.text-link:hover { color: #59695c; border-bottom-color: currentColor; }
+.eyebrow { color: #555751; }
+.meta { color: #6e6e6b; }
+
+/* A quiet, uninterrupted black masthead: no floating rounded tiles. */
+.site-header .header-inner,
+.home-cinema .site-header .header-inner {
+  background: #080808;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 6px 22px #00000014;
+}
+.site-header .brand,
+.site-header .header-inner .brand,
+.site-header .desktop-nav,
+.site-header .nav-index,
+.site-header .menu-button,
+.site-header .mobile-menu,
+.home-cinema .site-header .brand,
+.home-cinema .desktop-nav,
+.home-cinema .nav-index,
+.home-cinema .menu-button,
+.home-cinema .mobile-menu { background: #080808; color: #fff; }
+.site-header .desktop-nav a,
+.site-header .language-switch { color: #f4f4f4; }
+.site-header .desktop-nav a[aria-current=page],
+.home-cinema .site-header a[aria-current=page] { color: #fff; }
+.site-header .desktop-nav a[aria-current=page] { text-decoration: underline; text-decoration-color: #dadada; text-underline-offset: 8px; }
+.site-header .desktop-nav a:after { background: #fff; }
+.site-header .site-socials a:hover { background: #ffffff22; }
+.site-header .language-switch,
+.home-cinema .site-header .language-switch { background: #141414; color: #fff; border-color: #555; }
+.site-header .mobile-menu a:hover { color: #fff; text-decoration: underline; }
+
+/* All public article cards: images first, natural white surface, no pastel frames. */
+.card,
+.card[data-category],
+.card[data-category=Science],
+.card[data-category=Technology],
+.card[data-category=Business],
+.card[data-category=Travel],
+.card[data-category=Notes],
+.book-summary-card,
+.book-summary-card:nth-child(n),
+.museum-card,
+.museum-card[data-category],
+.home-cinema .museum-card,
+.home-cinema .museum-card:nth-child(n),
+#articles .card:nth-child(n),
+.card[data-category="Personal"] .card-content {
+  background: #fff !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.card { border-radius: 0; overflow: visible; }
+.card-image,
+.museum-card .card-image,
+.home-cinema .museum-card .card-image {
+  padding: 0;
+  margin: 0;
+  background: #f5f5f2;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.museum-card .card-image img,
+.home-cinema .museum-card .card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 3/2;
+  object-fit: cover;
+  border: 0;
+  box-shadow: none;
+}
+.card-content,
+.archive-grid .card-content,
+.featured-grid .card-content,
+.related-grid .card-content,
+.home-cinema .featured-grid .card-content,
+.book-carousel-group .card-content {
+  background: #fff !important;
+  padding: 19px 0 16px;
+}
+.card .eyebrow,
+.card-content .eyebrow,
+.home-cinema .museum-card .eyebrow {
+  color: #5e605a !important;
+  font: 700 10px/1.6 var(--sans);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.card h3,
+.featured-grid h3,
+.related-grid h3,
+.home-cinema .museum-card h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: clamp(23px, 2.35vw, 32px);
+  line-height: 1.16;
+  letter-spacing: -.027em;
+  margin-bottom: 12px;
+}
+.card h3 a:hover,
+.card h3 a:focus-visible { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+.card .summary,
+.card-content .summary,
+.card-content > p:not(.eyebrow):not(.meta) {
+  color: #5b5b59 !important;
+  line-height: 1.6;
+}
+.card .meta { margin-top: auto; padding-top: 10px; color: #797975; }
+.card-grid,
+.archive-grid { column-gap: 28px; row-gap: 44px; }
+.featured-grid,
+.related-grid { gap: 32px; }
+.home-cinema .home-selected .section-head,
+.home-cinema .home-latest .section-head { border-bottom: 1px solid #e6e6e2; padding-bottom: 25px; }
+
+/* Books remain complete, uncropped, and easy to scan. */
+.book-summary-card .card-image,
+.book-summary-card:nth-child(even) .card-image,
+.book-carousel-group .card-image {
+  background: #f6f6f3 !important;
+  border-radius: 2px;
+  padding: 24px 20px;
+  display: grid;
+  place-items: center;
+}
+.book-summary-card .card-image img,
+.home-books .card-image img,
+.book-carousel-group .card-image img,
+.featured-grid .book-summary-card .card-image img,
+.related-grid .book-summary-card .card-image img {
+  width: auto;
+  max-width: 85%;
+  height: 255px;
+  aspect-ratio: auto;
+  object-fit: contain !important;
+  border: 0;
+  transform: none;
+  box-shadow: 5px 9px 17px #00000018;
+}
+.book-carousel-viewport { border-radius: 0; }
+.book-carousel-group { gap: 28px; }
+.book-carousel-group > .card { background: #fff !important; }
+.book-carousel-group .card-image { height: 290px; }
+.book-carousel-group .card-image img { height: 237px; }
+.book-carousel-toolbar p { color: #202020; }
+.book-carousel-toolbar button { border-radius: 2px; border-color: #d5d5d1; }
+
+/* Preserve the family portrait without giving every personal article a tinted card. */
+.card[data-category="Personal"] .card-image {
+  background: #f5f4f0;
+  border: 0;
+  padding: 14px;
+}
+.card[data-category="Personal"] .card-image img {
+  object-fit: contain !important;
+  border-color: #fff;
+  max-width: 100%;
+}
+
+/* Homepage: lots of white, prominent imagery, limited background panels. */
+.home-cinema,
+.home-cinema main,
+.home-cinema .home-story-hero,
+.home-cinema .home-science-scene,
+.home-cinema .home-reading-scene,
+.home-cinema .home-question-scene,
+.home-cinema .home-latest,
+.home-cinema .home-reading-shelf,
+.home-cinema .home-selected,
+.home-cinema .home-photo-notes,
+.home-cinema .home-editorial-desk {
+  background: #fff;
+}
+.home-cinema .home-story-hero .home-story-copy {
+  background: #fffffff5;
+  border: 1px solid #e7e7e3;
+  border-top: 1px solid #e7e7e3;
+  border-radius: 2px;
+  box-shadow: 0 10px 28px #11111112;
+}
+.home-cinema .home-story-copy {
+  background: #ffffffed;
+  border-color: #e8e8e5;
+  box-shadow: 0 7px 24px #1111110a;
+}
+.home-cinema .home-story-copy .eyebrow,
+.home-cinema .home-desk-intro .eyebrow,
+.home-cinema .home-desk-category,
+.home-cinema .home-desk-aside-story > span,
+.home-cinema .home-hero-index .index-number,
+.home-cinema .home-hero-index .index-kicker,
+.home-cinema .section-head .eyebrow { color: #555c55; }
+.home-cinema .home-story-copy h1,
+.home-cinema .home-story-copy h2,
+.home-cinema .section-head h2 { color: #151515; }
+.home-cinema .home-story-link {
+  background: #111;
+  border: 1px solid #111;
+  border-radius: 2px;
+  color: #fff;
+}
+.home-cinema .home-story-link:hover,
+.home-cinema .home-story-link:focus-visible {
+  background: #333;
+  border-color: #333;
+  color: #fff;
+}
+.home-hero-index,
+html[lang=ar] .home-hero-index {
+  color: #171717;
+  background: #fffffff5;
+  border: 1px solid #e6e6e2;
+  border-top: 3px solid #161616;
+  box-shadow: 0 8px 25px #11111112;
+}
+.home-hero-index a { border-top-color: #e5e5e0; color: #191919; }
+.home-hero-index a:hover,
+.home-hero-index a:focus-visible { color: #3d5946; }
+.home-desk-intro > p { color: #63635f; }
+.home-desk-layout { border-top-color: #161616; }
+.home-desk-lead-visual { background: #f5f5f2; }
+.home-desk-aside { border-inline-start-color: #e7e7e3; }
+.home-desk-aside-story { border-top-color: #e7e7e3; }
+.home-desk-book { background: #f5f5f2; }
+.home-chapter-nav.notebook-path-grid,
+.home-cinema .home-chapter-nav.notebook-path-grid { background: #fff; border-color: #e6e6e2; }
+.home-cinema .home-chapter-nav.notebook-path-grid > a:nth-child(n) {
+  border-top: 1px solid #e6e6e2;
+  border-bottom-color: #e6e6e2;
+}
+.home-cinema .home-chapter-nav.notebook-path-grid > a:hover { background: #f8f8f6; }
+.home-question-scene .home-question-sun,
+.home-cinema .home-question-sun { color: #c7ccc5; opacity: .45; }
+.home-quote-group > span { background: #f5f5f2; border-color: #e6e6e2; color: #2b2b2b; }
+.home-cinema .home-about { background: #151515; color: #fff; }
+.home-cinema .home-about h2,
+.home-cinema .home-about .eyebrow { color: #fff; }
+.home-cinema .home-about .home-story-link { border-color: #fff; }
+.home-cinema .home-about .home-story-link:hover { background: #fff; color: #111; }
+.home-cinema .newsletter,
+.newsletter { background: #fff; }
+.home-cinema .newsletter-inner,
+.newsletter-inner {
+  background: #f6f6f3;
+  border-radius: 2px;
+}
+.newsletter .eyebrow,
+.newsletter .text-link { color: #222; }
+
+/* Inner pages use the same neutral editorial background. */
+.page-masthead { background: #fff; }
+.page-masthead .eyebrow { color: #585858; }
+.collection-toolbar,
+.filter-buttons { border-color: #e5e5e1; }
+.filter-buttons button { border-color: #d6d6d1; background: #fff; }
+.filter-buttons button:hover { background: #f5f5f2; }
+.filter-buttons button[aria-pressed=true] { background: #151515; color: #fff; border-color: #151515; }
+.about-gallery,
+.about-welcome,
+.about-story-panel,
+.about-campus,
+.about-family,
+.about-explore > a,
+.about-explore > a:nth-of-type(n),
+.interest-reading,
+.interest-drawing,
+.interest-science {
+  background: #f6f6f3;
+  color: #181818;
+  border-color: #e6e6e2;
+  border-radius: 2px;
+}
+.about-gallery { background: #fff; }
+.about-art-wall { background: #ecece8; }
+.about-explore > a:hover { background: #efefeb; }
+.interest-science .eyebrow,
+.interest-science .text-link,
+.interest-science p { color: #282828; }
+.gallery-grid.illustration-gallery .gallery-item { background: #fff; border-color: #e5e5e1; }
+.gallery-grid.illustration-gallery figcaption { background: #fff; }
+
+/* Full-bleed black footer rather than a rounded black tile. */
+.site-footer,
+.home-cinema .site-footer {
+  background: #090909;
+  color: #fff;
+  border: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 70px 0 30px;
+  box-shadow: none;
+}
+.site-footer .footer-nav,
+.home-cinema .site-footer .footer-nav,
+.site-footer .brand { background: transparent; color: #fff; }
+.site-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.site-footer .footer-top { border-color: #444; }
+.site-footer .footer-bottom { border-color: #444; }
+.site-footer .wrap { width: min(var(--width),calc(100% - 96px)); }
+
+/* Tablet and phone: neutral cards, no horizontal scrolling or poster clipping. */
+@media (max-width: 700px) {
+  .site-header .header-inner,
+  .home-cinema .site-header .header-inner { border-radius: 3px; }
+  .card-grid,.archive-grid { gap: 26px; }
+  .card-content,
+  .archive-grid .card-content,
+  .featured-grid .card-content,
+  .related-grid .card-content,
+  .home-cinema .featured-grid .card-content,
+  .book-carousel-group .card-content { padding: 17px 0 20px; }
+  .card h3,.featured-grid h3,.related-grid h3 { font-size: 26px; }
+  .book-carousel-group .card-image { height: 255px; padding: 18px; }
+  .book-carousel-group .card-image img { height: 215px; }
+  .home-cinema .home-story-hero .home-story-copy { box-shadow: none; }
+  .home-hero-index,html[lang=ar] .home-hero-index { box-shadow: none; }
+  .home-desk-aside { border-inline-start: 0; }
+  .site-footer,.home-cinema .site-footer { margin: 0; border-radius: 0; padding: 48px 0 25px; }
+  .site-footer .wrap { width: calc(100% - 40px); }
+  .newsletter-inner { border-radius: 2px; padding: 28px 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .museum-card .card-image img { transition: none; }
+}
+@media print {
+  .card,.museum-card,.book-summary-card { break-inside: avoid; }
+}
