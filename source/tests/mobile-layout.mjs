@@ -36,12 +36,13 @@ try {
       if(await reject.isVisible()) await reject.click();
       await page.evaluate(()=>window.scrollTo(0,document.body.scrollHeight));
       await fits();
-      if(route==='/') {
-        const scrolling=await page.locator('[data-book-viewport]').evaluate(e=>{
-          const before=e.scrollLeft;e.scrollLeft=100;
-          return {width:e.clientWidth,content:e.scrollWidth,moved:e.scrollLeft!==before};
-        });
-        assert(scrolling.content>scrolling.width && scrolling.moved,'Bookshelf must still scroll independently');
+      if(route==='/'||route==='/ar/') {
+        assert.equal(await page.locator('.mag-topstory').count(),1,'Homepage has one dominant editorial feature');
+        assert(await page.locator('.mag-opening h1').count()===1,'One main homepage heading');
+        assert(await page.locator('.mag-highlights .mag-card').count()>0,'Featured reading cards are visible');
+        assert.equal(await page.locator('[data-story-canvas]').count(),0,'No decorative canvas blocks interrupt reading');
+        const hasBooks=await page.locator('.mag-books-grid').count();
+        assert(hasBooks||await page.locator('.mag-empty').count(),'Book shelf or bilingual empty state is present');
         await fits();
       }
       await page.evaluate(()=>window.scrollTo(0,0));
