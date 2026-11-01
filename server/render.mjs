@@ -3,7 +3,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import {load} from 'cheerio';
 import {readingMinutes,relatedPosts,searchPosts} from './editorial.mjs';
-import {homepage} from './homepage.mjs';
+import {magazineHome} from './magazine-home.mjs';
 
 export const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export const pageURL=(slug,lang='en')=>(lang==='ar'?'/ar/':'/')+(slug==='index'?'':slug+'.html');
@@ -92,6 +92,7 @@ export function renderer(config,arabic){
     if($('body').hasClass('home-cinema'))$('head').append('<link rel="stylesheet" href="/editorial-home.css">');
     // Apply one quiet editorial palette to all public pages after page-specific styles.
     $('head').append('<link rel="stylesheet" href="/natural-editorial.css">');
+    $('head').append('<link rel="stylesheet" href="/magazine.css">');
     if(post){$('head').append('<link rel="stylesheet" href="/reader-experience.css">');$('body').append('<script src="/reader-experience.js" defer></script>');}
     // Bust frontend caches on deployment, including the updated search behavior.
     $('script[src]').each((_,el)=>{const filename=$(el).attr('src').split('?')[0].replace(/^\//,'');const file=path.join(config.dist,filename);if(fs.existsSync(file))$(el).attr('src','/'+filename+'?v='+crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,10));});
@@ -131,10 +132,10 @@ export function renderer(config,arabic){
     else if(slug==='index'){
       title=lang==='ar'?'كتب وأفكار وحياة يقودها الفضول':'Books, ideas, and a curious life';
       const viewer=$('main .photo-viewer').toString();
-      $('body').addClass('home-cinema');
-      $('main').html(homepage({data,lang,escape,pageURL,picture,card,cards,gallery,newsletter,setting})+viewer);
+      $('body').addClass('mag-home');
+      $('main').html(magazineHome({data,lang,escape,pageURL,picture,card,cards,gallery,newsletter,setting})+viewer);
       $('script[src="motion.js"],script[src="living-art.js"],script[src="pixel-notes.js"],script[src="pixel-world.js"]').remove();
-      $('body').append('<script src="/home-scenes.js" defer></script>');
+      // A static, content-first editorial design needs no GPU scenes or animation script.
     }else if(slug==='search'){
       title=lang==='ar'?'ابحث في المدونة':'Search the notebook';
       const rows=searchPosts(data.posts,query,topic,lang==='ar'?arabic.ui:{});
