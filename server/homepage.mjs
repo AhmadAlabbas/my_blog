@@ -1,4 +1,5 @@
 import {featuredPosts,welcomeIntro} from './editorial.mjs';
+import {heroIndex,editorsDesk} from './editorial-home.mjs';
 
 export function homepage({data,lang,escape:e,pageURL:url,picture,card,cards,gallery,newsletter,setting}){
   const ar=lang==='ar',say=(en,arabic)=>ar?arabic:en;
@@ -26,13 +27,15 @@ export function homepage({data,lang,escape:e,pageURL:url,picture,card,cards,gall
         <p class="welcome-intro">${e(setting(data,'welcome_intro',lang,welcomeIntro[lang]))}</p>
         <div class="home-story-actions">${link('articles',say('Explore the notebook','اكتشف الدفتر'))}${link('about',say('Meet Ahmad','تعرّف إلى أحمد'),'home-quiet-link')}</div>
       </div>
-      <a class="home-scroll-cue" href="#home-science">${say('A little further down','تابع الاستكشاف')} <span aria-hidden="true">↓</span></a>
+      ${heroIndex({selected,articles,lang,escape:e,pageURL:url})}
+      <a class="home-scroll-cue" href="#home-edition">${say('A little further down','تابع الاستكشاف')} <span aria-hidden="true">↓</span></a>
     </section>
     <nav class="home-chapter-nav notebook-path-grid" aria-label="${say('Explore the notebook','استكشف الدفتر')}">
       <a href="${url('work',lang)}"><span>01</span> ${say('Projects & ideas','مشاريع وأفكار')} <span aria-hidden="true">${ar?'←':'↗'}</span></a>
       <a href="${url('book-summaries',lang)}"><span>02</span> ${say('Books & reading','كتب وقراءة')} <span aria-hidden="true">${ar?'←':'↗'}</span></a>
       <a href="${url('articles',lang)}?topic=Science"><span>03</span> ${say('Science & learning','علوم وتعلّم')} <span aria-hidden="true">${ar?'←':'↗'}</span></a>
     </nav>
+    ${editorsDesk({selected,articles,books,lang,escape:e,pageURL:url,picture})}
     <section class="home-story-scene home-science-scene" id="home-science" aria-labelledby="home-science-title">
       ${art('signals',lead?.image||'assets/images/waves-1600.webp')}
       <div class="home-scene-label"><span>02 / ${say('FOLLOW THE CURIOSITY','اتبع فضولك')}</span><span>${say('A question becomes an idea','من سؤال إلى فكرة')}</span></div>

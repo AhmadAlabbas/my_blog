@@ -89,6 +89,7 @@ export function renderer(config,arabic){
     $('script[src*="arabic-ui.js"]').attr('src','/arabic-ui.js');
     $('head').append('<link rel="stylesheet" href="/enhancements.css">');
     if($('body').hasClass('home-cinema'))$('head').append('<link rel="stylesheet" href="/home-scenes.css">');
+    if($('body').hasClass('home-cinema'))$('head').append('<link rel="stylesheet" href="/editorial-home.css">');
     // Bust frontend caches on deployment, including the updated search behavior.
     $('script[src]').each((_,el)=>{const filename=$(el).attr('src').split('?')[0].replace(/^\//,'');const file=path.join(config.dist,filename);if(fs.existsSync(file))$(el).attr('src','/'+filename+'?v='+crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,10));});
     $('link[href*=".css"]').each((_,el)=>{const filename=$(el).attr('href').split('?')[0].replace(/^\//,'');const file=path.join(config.dist,filename);if(fs.existsSync(file))$(el).attr('href','/'+filename+'?v='+crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,10));});
