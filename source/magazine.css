@@ -1,0 +1,273 @@
+/* A real editorial front page.
+   Inspired by the restraint of great personal magazines; no copy of Gates Notes artwork. */
+:root { --mag-ink:#171817; --mag-muted:#62655f; --mag-line:#dedfdb; --mag-white:#fff; --mag-panel:#f4f5f1; --mag-width:1300px; }
+html { scroll-padding-top:88px; }
+body { background:#fff; color:var(--mag-ink); }
+.wrap { width:min(var(--mag-width),calc(100% - 84px)); }
+/* Proper, solid black navigation across the entire website. */
+.site-header,.home-cinema .site-header {
+  position:sticky; top:0; left:auto; right:auto; width:100%;
+  background:#090a09; color:white; z-index:60; pointer-events:auto;
+  box-shadow:none;
+}
+.site-header .header-inner,
+.home-cinema .site-header .header-inner {
+  min-height:78px; padding:0; border:0; border-radius:0;
+  background:#090a09; box-shadow:none; align-items:stretch;
+}
+.site-header .header-inner .brand {
+  background:#090a09; border-radius:0; width:150px;
+  font-size:20px; letter-spacing:-.05em; padding-inline:16px;
+}
+.site-header .desktop-nav { background:#090a09; color:#fff; gap:clamp(16px,2.1vw,34px); }
+.site-header .desktop-nav a { color:#fff; font-weight:500; font-size:13px; letter-spacing:.01em; }
+.site-header .desktop-nav a:hover { text-decoration:underline; text-underline-offset:8px; }
+.site-header .nav-index,.site-header .menu-button { background:#090a09; border:0; border-radius:0; }
+.site-header .mobile-menu { position:absolute; left:0; right:0; top:100%; border-radius:0; box-shadow:0 20px 35px #0002; background:#090a09; }
+.site-header .site-socials a,.site-header .site-socials .social-unconfigured { border-radius:2px; }
+.site-header .language-switch { border-radius:2px; }
+.site-header .header-inner a:focus-visible,.site-header button:focus-visible { outline:2px solid white; outline-offset:-3px; }
+/* Inner pages inherit the new editorial scale and lose the old hero gap. */
+.page-masthead { padding:76px 0 43px; border-bottom:1px solid var(--mag-line); background:#fff; }
+.page-masthead h1 { font-family:var(--serif); font-weight:600; font-size:clamp(48px,5vw,75px); line-height:1.06; letter-spacing:-.05em; }
+.page-masthead .dek { color:var(--mag-muted); max-width:700px; }
+.article-cover { margin-top:48px; }
+.article-heading { padding-top:42px; }
+.book-heading { padding-top:85px; }
+.about-gallery { padding-top:68px; }
+.personal-hero { padding-top:65px; }
+.collection-toolbar { border-bottom:1px solid var(--mag-line); padding-bottom:20px; }
+.filter-buttons button { border-radius:2px; }
+.discovery-form { background:#f8f8f6; border:1px solid var(--mag-line); border-radius:3px; }
+.discovery-form input,.discovery-form select,.discovery-form button { border-radius:2px; }
+.featured-grid .card-image,.related-grid .card-image { border-radius:2px; }
+.site-footer,.home-cinema .site-footer { margin:0; border-radius:0; padding:80px 0 28px; background:#090a09; color:#fff; }
+.site-footer .footer-nav,.site-footer .footer-top,.site-footer .footer-bottom { background:transparent; }
+.site-footer .wrap { width:min(var(--mag-width),calc(100% - 84px)); }
+/* Magazine homepage: graceful, content-first, without animation scripts. */
+.mag-front { background:#fff; color:var(--mag-ink); overflow:clip; }
+.mag-front .mag-kicker {
+  margin:0 0 16px; color:#50564f; font:700 11px/1.5 var(--sans);
+  letter-spacing:.125em; text-transform:uppercase;
+}
+.mag-front h1,.mag-front h2,.mag-front h3 { font-family:var(--serif); font-weight:600; color:#171817; letter-spacing:-.047em; }
+.mag-front a { text-decoration:none; }
+.mag-front a:focus-visible { outline:2px solid #2b4934; outline-offset:4px; }
+.mag-front a:hover h2,.mag-front a:hover h3,.mag-front h2 a:hover,.mag-front h3 a:hover {
+  text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:5px;
+}
+.mag-more {
+  display:inline-flex; gap:14px; align-items:center; width:fit-content;
+  border-bottom:1px solid #202320; padding-bottom:5px;
+  font:700 13px/1.5 var(--sans); color:#1f241f;
+  white-space:normal;
+}
+.mag-more:hover { color:#42624a; border-bottom-color:#42624a; }
+.mag-more > span { font-size:16px; }
+.mag-opening {
+  display:grid; grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);
+  gap:64px; align-items:end; padding-block:60px 62px;
+}
+.mag-opening-title h1 {
+  margin:0; font-size:clamp(55px,6vw,94px); line-height:.98;
+  max-width:900px; text-wrap:balance;
+}
+.mag-opening .mag-opening-kicker { margin-bottom:23px; letter-spacing:.19em; }
+.mag-opening-note { max-width:395px; padding-bottom:6px; }
+.mag-opening-note p { color:#4c514c; font:400 17px/1.72 var(--sans); margin:0 0 22px; }
+.mag-topstory {
+  display:grid; grid-template-columns:minmax(0,1.38fr) minmax(0,.82fr);
+  align-items:center; min-height:610px; position:relative;
+}
+.mag-topstory-visual {
+  background:#eef0eb; width:100%; height:100%; min-height:610px;
+  overflow:hidden; display:block;
+}
+.mag-topstory-visual img {
+  display:block; width:100%; height:100%; min-height:610px;
+  object-fit:cover; object-position:center;
+  transition:transform .45s ease;
+}
+.mag-topstory-visual:hover img { transform:scale(1.017); }
+.mag-topstory-copy {
+  background:#fff; margin-inline-start:-76px; position:relative; z-index:1;
+  padding:clamp(30px,4vw,70px) clamp(27px,3.3vw,57px);
+  box-shadow:0 20px 42px #14191413; border:1px solid #e9e9e5;
+}
+.mag-topstory-copy .mag-kicker { color:#667267; }
+.mag-topstory-copy h2 { font-size:clamp(38px,4vw,64px); line-height:1.08; margin:0 0 22px; }
+.mag-topstory-copy > p:not(.mag-kicker):not(.mag-smallmeta) {
+  font:400 17px/1.65 var(--sans); color:#5b615b; margin-bottom:24px;
+}
+.mag-smallmeta { display:flex; gap:8px; flex-wrap:wrap; color:#777b75; font:400 11px/1.5 var(--sans); margin:12px 0 20px; }
+.mag-topstory-copy .mag-more { margin-top:9px; }
+.mag-topicnav {
+  display:flex; align-items:center; flex-wrap:wrap;
+  gap:14px clamp(20px,2.4vw,38px);
+  padding:26px 0; margin-block:42px 0;
+  border-block:1px solid var(--mag-line);
+}
+.mag-topicnav .mag-kicker { margin:0; flex-shrink:0; }
+.mag-topicnav a { font:600 13px/1.5 var(--sans); color:#242824; }
+.mag-topicnav a:hover { text-decoration:underline; text-underline-offset:4px; }
+.mag-section { padding-block:93px 97px; }
+.mag-section-heading {
+  display:flex; justify-content:space-between; align-items:end;
+  gap:25px; margin-bottom:33px;
+}
+.mag-section-heading h2 { font-size:clamp(39px,4.2vw,65px); line-height:1.08; margin:0; }
+.mag-section-heading .mag-more { flex-shrink:0; margin-bottom:8px; }
+.mag-section-description {
+  color:var(--mag-muted); font:400 16px/1.65 var(--sans);
+  max-width:520px; margin:17px 0 0;
+}
+.mag-highlights-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px; }
+.mag-card { min-width:0; display:flex; flex-direction:column; background:white; border:0; }
+.mag-card-image { display:block; overflow:hidden; aspect-ratio:1.56; background:#f0f1ec; }
+.mag-card-image img { width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+.mag-card-image:hover img { transform:scale(1.018); }
+.mag-card-copy { padding:23px 0 0; }
+.mag-card-copy .mag-kicker { margin-bottom:13px; }
+.mag-card h3 { font-size:clamp(28px,2.85vw,43px); line-height:1.14; margin:0 0 13px; }
+.mag-card-summary { color:#626861; font:400 15px/1.65 var(--sans); max-width:52ch; margin:0; }
+.mag-card .mag-smallmeta { margin:15px 0 0; }
+.mag-books-band { padding:88px 0 90px; background:#f3f4ef; border-block:1px solid #e5e7e0; }
+.mag-books-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:clamp(13px,2vw,28px); }
+.mag-book { display:flex; flex-direction:column; min-width:0; }
+.mag-book-cover {
+  display:flex; align-items:center; justify-content:center; width:100%;
+  aspect-ratio: .84; padding:24px; background:#e7eae4; overflow:hidden;
+}
+.mag-book-cover img {
+  max-height:100%; max-width:100%; width:auto; height:100%;
+  object-fit:contain; filter:drop-shadow(5px 8px 7px #0002);
+  transition:transform .3s ease;
+}
+.mag-book-cover:hover img { transform:translateY(-4px); }
+.mag-book-copy { padding:18px 1px 0; }
+.mag-book-copy .mag-kicker { font-size:10px; margin:0 0 7px; }
+.mag-book h3 { font-size:clamp(18px,1.65vw,24px); line-height:1.23; margin:0 0 8px; }
+.mag-book-copy p:last-child { color:#5f665e; font:400 12px/1.55 var(--sans); }
+.mag-empty { background:white; padding:35px; }
+.mag-empty p { color:#626861; }
+.mag-latest-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px; }
+.mag-latest-grid .mag-card-image { aspect-ratio:1.25; }
+.mag-latest-grid .mag-card h3 { font-size:clamp(23px,2.1vw,29px); }
+.mag-latest-grid .mag-card-summary { font-size:14px; }
+.mag-latest-grid .mag-card-copy { padding-top:19px; }
+.mag-travel { border-top:1px solid var(--mag-line); }
+.mag-gallery-grid { display:grid !important; columns:auto; grid-template-columns:repeat(3,minmax(0,1fr)) !important; gap:23px; }
+.mag-gallery-grid .gallery-item {
+  display:flex; flex-direction:column; margin:0; min-width:0; background:#fff; border:0;
+}
+.mag-gallery-grid .gallery-open { display:block; overflow:hidden; aspect-ratio:1.28; border-radius:0; }
+.mag-gallery-grid .gallery-item img,
+.mag-gallery-grid .gallery-item:nth-child(3n+2) img {
+  display:block; width:100%; height:100%; aspect-ratio:1.28;
+  object-fit:cover; transition:transform .45s ease;
+}
+.mag-gallery-grid .gallery-open:hover img { transform:scale(1.02); }
+.mag-gallery-grid .gallery-item figcaption {
+  background:#fff; padding:18px 0 0; border:0;
+}
+.mag-gallery-grid .gallery-item figcaption small { color:#666b65; }
+.mag-gallery-grid .gallery-item figcaption span { font:600 23px/1.2 var(--serif); }
+.mag-gallery-grid .gallery-item figcaption p { color:#777b75; }
+.mag-outlook { background:#151915; color:white; padding:86px 0; }
+.mag-outlook-grid {
+  display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr); align-items:center;
+  gap:55px;
+}
+.mag-outlook .mag-kicker { color:#c3cdc3; }
+.mag-outlook h2 { color:white; font-size:clamp(40px,4.4vw,65px); line-height:1.07; margin:0; }
+.mag-outlook p:not(.mag-kicker) { color:#dde2dc; font:400 16px/1.75 var(--sans); }
+.mag-outlook-links { display:flex; flex-wrap:wrap; gap:18px 28px; margin-top:27px; }
+.mag-outlook .mag-more { color:white; border-bottom-color:#d4dad3; }
+.mag-front .newsletter { padding:90px 0; background:white; }
+.mag-front .newsletter-inner { border:1px solid #e6e7e3; background:#f5f6f2; border-radius:2px; padding:clamp(30px,4vw,55px); }
+.mag-front .newsletter h2 { font-size:clamp(36px,3.5vw,53px); }
+html[lang=ar] .mag-front h1,
+html[lang=ar] .mag-front h2,
+html[lang=ar] .mag-front h3 { letter-spacing:0; line-height:1.5; }
+html[lang=ar] .mag-opening-title h1 { line-height:1.25; }
+html[lang=ar] .mag-kicker { letter-spacing:0; }
+html[lang=ar] .mag-topstory-copy h2 { line-height:1.42; }
+html[lang=ar] .mag-card h3 { line-height:1.5; }
+html[lang=ar] .mag-outlook h2 { line-height:1.5; }
+@media(max-width:1150px) {
+  .mag-opening { grid-template-columns:1fr .7fr; gap:34px; }
+  .mag-topstory { grid-template-columns:1.25fr .85fr; min-height:540px; }
+  .mag-topstory-visual,.mag-topstory-visual img { min-height:540px; }
+  .mag-topstory-copy { margin-inline-start:-45px; }
+  .mag-latest-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:34px 24px; }
+  .mag-book-cover { padding:15px; }
+}
+@media(max-width:800px){
+  .mag-opening { display:block; padding-block:47px 46px; }
+  .mag-opening-title h1 { font-size:clamp(51px,8.2vw,75px); }
+  .mag-opening-note { margin-top:28px; max-width:640px; }
+  .mag-topstory { display:block; min-height:0; }
+  .mag-topstory-visual,.mag-topstory-visual img { height:auto; min-height:0; aspect-ratio:1.65; }
+  .mag-topstory-copy { margin:-28px 20px 0; padding:32px; }
+  .mag-topstory-copy h2 { font-size:clamp(38px,5.2vw,58px); }
+  .mag-books-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .mag-section { padding-block:65px; }
+  .mag-books-band { padding:65px 0; }
+  .mag-outlook-grid { grid-template-columns:1fr; gap:25px; }
+}
+@media(max-width:700px){
+  .wrap,.site-footer .wrap { width:calc(100% - 40px); }
+  .site-header .header-inner { min-height:63px; }
+  .site-header .header-inner .brand { width:auto; font-size:18px; }
+  .site-header .mobile-menu { width:100%; margin:0; border-radius:0; max-height:calc(100svh - 63px); }
+  .page-masthead { padding:50px 0 32px; }
+  .page-masthead h1 { font-size:clamp(41px,9vw,58px); }
+  .article-cover { margin-top:28px; }
+  .book-heading { padding-top:45px; }
+  .about-gallery { padding-top:40px; }
+  .mag-opening { padding-block:37px 35px; }
+  .mag-opening-title h1 { font-size:clamp(44px,11vw,65px); }
+  .mag-opening-note p { font-size:15px; }
+  .mag-topstory-visual,.mag-topstory-visual img { aspect-ratio:1.2; }
+  .mag-topstory-copy { margin:-18px 10px 0; padding:27px 23px; box-shadow:0 7px 20px #0000000c; }
+  .mag-topstory-copy h2 { font-size:clamp(33px,8.6vw,47px); }
+  .mag-topicnav { margin-block:25px 0; gap:12px 20px; padding:19px 0; }
+  .mag-topicnav .mag-kicker { width:100%; }
+  .mag-topicnav a { font-size:12px; }
+  .mag-section { padding-block:53px; }
+  .mag-section-heading { align-items:start; flex-direction:column; gap:15px; margin-bottom:23px; }
+  .mag-section-heading h2 { font-size:clamp(34px,9vw,48px); }
+  .mag-section-heading .mag-more { margin-bottom:0; }
+  .mag-highlights-grid { grid-template-columns:1fr; gap:40px; }
+  .mag-card h3 { font-size:31px; }
+  .mag-card-copy { padding-top:17px; }
+  .mag-books-band { padding:53px 0; }
+  .mag-books-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:25px 16px; }
+  .mag-book-cover { padding:13px; }
+  .mag-book h3 { font-size:20px; }
+  .mag-latest-grid { grid-template-columns:1fr; gap:37px; }
+  .mag-latest-grid .mag-card-image { aspect-ratio:1.6; }
+  .mag-latest-grid .mag-card h3 { font-size:29px; }
+  .mag-gallery-grid { grid-template-columns:1fr !important; gap:28px; }
+  .mag-gallery-grid .gallery-open { aspect-ratio:1.5; }
+  .mag-outlook { padding:55px 0; }
+  .mag-outlook h2 { font-size:38px; }
+  .mag-front .newsletter { padding:48px 0; }
+  .mag-front .newsletter-inner { padding:26px 20px; }
+  .site-footer,.home-cinema .site-footer { padding:52px 0 28px; }
+}
+@media(max-width:350px) {
+  .mag-topstory-copy { margin:0; padding:22px 16px; }
+  .mag-topstory-copy h2 { font-size:31px; }
+  .mag-opening-title h1 { font-size:42px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .mag-topstory-visual img,.mag-card-image img,.mag-book-cover img,.mag-gallery-grid .gallery-item img { transition:none; }
+}
+@media print {
+  .mag-topicnav,.mag-more { display:none; }
+  .mag-topstory { display:block; min-height:0; }
+  .mag-topstory-visual { display:none; }
+  .mag-topstory-copy { box-shadow:none; border:0; margin:0; }
+  .mag-book-cover { break-inside:avoid; }
+}
