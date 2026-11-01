@@ -49,10 +49,12 @@ test('public Node pages preserve the English/Arabic content, shelf separation an
 test('homepage selections, native search, topic filters and reading links work in both languages',async()=>{
   for(const prefix of ['/','/ar/']){
     const home=load((await request(prefix,null,guest)).text);
-    assert.equal(home('.featured-grid .card').length,3);
-    assert.equal(new Set(home('.featured-grid h3 a').map((_,el)=>home(el).attr('href')).get()).size,3);
+    assert.equal(home('.mag-topstory-copy h2 a').length,1);
+    assert.equal(home('.mag-highlights-grid .mag-card').length,2);
+    const featuredLinks=[home('.mag-topstory-copy h2 a').attr('href'),...home('.mag-highlights-grid h3 a').map((_,el)=>home(el).attr('href')).get()];
+    assert.equal(new Set(featuredLinks).size,3);
     assert(home('.welcome-intro').text().length>20);
-    assert.equal(home('.notebook-path-grid > a').length,3);
+    assert.equal(home('.mag-topicnav a').length,4);
     assert.equal(home('.site-footer .language-switch').length,0);
     const query=prefix==='/ar/'?'الفيزياء':'physics';
     const result=await request(prefix+'search.html?q='+encodeURIComponent(query)+'&topic=Science',null,guest);
@@ -135,10 +137,12 @@ test('dashboard homepage choices preserve existing content and unavailable Arabi
   assert.equal(r.status,302);
   assert.equal((await db.all('SELECT setting_value FROM aa_settings WHERE setting_key=?',['hero_intro']))[0].setting_value,before);
   const home=load((await request('/',null,guest)).text);
-  assert.deepEqual(home('.featured-grid h3 a').map((_,el)=>home(el).attr('href')).get(),picks.map(slug=>'/'+slug+'.html'));
+  const featuredLinks=[home('.mag-topstory-copy h2 a').attr('href'),...home('.mag-highlights-grid h3 a').map((_,el)=>home(el).attr('href')).get()];
+  assert.deepEqual(featuredLinks,picks.map(slug=>'/'+slug+'.html'));
   assert.equal(home('.welcome-intro script').length,0);assert.equal(home('.welcome-intro').text(),'My notebook <script>example</script>');
   const ar=load((await request('/ar/',null,guest)).text);
-  assert.equal(ar('.featured-grid .card').length,3);assert(!ar('.featured-grid').text().includes(post.title_ar));
+  assert.equal(ar('.mag-topstory-copy h2 a').length+ar('.mag-highlights-grid .mag-card').length,3);
+  assert(!ar('.mag-topstory, .mag-highlights-grid').text().includes(post.title_ar));
   const search=load((await request('/ar/search.html?q='+encodeURIComponent(post.title_ar),null,guest)).text);assert.equal(search('main .card').length,0);
   const csrf=token((await request('/admin/?section=pages')).text);
   assert.equal((await request('/admin/?section=pages',{csrf,action:'save_pages',featured_1:'does-not-exist'})).status,422);
