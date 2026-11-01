@@ -271,3 +271,50 @@ html[lang=ar] .mag-outlook h2 { line-height:1.5; }
   .mag-topstory-copy { box-shadow:none; border:0; margin:0; }
   .mag-book-cover { break-inside:avoid; }
 }
+/* Give the writing and book archives the same editorial rhythm as the front page. */
+.mag-archive .discovery-form { margin-bottom:42px; padding:22px; background:#f8f8f6; }
+.mag-archive .result-count { padding:0 0 16px; border-bottom:1px solid var(--mag-line); }
+.mag-articles-archive .card-grid {
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:45px 30px;
+}
+.mag-articles-archive .card-grid .card:first-child { grid-column:span 2; }
+.mag-articles-archive .card-grid .card:first-child .card-image img { aspect-ratio:1.88; }
+.mag-articles-archive .card-grid .card:first-child h3 { font-size:clamp(35px,3.4vw,49px); max-width:700px; }
+.mag-archive .museum-card .card-image,
+.mag-archive .museum-card .card-image img { border-radius:0; }
+.mag-archive .card-content .eyebrow { font-size:10px; margin-bottom:12px; }
+.mag-archive .card .meta { font-size:11px; }
+.mag-books-archive .bookshelf-grid {
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:42px 25px;
+}
+.mag-books-archive .bookshelf-grid .card-image {
+  display:grid;place-items:center; background:#f1f2ee !important;
+  height:325px; padding:20px; aspect-ratio:auto;
+}
+.mag-books-archive .bookshelf-grid .card-image img {
+  width:auto;max-width:95%;height:270px;max-height:95%;
+  object-fit:contain !important;aspect-ratio:auto;
+  box-shadow:6px 10px 15px #0000001a;
+}
+.mag-books-archive .bookshelf-grid .card h3 { font-size:clamp(22px,2.1vw,31px); }
+@media(max-width:1050px) {
+  .mag-articles-archive .card-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .mag-books-archive .bookshelf-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+}
+@media(max-width:700px) {
+  .mag-archive .discovery-form { padding:16px; margin-bottom:30px; }
+  .mag-articles-archive .card-grid { grid-template-columns:1fr; gap:35px; }
+  .mag-articles-archive .card-grid .card:first-child { grid-column:auto; }
+  .mag-articles-archive .card-grid .card:first-child h3 { font-size:30px; }
+  .mag-books-archive .bookshelf-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:30px 15px; }
+  .mag-books-archive .bookshelf-grid .card-image { height:235px; padding:13px; }
+  .mag-books-archive .bookshelf-grid .card-image img { height:197px; max-height:94%; }
+  .mag-books-archive .bookshelf-grid .card h3 { font-size:21px; }
+}
+@media(max-width:370px) {
+  .mag-books-archive .bookshelf-grid { grid-template-columns:1fr; }
+  .mag-books-archive .bookshelf-grid .card-image { height:300px; }
+  .mag-books-archive .bookshelf-grid .card-image img { height:250px; }
+}
