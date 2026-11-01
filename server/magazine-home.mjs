@@ -36,6 +36,7 @@ export function magazineHome({data,lang,escape:e,pageURL:url,picture,gallery,new
     </div>
   </article>`;
   const intro=setting(data,'hero_intro',lang)||welcomeIntro[lang];
+  const welcome=setting(data,'welcome_intro',lang,welcomeIntro[lang]);
   const headline=setting(data,'hero_title',lang)||say('Stay curious. Keep creating.','ابقَ فضوليًا. واصل الإبداع.');
   const cleanHeadline=e(headline).replaceAll('\n','<br>');
   return `<div class="mag-front">
@@ -46,6 +47,7 @@ export function magazineHome({data,lang,escape:e,pageURL:url,picture,gallery,new
       </div>
       <div class="mag-opening-note">
         <p>${e(intro)}</p>
+        <p class="welcome-intro mag-welcome-note">${e(welcome)}</p>
         ${more('about',say('A little about me','تعرّف إليّ'))}
       </div>
     </section>
