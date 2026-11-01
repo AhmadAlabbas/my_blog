@@ -116,7 +116,7 @@ export function renderer(config,arabic){
     const contents=sections.length>1?`<details class="reading-contents"><summary>${lang==='ar'?'في هذا المقال':'In this note'}</summary><nav aria-label="${lang==='ar'?'محتويات المقال':'Article contents'}"><ol>${sections.map(section=>`<li><a href="#${section.id}">${escape(section.title)}</a></li>`).join('')}</ol></nav></details>`:'';
     const collectionURL=pageURL(book?'book-summaries':'articles',lang);
     const collectionLabel=book?(lang==='ar'?'كل الكتب':'All book summaries'):(lang==='ar'?'كل المقالات':'All articles');
-    const backArrow=lang==='ar'?'←':'←';
+    const backArrow=lang==='ar'?'→':'←';
     const readingBar=`<div class="reader-tools"><a class="reader-back" href="${collectionURL}"><span aria-hidden="true">${backArrow}</span>${collectionLabel}</a><div class="reader-actions"><span class="reading-time">${readTime(post,lang)}</span><div class="reader-size" data-reader-controls hidden role="group" aria-label="${lang==='ar'?'حجم الخط':'Text size'}"><button type="button" data-reading-size="regular" aria-pressed="true" aria-label="${lang==='ar'?'حجم الخط العادي':'Regular text size'}">A</button><button type="button" data-reading-size="spacious" aria-pressed="false" aria-label="${lang==='ar'?'تكبير الخط':'Larger text size'}">A+</button></div></div></div>`;
     const readingOutro=`<nav class="reader-outro" aria-label="${lang==='ar'?'مواصلة التصفح':'Continue exploring'}"><a href="${collectionURL}">${lang==='ar'?'المزيد من القراءة':'More to read'} <span aria-hidden="true">${lang==='ar'?'←':'↗'}</span></a><a href="#main">${lang==='ar'?'العودة إلى البداية':'Back to the beginning'} <span aria-hidden="true">↑</span></a></nav>`;
     const related=relatedPosts(post,data.posts);
